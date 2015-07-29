@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>me.magicall</groupId>
+    <artifactId>parent</artifactId>
+    <version>1.0.0-SNAPSHOT</version>
+
+    <packaging>pom</packaging>
+
+    <name>${project.artifactId}</name>
+    <description>parent project for all Shuyun support projects</description>
+
+    <inceptionYear>2015</inceptionYear>
+    <organization>
+        <name>me.magicall</name>
+        <url>http://magicall.me</url>
+    </organization>
+    <developers>
+        <developer>
+            <name>Liang Wenjian</name>
+            <timezone>8</timezone>
+            <roles>
+                <role>architect</role>
+                <role>developer</role>
+                <role>user</role>
+            </roles>
+        </developer>
+    </developers>
+
+    <modules>
+
+        <module>util</module>
+        <module>db</module>
+        <module>mybatis</module>
+        <module>db-spring</module>
+        <module>net</module>
+        <module>web</module>
+        <module>game</module>
+        <module>xml</module>
+        <module>dom4j</module>
+        <module>game-sha</module>
+        <module>game-xiangqi</module>
+    </modules>
+
+    <properties>
+        <javax.inject.version>1</javax.inject.version>
+        <fasterxml-jackson.version>2.5.1</fasterxml-jackson.version>
+    </properties>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>javax.inject</groupId>
+                <artifactId>javax.inject</artifactId>
+                <version>${javax.inject.version}</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.codehaus.gmaven</groupId>
+                <artifactId>gmaven-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
+</project>
