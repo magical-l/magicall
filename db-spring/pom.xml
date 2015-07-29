@@ -11,5 +11,21 @@
 
     <artifactId>db-spring</artifactId>
 
-
+    <dependencies>
+        <dependency>
+            <groupId>me.magicall</groupId>
+            <artifactId>util</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>me.magicall</groupId>
+            <artifactId>db</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>me.magicall</groupId>
+            <artifactId>outsea</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+    </dependencies>
 </project>

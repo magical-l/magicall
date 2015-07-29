@@ -11,5 +11,11 @@
 
     <artifactId>db</artifactId>
 
-
+    <dependencies>
+        <dependency>
+            <groupId>me.magicall</groupId>
+            <artifactId>util</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+    </dependencies>
 </project>
