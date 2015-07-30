@@ -348,9 +348,7 @@ public class TimeUtil {
 		final Calendar c = Calendar.getInstance();
 		c.setTime(d);
 		final int rt = c.get(Calendar.DAY_OF_YEAR);
-		if (isGregorianLeapYear(c.get(Calendar.YEAR))) {
-			return rt;
-		} else if (c.get(Calendar.MONTH) < Calendar.MARCH) {
+		if (isGregorianLeapYear(c.get(Calendar.YEAR)) || c.get(Calendar.MONTH) < Calendar.MARCH) {
 			return rt;
 		}
 		return rt + 1;

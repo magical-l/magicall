@@ -7,7 +7,7 @@ import java.util.Map;
 import java.util.Set;
 
 import me.magicall.db.util.DbUtil;
-import me.magicall.tagInterfaces.HasId;
+import me.magicall.mark.HasId;
 import me.magicall.util.kit.Kits;
 
 public abstract class BaseModel<I extends Comparable<I>> //

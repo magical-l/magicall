@@ -2,7 +2,7 @@ package me.magicall.game.player;
 
 import me.magicall.game.io.GameInput;
 import me.magicall.game.io.GameOutput;
-import me.magicall.tagInterfaces.HasNameGetter;
+import me.magicall.mark.HasNameGetter;
 
 /**
  * 玩家类，是现实中的“玩家”（可能是人，也可能是AI）在程序中的代理接口。

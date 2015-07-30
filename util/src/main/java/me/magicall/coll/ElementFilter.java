@@ -14,5 +14,5 @@ public interface ElementFilter<E> {
 	 * @param element 此元素本身
 	 * @return
 	 */
-    public boolean accept(int index, E element);
+    boolean accept(int index, E element);
 }

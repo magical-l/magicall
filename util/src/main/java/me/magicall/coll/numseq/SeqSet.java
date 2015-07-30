@@ -3,8 +3,7 @@ package me.magicall.coll.numseq;
 import me.magicall.coll.CollFactory.L;
 import me.magicall.coll.ElementNotNull;
 import me.magicall.coll.unmodifiable.UnmodifiableSetTemplate;
-import me.magicall.tagInterfaces.Unmodifiable;
-import me.magicall.util.comparator.ComparatorAndEquivalentUtil;
+import me.magicall.mark.Unmodifiable;
 
 import java.io.Serializable;
 import java.util.Collection;
@@ -100,9 +99,9 @@ public class SeqSet extends UnmodifiableSetTemplate<Integer>//
 	public Comparator<? super Integer> comparator() {
 		if (comp == null) {
 			if (list.get(list.size() - 1) >= list.get(0)) {
-				comp = ComparatorAndEquivalentUtil.comparableComparator();
+				comp = Comparator.naturalOrder();
 			} else {
-				comp = Collections.reverseOrder(ComparatorAndEquivalentUtil.<Integer>comparableComparator());
+				comp = Collections.reverseOrder();
 			}
 		}
 		return comp;

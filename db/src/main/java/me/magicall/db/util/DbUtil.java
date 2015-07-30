@@ -30,7 +30,7 @@ public class DbUtil {
 	 * 
 	 * @author MaGiCalL
 	 */
-	public static interface DbTypeConvert {
+	public interface DbTypeConvert {
 		Object convert(ResultSet rs, int columnIndex) throws SQLException;
 	}
 
@@ -136,7 +136,7 @@ public class DbUtil {
 	}
 
 	public static Collection<Integer> toIntIds(final Collection<? extends BaseModelInt> source) {
-		return Kits.COLL.<BaseModelInt, Integer> transform(source, ElementTransformerUtil.TO_INT_ID);
+		return Kits.COLL.transform(source, ElementTransformerUtil.TO_INT_ID);
 	}
 
 	/**

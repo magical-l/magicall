@@ -5,6 +5,7 @@ package me.magicall.lang;
  * 
  * @author MaGiCalL
  */
+@FunctionalInterface
 public interface FinallyCallback {
 
 	/**
@@ -12,6 +13,6 @@ public interface FinallyCallback {
 	 */
 	void finallyExecute();
 
-	public static FinallyCallback DO_NOTHING = () -> {
+	FinallyCallback DO_NOTHING = () -> {
     };
 }

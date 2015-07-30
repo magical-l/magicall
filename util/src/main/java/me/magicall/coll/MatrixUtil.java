@@ -12,8 +12,8 @@ import java.util.ListIterator;
 
 import me.magicall.coll.CollFactory.I;
 import me.magicall.coll.unmodifiable.UnmodifiableListTemplate;
-import me.magicall.tagInterfaces.Unmodifiable;
-import me.magicall.tagInterfaces.Wrapper;
+import me.magicall.mark.Unmodifiable;
+import me.magicall.mark.Wrapper;
 import me.magicall.util.kit.Kits;
 
 public class MatrixUtil {
@@ -561,7 +561,7 @@ public class MatrixUtil {
 
 		@Override
 		protected Matrix<E> subMatrix0(final int fromRowIndex, final int fromColumnIndex) {
-			return super.subMatrix(fromColumnIndex, fromRowIndex).transferOrder();
+			return subMatrix(fromColumnIndex, fromRowIndex).transferOrder();
 		}
 
 		@Override

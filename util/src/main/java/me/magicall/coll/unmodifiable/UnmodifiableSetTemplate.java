@@ -6,9 +6,8 @@ import java.util.Collection;
 import java.util.Iterator;
 import java.util.Set;
 
-import me.magicall.coll.CollFactory;
 import me.magicall.coll.CollFactory.I;
-import me.magicall.tagInterfaces.Unmodifiable;
+import me.magicall.mark.Unmodifiable;
 
 public abstract class UnmodifiableSetTemplate<E> extends AbstractSet<E> implements Set<E>, Unmodifiable, Serializable {
 	private static final long serialVersionUID = 1186546192702020850L;

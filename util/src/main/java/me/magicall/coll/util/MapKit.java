@@ -14,7 +14,7 @@ import me.magicall.coll.KeyAccessor;
 import me.magicall.coll.empty.EmptyMap;
 import me.magicall.coll.transformed.ValueTransformedMap;
 import me.magicall.coll.wrap.UnmodifiableWrapMap;
-import me.magicall.tagInterfaces.Unmodifiable;
+import me.magicall.mark.Unmodifiable;
 import me.magicall.util.kit.Kits;
 import me.magicall.util.kit.WithSubclassKit;
 import me.magicall.util.transformer.Transformer;

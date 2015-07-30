@@ -1,6 +1,6 @@
 package me.magicall.coll.map;
 
-import me.magicall.tagInterfaces.Wrapper;
+import me.magicall.mark.Wrapper;
 
 import java.util.Collection;
 import java.util.Collections;

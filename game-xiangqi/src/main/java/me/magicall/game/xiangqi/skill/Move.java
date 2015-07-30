@@ -15,11 +15,6 @@ public class Move extends SelectingTargetsSkillTemplate {
 		// TODO Auto-generated method stub
 		final Board board = (Board) game.getGamingMap();
 		final Unit unit = board.getFirstUnit(position);
-		if (unit == null) {
-
-		} else {
-
-		}
 
 	}
 

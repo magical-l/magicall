@@ -3,7 +3,7 @@ package me.magicall.db.meta;
 import java.util.List;
 
 import me.magicall.convenient.BaseHasList;
-import me.magicall.tagInterfaces.HasNameGetter;
+import me.magicall.mark.HasNameGetter;
 
 public class ModelMeta extends BaseHasList<FieldMeta> implements HasNameGetter {
 

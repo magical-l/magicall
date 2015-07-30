@@ -3,8 +3,8 @@ package me.magicall.coll.unmodifiable;
 import java.io.Serializable;
 import java.util.Map.Entry;
 
-import me.magicall.tagInterfaces.Unmodifiable;
-import me.magicall.tagInterfaces.Wrapper;
+import me.magicall.mark.Unmodifiable;
+import me.magicall.mark.Wrapper;
 
 public abstract class UnmodifiableEntryTemplate<K, V> implements Entry<K, V>, Unmodifiable, Serializable, Wrapper {
 

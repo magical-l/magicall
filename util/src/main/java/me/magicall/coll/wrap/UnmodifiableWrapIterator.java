@@ -4,8 +4,8 @@ import java.io.Serializable;
 import java.util.Iterator;
 
 import me.magicall.coll.unmodifiable.UnmodifiableIteratorTemplate;
-import me.magicall.tagInterfaces.Unmodifiable;
-import me.magicall.tagInterfaces.Wrapper;
+import me.magicall.mark.Unmodifiable;
+import me.magicall.mark.Wrapper;
 
 public class UnmodifiableWrapIterator<E> extends UnmodifiableIteratorTemplate<E>//
 		implements Iterator<E>, Unmodifiable, Wrapper, Serializable {

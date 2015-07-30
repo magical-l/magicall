@@ -5,7 +5,7 @@ import java.util.Comparator;
 import me.magicall.game.io.GameOutput;
 import me.magicall.game.io.OutputSource;
 import me.magicall.game.map.Coordinate;
-import me.magicall.tagInterfaces.HasOrder;
+import me.magicall.mark.HasOrder;
 import me.magicall.util.comparator.SerializableComparator;
 
 public class GameUtil {

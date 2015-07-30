@@ -5,9 +5,8 @@ import java.util.AbstractCollection;
 import java.util.Collection;
 import java.util.Iterator;
 
-import me.magicall.coll.CollFactory;
 import me.magicall.coll.CollFactory.I;
-import me.magicall.tagInterfaces.Unmodifiable;
+import me.magicall.mark.Unmodifiable;
 
 
 public abstract class UnmodifiableCollectionTemplate<E> extends AbstractCollection<E>//

@@ -1,7 +1,7 @@
 package me.magicall.coll.combo;
 
 import me.magicall.coll.unmodifiable.UnmodifiableCollectionTemplate;
-import me.magicall.tagInterfaces.Unmodifiable;
+import me.magicall.mark.Unmodifiable;
 import me.magicall.util.touple.ThreeTuple;
 import me.magicall.util.touple.Tuple;
 

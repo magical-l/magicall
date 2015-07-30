@@ -6,10 +6,9 @@ import java.util.Collection;
 import java.util.Map;
 import java.util.Set;
 
-import me.magicall.coll.CollFactory;
 import me.magicall.coll.CollFactory.C;
 import me.magicall.coll.CollFactory.S;
-import me.magicall.tagInterfaces.Unmodifiable;
+import me.magicall.mark.Unmodifiable;
 
 
 public abstract class UnmodifiableMapTemplate<K, V> extends AbstractMap<K, V>//

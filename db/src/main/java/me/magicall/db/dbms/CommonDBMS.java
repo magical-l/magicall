@@ -49,7 +49,7 @@ public enum CommonDBMS implements DBMS {
 			return t == null ? getTypeFromFieldType(dbColumnTypeName) : t;
 		}
 
-		private FieldType getTypeFromFieldType(final String dbColumnTypeName) {
+		private static FieldType getTypeFromFieldType(final String dbColumnTypeName) {
 			final FieldType[] types = FieldType.values();
 			for (final FieldType t : types) {
 				if (t.name().equalsIgnoreCase(dbColumnTypeName)) {

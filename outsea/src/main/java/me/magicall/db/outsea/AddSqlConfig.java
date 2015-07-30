@@ -40,13 +40,15 @@ public class AddSqlConfig<T> extends AbsSqlConfig<T> {
 		super.addOtherRefedModels(otherRefedModels);
 	}
 
+	@SafeVarargs
 	@Override
-	public void addOtherRefedModels(final T... otherRefedModels) {
+	public final void addOtherRefedModels(final T... otherRefedModels) {
 		super.addOtherRefedModels(otherRefedModels);
 	}
 
+	@SafeVarargs
 	@Override
-	public void setRefedModels(final T refedModel, final T... otherRefedModels) {
+	public final void setRefedModels(final T refedModel, final T... otherRefedModels) {
 		super.setRefedModels(refedModel, otherRefedModels);
 	}
 
@@ -78,8 +80,9 @@ public class AddSqlConfig<T> extends AbsSqlConfig<T> {
 		super.setFieldFilter(fieldFilter);
 	}
 
+	@SafeVarargs
 	@Override
-	public void setRefedModels(final T... refedModels) {
+	public final void setRefedModels(final T... refedModels) {
 		super.setRefedModels(refedModels);
 	}
 

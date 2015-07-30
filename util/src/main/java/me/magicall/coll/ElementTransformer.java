@@ -8,5 +8,5 @@ package me.magicall.coll;
  */
 public interface ElementTransformer<F, T> {
 
-    public T transform(int index, F element);
+    T transform(int index, F element);
 }

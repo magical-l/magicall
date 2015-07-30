@@ -13,7 +13,7 @@ public abstract class AbsCachedDataAccessor<R, C extends SqlConfig> implements D
 
 	@SuppressWarnings("unchecked")
 	protected final LoadingCache<C, R> cache//
-	= expireAfterWrite((CacheBuilder<C, R>) CacheBuilder.newBuilder())//
+	= expireAfterWrite((CacheBuilder) CacheBuilder.newBuilder())//
 			.build(new CacheLoader<C, R>() {
 				@Override
 				public R load(final C key) throws Exception {

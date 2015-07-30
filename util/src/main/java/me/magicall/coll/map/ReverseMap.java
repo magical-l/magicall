@@ -1,6 +1,6 @@
 package me.magicall.coll.map;
 
-import me.magicall.tagInterfaces.Unmodifiable;
+import me.magicall.mark.Unmodifiable;
 
 import java.io.Serializable;
 import java.util.AbstractSet;

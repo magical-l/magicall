@@ -1,22 +1,5 @@
 package me.magicall.coll;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.List;
-import java.util.ListIterator;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.NoSuchElementException;
-import java.util.Set;
-import java.util.SortedSet;
-import java.util.TreeSet;
-
-import me.magicall.coll.bridge.ListSet;
 import me.magicall.coll.combo.AppendList;
 import me.magicall.coll.fixed.FixedArrayList;
 import me.magicall.coll.fixed.OneList;
@@ -34,8 +17,23 @@ import me.magicall.coll.unmodifiable.UnmodifiableListIteratorTemplate;
 import me.magicall.coll.wrap.UnmodifiableWrapSet;
 import me.magicall.coll.wrap.UnmodifiableWrapTree;
 import me.magicall.coll.wrap.UnmodifiableWrapTreeNode;
-import me.magicall.tagInterfaces.Unmodifiable;
+import me.magicall.mark.Unmodifiable;
 import me.magicall.util.kit.Kits;
+
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.List;
+import java.util.ListIterator;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.NoSuchElementException;
+import java.util.Set;
+import java.util.TreeSet;
 
 /**
  * 一个奇怪的工厂
@@ -70,6 +68,7 @@ public class CollFactory {
 			return new ThreeList<>(e1, e2, e3);
 		}
 
+		@SafeVarargs
 		public static <E> List<E> asList(final E... es) {
 			return new FixedArrayList<>(es);
 		}
@@ -148,10 +147,6 @@ public class CollFactory {
 
 		public static <E> Set<E> fromList(final List<E> list) {
 			return new HashSet<>(list);
-		}
-
-		public static <E> SortedSet<E> listSet(final List<E> list) {
-			return new ListSet<>(list);
 		}
 
 		public static <E> Set<E> unmodifiable(final Set<E> set) {

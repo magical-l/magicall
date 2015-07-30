@@ -196,7 +196,7 @@ public class MapList<E> extends AbstractList<E> implements List<E>, RandomAccess
 		rangeCheck(index, 0, size());
 	}
 
-	private final void rangeCheck(final int index, final int min, final int max) {
+	private static void rangeCheck(final int index, final int min, final int max) {
 		if (index < min || index >= max) {
 			throw new IndexOutOfBoundsException("Index: " + index + ", min: " + min + ", max:" + max);
 		}

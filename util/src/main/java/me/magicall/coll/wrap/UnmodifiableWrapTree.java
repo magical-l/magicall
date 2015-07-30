@@ -5,7 +5,7 @@ import java.util.Iterator;
 
 import me.magicall.coll.tree.Tree;
 import me.magicall.coll.unmodifiable.UnmodifiableTreeTemplate;
-import me.magicall.tagInterfaces.Wrapper;
+import me.magicall.mark.Wrapper;
 
 public class UnmodifiableWrapTree<E> extends UnmodifiableTreeTemplate<E>//
 		implements Wrapper {

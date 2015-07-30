@@ -115,7 +115,7 @@ public class ClassesUsedAnalyzer {
 		}
 	}
 
-	private String handlePackage(final String sourceCode) {
+	private static String handlePackage(final String sourceCode) {
 		final String keyword = "package";
 		final int indexOfPackage = sourceCode.indexOf(keyword);
 		if (indexOfPackage < 0) {
@@ -153,7 +153,7 @@ public class ClassesUsedAnalyzer {
 		return s;
 	}
 
-	private String getClassName(final String nameWithFieldOrMethodName, final int fromIndex) {
+	private static String getClassName(final String nameWithFieldOrMethodName, final int fromIndex) {
 		return nameWithFieldOrMethodName.substring(fromIndex, nameWithFieldOrMethodName.lastIndexOf('.')).trim();
 	}
 
@@ -171,19 +171,19 @@ public class ClassesUsedAnalyzer {
 		System.out.println("@@@@@@ClassesUsedAnalyzer.main():end");
 	}
 
-	static void testHandleImport() throws Exception {
+	static void testHandleImport() throws FileNotFoundException {
 		final String sourceCode = readSource();
 		final String s = INSTANCE.handleImport(sourceCode);
 //		System.out.println(s);
 	}
 
-	static void testFiltLineComments() throws Exception {
+	static void testFiltLineComments() throws FileNotFoundException {
 		final String sourceCode = readSource();
 		final String s = filtLineComments(sourceCode);
 		System.out.println(s);
 	}
 
-	static void testFiltComment() throws Exception {
+	static void testFiltComment() throws FileNotFoundException {
 		final String string = "shenme /** ji\rji\n\r\r\nway\nway*/laji";
 		assert string != null;
 		final String sourceCode = readSource();
@@ -191,7 +191,7 @@ public class ClassesUsedAnalyzer {
 		System.out.println(s);
 	}
 
-	static void testFiltString() throws Exception {
+	static void testFiltString() throws FileNotFoundException {
 		final String string = "\\\\\"\\\"icu\"niao";
 		assert string != null;
 
@@ -204,7 +204,7 @@ public class ClassesUsedAnalyzer {
 		System.out.println(filtString(sourceCode));
 	}
 
-	static void testAnalyze() throws Exception {
+	static void testAnalyze() throws FileNotFoundException {
 		final String string = readSource();
 		INSTANCE.analyze(string);
 	}

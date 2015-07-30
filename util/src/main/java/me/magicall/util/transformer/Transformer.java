@@ -8,5 +8,5 @@ package me.magicall.util.transformer;
  */
 public interface Transformer<F, T> {
 
-	public T transform(F from);
+	T transform(F from);
 }

@@ -127,7 +127,7 @@ public class IOUtil {
 		}
 	}
 
-	public static interface LineHandler {
+	public interface LineHandler {
 		void handle(String line) throws IOException;
 	}
 }

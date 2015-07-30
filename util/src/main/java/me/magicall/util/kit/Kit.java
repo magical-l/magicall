@@ -26,6 +26,10 @@
  */
 package me.magicall.util.kit;
 
+import me.magicall.consts.StrConst;
+import me.magicall.util.ArrayUtil;
+import me.magicall.util.ClassUtil;
+
 import java.io.Serializable;
 import java.lang.reflect.Array;
 import java.util.Arrays;
@@ -33,10 +37,6 @@ import java.util.Comparator;
 import java.util.HashSet;
 import java.util.Random;
 import java.util.Set;
-
-import me.magicall.consts.StrConst;
-import me.magicall.util.ArrayUtil;
-import me.magicall.util.ClassUtil;
 
 /**
  * 这个类的子类表示针对某一类型T的工具类，应该包含许多常用的工具方法，如返回一个空的一维数组，它是单例的，不需要到处去new它。
@@ -303,7 +303,7 @@ public abstract class Kit<T> implements Comparator<T>, Serializable {
 	 */
 	@SuppressWarnings("unchecked")
 	public <T1 extends T> T1 checkToEmptyValue(final T1 source) {
-		return this.<T1> checkToDefaultValue(source, (T1) emptyValue());
+		return this.checkToDefaultValue(source, (T1) emptyValue());
 	}
 
 	/**
@@ -328,7 +328,7 @@ public abstract class Kit<T> implements Comparator<T>, Serializable {
 	 * @return
 	 */
 	public boolean isEmpty(final T source) {
-		return emptyValue().equals(this.<T> checkToEmptyValue(source));
+		return emptyValue().equals(this.checkToEmptyValue(source));
 	}
 
 	/**
@@ -386,7 +386,8 @@ public abstract class Kit<T> implements Comparator<T>, Serializable {
 	 * @param source
 	 * @return
 	 */
-	public T max(final T... source) {
+	@SafeVarargs
+	public final T max(final T... source) {
 		if (source == null) {
 			return null;
 		}
@@ -405,7 +406,8 @@ public abstract class Kit<T> implements Comparator<T>, Serializable {
 	 * @param source
 	 * @return
 	 */
-	public T min(final T... source) {
+	@SafeVarargs
+	public final T min(final T... source) {
 		if (source == null) {
 			return null;
 		}
@@ -429,7 +431,8 @@ public abstract class Kit<T> implements Comparator<T>, Serializable {
 	 *            源
 	 * @return
 	 */
-	public T[] subArray(final int fromIndex, final int toIndex, final T... source) {
+	@SafeVarargs
+	public final T[] subArray(final int fromIndex, final int toIndex, final T... source) {
 		return ArrayUtil.sub(fromIndex, toIndex, source);
 	}
 
@@ -442,7 +445,8 @@ public abstract class Kit<T> implements Comparator<T>, Serializable {
 	 *            源
 	 * @return
 	 */
-	public T[] subArray(final int fromIndex, final T... source) {
+	@SafeVarargs
+	public final T[] subArray(final int fromIndex, final T... source) {
 		if (source == null) {
 			return emptyArray();
 		}

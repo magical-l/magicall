@@ -24,14 +24,14 @@ import org.apache.ibatis.session.RowBounds;
 @Deprecated
 public class CommonMapperInterceptor extends InterceptorTemplate implements Interceptor {
 
-	private String mapperName(final String sqlId) {
+	private static String mapperName(final String sqlId) {
 		final char seperator = '.';
 		final int lastIndex = sqlId.lastIndexOf(seperator);
 		return sqlId.substring(0, lastIndex);
 	}
 
 	@Override
-	protected void internalIntercept(final Invocation invocation) throws Throwable {
+	protected void internalIntercept(final Invocation invocation) throws IllegalArgumentException {
 		final Object[] executorArgs = invocation.getArgs();
 		final MappedStatement mappedStatement = (MappedStatement) executorArgs[0];
 

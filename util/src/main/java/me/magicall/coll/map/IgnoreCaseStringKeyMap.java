@@ -98,7 +98,7 @@ public class IgnoreCaseStringKeyMap<V> implements Map<String, V> {
 		return map.hashCode();
 	}
 
-	private String transformKey(final String key) {
+	private static String transformKey(final String key) {
 		return key.toLowerCase();
 	}
 }

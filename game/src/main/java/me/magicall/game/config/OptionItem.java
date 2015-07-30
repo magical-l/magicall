@@ -2,7 +2,7 @@ package me.magicall.game.config;
 
 import me.magicall.game.io.GameOutput;
 import me.magicall.game.io.OutputSource;
-import me.magicall.tagInterfaces.HasNameGetter;
+import me.magicall.mark.HasNameGetter;
 
 /**
  * 游戏参数选项。

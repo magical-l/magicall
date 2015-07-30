@@ -2,7 +2,7 @@ package me.magicall.sha;
 
 public interface C {
 
-	public interface SheetIndex {
+	interface SheetIndex {
 		int CONF = 0;
 
 		int SKILL = 1;
@@ -10,7 +10,7 @@ public interface C {
 		int HERO = 2;
 	}
 
-	public interface ConfSheetColumnIndex {
+	interface ConfSheetColumnIndex {
 
 	}
 }

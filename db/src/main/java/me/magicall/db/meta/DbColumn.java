@@ -1,7 +1,7 @@
 package me.magicall.db.meta;
 
 import me.magicall.db.util.FieldType;
-import me.magicall.tagInterfaces.HasName;
+import me.magicall.mark.HasName;
 import me.magicall.util.kit.Kits;
 
 public class DbColumn implements HasName, HasComment {

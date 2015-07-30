@@ -4,7 +4,11 @@
  */
 package me.magicall.util;
 
-import static me.magicall.consts.CommonConst.NOT_FOUND_INDEX;
+import me.magicall.coll.CollFactory.L;
+import me.magicall.coll.ElementFilter;
+import me.magicall.coll.ElementHandler;
+import me.magicall.util.kit.Kits;
+import me.magicall.util.kit.PrimitiveKit;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
@@ -14,13 +18,7 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.Set;
 
-import me.magicall.coll.CollFactory;
-import me.magicall.coll.CollFactory.L;
-import me.magicall.coll.ElementFilter;
-import me.magicall.coll.ElementHandler;
-import me.magicall.util.comparator.ComparatorAndEquivalentUtil;
-import me.magicall.util.kit.Kits;
-import me.magicall.util.kit.PrimitiveKit;
+import static me.magicall.consts.CommonConst.NOT_FOUND_INDEX;
 
 /**
  * <pre>
@@ -85,6 +83,7 @@ public class ArrayUtil {
 		}
 	}
 
+	@SafeVarargs
 	public static <T> int elementCount(final T target, final T... source) {
 		return Kits.COLL.elementCount(target, Arrays.asList(source));
 	}
@@ -97,6 +96,7 @@ public class ArrayUtil {
 	 * @param source
 	 * @return
 	 */
+	@SafeVarargs
 	public static <T> int findInstance(final T target, final T... source) {
 		int index = 0;
 		for (final T t : source) {
@@ -114,6 +114,7 @@ public class ArrayUtil {
 	 * @param source
 	 * @return
 	 */
+	@SafeVarargs
 	public static <T> int find(final T target, final T... source) {
 		int index = 0;
 		if (target == null) {
@@ -135,6 +136,7 @@ public class ArrayUtil {
 		return NOT_FOUND_INDEX;
 	}
 
+	@SafeVarargs
 	public static <T> void forEach(final ElementFilter<? super T> filter, final ElementHandler<? super T> handler,
 			final T... array) {
 		if (array == null || handler == null) {
@@ -162,6 +164,7 @@ public class ArrayUtil {
 	 * @param ts
 	 * @return
 	 */
+	@SafeVarargs
 	public static <T> T[] asArray(final T... ts) {
 		return ts;
 	}
@@ -180,18 +183,13 @@ public class ArrayUtil {
 	 * 		System.out.print(Arrays.deepEquals(o1, o2));】
 	 * </pre>
 	 * 
-	 * @author lwj
-	 * @param o1
-	 * @param o2
 	 * @return
 	 */
 	public static boolean deepEquals(final Object[] a1, final Object... a2) {
 		if (a1 == a2) {
 			return true;
 		}
-		if (a1 == null) {
-			return false;
-		} else if (a2 == null) {
+		if (a1 == null || a2 == null) {
 			return false;
 		}
 		return deepEquals(a1, a2, null);
@@ -223,6 +221,7 @@ public class ArrayUtil {
 	 * @param source
 	 * @return
 	 */
+	@SafeVarargs
 	public static <T> T[] sub(final int fromIndex, final T... source) {
 		if (source == null) {
 			return null;
@@ -283,6 +282,7 @@ public class ArrayUtil {
 	 *            源
 	 * @return
 	 */
+	@SafeVarargs
 	public static <T> int instanceIndexOf(final Object target, final int fromIndex, final int toIndex,
 			final T... source) {
 		if (source == null) {
@@ -318,6 +318,7 @@ public class ArrayUtil {
 	 *            源
 	 * @return
 	 */
+	@SafeVarargs
 	public static <T> int instanceIndexOf(final Object target, final int fromIndex, final T... source) {
 		if (source == null) {
 			return NOT_FOUND_INDEX;
@@ -334,6 +335,7 @@ public class ArrayUtil {
 	 *            源
 	 * @return
 	 */
+	@SafeVarargs
 	public static <T> int instanceIndexOf(final Object target, final T... source) {
 		return instanceIndexOf(target, 0, source);
 	}
@@ -351,6 +353,7 @@ public class ArrayUtil {
 	 *            源
 	 * @return
 	 */
+	@SafeVarargs
 	public static <T> int indexOf(final Object target, final int fromIndex, final int toIndex, final T... source) {
 		if (isEmpty(source)) {
 			return NOT_FOUND_INDEX;
@@ -392,6 +395,7 @@ public class ArrayUtil {
 	 *            源
 	 * @return
 	 */
+	@SafeVarargs
 	public static <T> int indexOf(final Object target, final int fromIndex, final T... source) {
 		if (source == null) {
 			return NOT_FOUND_INDEX;
@@ -408,6 +412,7 @@ public class ArrayUtil {
 	 *            源
 	 * @return
 	 */
+	@SafeVarargs
 	public static <T> int indexOf(final Object target, final T... source) {
 		return indexOf(target, 0, source);
 	}
@@ -425,6 +430,7 @@ public class ArrayUtil {
 	 *            源
 	 * @return
 	 */
+	@SafeVarargs
 	public static <T> boolean contains(final Object target, final int fromIndex, final int toIndex, final T... source) {
 		return indexOf(target, fromIndex, toIndex, source) > NOT_FOUND_INDEX;
 	}
@@ -440,6 +446,7 @@ public class ArrayUtil {
 	 *            源
 	 * @return
 	 */
+	@SafeVarargs
 	public static <T> boolean contains(final Object target, final int fromIndex, final T... source) {
 		return indexOf(target, fromIndex, source) > NOT_FOUND_INDEX;
 	}
@@ -453,6 +460,7 @@ public class ArrayUtil {
 	 *            源
 	 * @return
 	 */
+	@SafeVarargs
 	public static <T> boolean contains(final Object target, final T... source) {
 		return indexOf(target, source) > NOT_FOUND_INDEX;
 	}
@@ -470,6 +478,7 @@ public class ArrayUtil {
 	 *            源
 	 * @return
 	 */
+	@SafeVarargs
 	public static <T> boolean containsInstance(final Object target, final int fromIndex, final int toIndex,
 			final T... source) {
 		return instanceIndexOf(target, fromIndex, toIndex, source) > NOT_FOUND_INDEX;
@@ -486,6 +495,7 @@ public class ArrayUtil {
 	 *            源
 	 * @return
 	 */
+	@SafeVarargs
 	public static <T> boolean containsInstance(final Object target, final int fromIndex, final T... source) {
 		return instanceIndexOf(target, fromIndex, source) > NOT_FOUND_INDEX;
 	}
@@ -499,6 +509,7 @@ public class ArrayUtil {
 	 *            源
 	 * @return
 	 */
+	@SafeVarargs
 	public static <T> boolean containsInstance(final Object target, final T... source) {
 		return instanceIndexOf(target, source) > NOT_FOUND_INDEX;
 	}
@@ -551,6 +562,7 @@ public class ArrayUtil {
 	 * @param source
 	 *            源数组
 	 */
+	@SafeVarargs
 	public static <T> void reverse(final T... source) {
 		reverse(source, 0);
 	}
@@ -575,6 +587,7 @@ public class ArrayUtil {
 	 * @param array
 	 * @return
 	 */
+	@SafeVarargs
 	public static <T> boolean isEmpty(final T... array) {
 		return array == null || array.length == 0;
 	}
@@ -585,14 +598,13 @@ public class ArrayUtil {
 	 * @param array
 	 * @return
 	 */
+	@SafeVarargs
 	public static <T> List<T> asAddableList(final T... array) {
 		if (array == null) {
 			return new ArrayList<>();
 		}
-		final ArrayList<T> list = new ArrayList<>(array.length);
-		for (final T e : array) {
-			list.add(e);
-		}
+		final List<T> list = new ArrayList<>(array.length);
+		Collections.addAll(list, array);
 		return list;
 	}
 
@@ -602,6 +614,7 @@ public class ArrayUtil {
 	 * @param array
 	 * @return
 	 */
+	@SafeVarargs
 	public static <T> List<T> asUnmodifiableList(final T... array) {
 		return Collections.unmodifiableList(Arrays.asList(array));
 	}
@@ -637,18 +650,10 @@ public class ArrayUtil {
 	 * @param source
 	 * @return
 	 */
-	public <T> T max(final Comparator<? super T> comparator, final T... source) {
-		if (source == null) {
-			return null;
-		}
-		T rt = source[0];
-		for (int i = source.length - 1; i > 0; --i) {
-			if (comparator.compare(rt, source[i]) < 0) {
-				rt = source[i];
-			}
-		}
-		return rt;
-	}
+	@SafeVarargs
+	public static <T extends Comparable<T>> T max(final Comparator<? super T> comparator, final T... source) {
+        return Collections.max(Arrays.asList(source), comparator);
+    }
 
 	/**
 	 * 从数组中找出最大值，按照元素的自然顺序
@@ -657,8 +662,9 @@ public class ArrayUtil {
 	 * @param source
 	 * @return
 	 */
-	public <T extends Comparable<T>> T max(final T... source) {
-		return max(ComparatorAndEquivalentUtil.<T> comparableComparator(), source);
+	@SafeVarargs
+	public static <T extends Comparable<T>> T max(final T... source) {
+		return Collections.max(Arrays.asList(source));
 	}
 
 	/**
@@ -669,9 +675,10 @@ public class ArrayUtil {
 	 * @param source
 	 * @return
 	 */
-	public <T> T min(final Comparator<? super T> comparator, final T... source) {
-		return max(Collections.reverseOrder(comparator), source);
-	}
+	@SafeVarargs
+	public static <T> T min(final Comparator<? super T> comparator, final T... source) {
+        return Collections.min(Arrays.asList(source), comparator);
+    }
 
 	/**
 	 * 从数组中找出最小值，按元素的自然顺序
@@ -680,7 +687,8 @@ public class ArrayUtil {
 	 * @param source
 	 * @return
 	 */
-	public <T extends Comparable<T>> T min(final T... source) {
-		return min(ComparatorAndEquivalentUtil.<T> comparableComparator(), source);
+	@SafeVarargs
+	public static <T extends Comparable<T>> T min(final T... source) {
+		return Collections.min(Arrays.asList(source));
 	}
 }

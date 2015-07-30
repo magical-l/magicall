@@ -6,5 +6,5 @@ import me.magicall.game.xiangqi.Board;
 public interface Config extends RoundGameConfig {
 
 	@Override
-	public Board getMap();
+	Board getMap();
 }

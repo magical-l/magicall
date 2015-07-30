@@ -51,8 +51,9 @@ public class UpdateSqlConfig<T> extends AbsSqlConfig<T> {
 		super.setRefedModel(refedModel);
 	}
 
+	@SafeVarargs
 	@Override
-	public void setRefedModels(final T... refedValues) {
+	public final void setRefedModels(final T... refedValues) {
 		super.setRefedModels(refedValues);
 	}
 

@@ -1,6 +1,6 @@
 package me.magicall.cache;
 
-import me.magicall.tagInterfaces.ReloadableCache;
+import me.magicall.mark.ReloadableCache;
 import me.magicall.util.kit.Kits;
 
 import java.util.Date;

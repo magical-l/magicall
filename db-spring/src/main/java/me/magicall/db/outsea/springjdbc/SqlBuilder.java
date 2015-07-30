@@ -6,7 +6,7 @@ import me.magicall.db.outsea.SqlConfig;
 
 public interface SqlBuilder<C extends SqlConfig> {
 
-	public static class ParamedSqlAndParams {
+	class ParamedSqlAndParams {
 		public final String paramedSql;
 		public final Map<String, ?> params;
 

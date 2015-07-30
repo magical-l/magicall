@@ -6,7 +6,7 @@ import me.magicall.coll.map.CommonEntry;
 import me.magicall.coll.numseq.SeqSet;
 import me.magicall.coll.unmodifiable.UnmodifiableIteratorTemplate;
 import me.magicall.coll.unmodifiable.UnmodifiableMapTemplate;
-import me.magicall.tagInterfaces.Unmodifiable;
+import me.magicall.mark.Unmodifiable;
 
 import java.io.Serializable;
 import java.util.AbstractSet;

@@ -13,15 +13,18 @@ import me.magicall.consts.StrConst.EncodingConst;
 
 public class SetUtf8EncodingFilter implements Filter {
 
+	@Override
 	public void destroy() {
 
 	}
 
+	@Override
 	public void doFilter(final ServletRequest request, final ServletResponse response, final FilterChain chain) throws IOException, ServletException {
 		request.setCharacterEncoding(EncodingConst.UTF8);
 		chain.doFilter(request, response);
 	}
 
+	@Override
 	public void init(final FilterConfig arg0) throws ServletException {
 
 	}

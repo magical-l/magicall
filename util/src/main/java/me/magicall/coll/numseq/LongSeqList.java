@@ -3,7 +3,7 @@ package me.magicall.coll.numseq;
 import me.magicall.coll.ElementNotNull;
 import me.magicall.coll.unmodifiable.UnmodifiableListTemplate;
 import me.magicall.consts.CommonConst;
-import me.magicall.tagInterfaces.Unmodifiable;
+import me.magicall.mark.Unmodifiable;
 
 import java.io.Serializable;
 import java.util.ArrayList;

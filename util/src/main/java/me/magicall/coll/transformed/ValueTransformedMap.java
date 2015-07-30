@@ -5,12 +5,11 @@ import java.util.Collection;
 import java.util.Map;
 import java.util.Set;
 
-import me.magicall.coll.CollFactory;
 import me.magicall.coll.CollFactory.M;
 import me.magicall.coll.ElementTransformer;
 import me.magicall.coll.map.CommonEntry;
 import me.magicall.coll.unmodifiable.UnmodifiableMapTemplate;
-import me.magicall.tagInterfaces.Unmodifiable;
+import me.magicall.mark.Unmodifiable;
 import me.magicall.util.transformer.Transformer;
 
 public class ValueTransformedMap<K, T, V> extends UnmodifiableMapTemplate<K, V>//

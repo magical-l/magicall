@@ -4,7 +4,7 @@
 package me.magicall.coll.empty;
 
 import me.magicall.coll.sorted.Sorted;
-import me.magicall.tagInterfaces.Unmodifiable;
+import me.magicall.mark.Unmodifiable;
 import me.magicall.util.kit.Kits;
 
 import java.io.Serializable;

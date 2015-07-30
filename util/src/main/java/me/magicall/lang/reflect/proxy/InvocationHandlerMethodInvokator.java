@@ -1,6 +1,7 @@
 package me.magicall.lang.reflect.proxy;
 
 import java.lang.reflect.InvocationHandler;
+import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
 public interface InvocationHandlerMethodInvokator {
@@ -8,7 +9,7 @@ public interface InvocationHandlerMethodInvokator {
 	Object invoke(final InvocationHandler invocationHandler, final Object proxy, final Method method,
 				  final Object... args) throws Throwable;
 
-	public enum SomeMethodInvocators implements InvocationHandlerMethodInvokator {
+	enum SomeMethodInvocators implements InvocationHandlerMethodInvokator {
 		RETURN_NULL {
 			@Override
 			public Object invoke(final InvocationHandler invocationHandler, final Object proxy, final Method method, final Object[] args) throws Throwable {
@@ -17,19 +18,22 @@ public interface InvocationHandlerMethodInvokator {
 		}, //
 		NO_IMPLEMENT {
 			@Override
-			public Object invoke(final InvocationHandler invocationHandler, final Object proxy, final Method method, final Object[] args) throws Throwable {
+			public Object invoke(final InvocationHandler invocationHandler, final Object proxy, final Method method, final Object[] args)
+					throws AbstractMethodError {
 				throw new AbstractMethodError();
 			}
 		}, //
 		METHOD_INVOKE {
 			@Override
-			public Object invoke(final InvocationHandler invocationHandler, final Object proxy, final Method method, final Object[] args) throws Throwable {
+			public Object invoke(final InvocationHandler invocationHandler, final Object proxy, final Method method, final Object[] args)
+					throws InvocationTargetException, IllegalArgumentException, IllegalAccessException {
 				return method.invoke(proxy, args);
 			}
 		}, //
 		METHOD_INVOKE_USING_INVOCATION_HANDLER {
 			@Override
-			public Object invoke(final InvocationHandler invocationHandler, final Object proxy, final Method method, final Object[] args) throws Throwable {
+			public Object invoke(final InvocationHandler invocationHandler, final Object proxy, final Method method, final Object[] args)
+					throws InvocationTargetException, IllegalArgumentException, IllegalAccessException {
 				return method.invoke(invocationHandler, args);
 			}
 		}, //

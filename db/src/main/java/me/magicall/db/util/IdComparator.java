@@ -8,7 +8,7 @@ import me.magicall.util.comparator.ComparatorAndEquivalentUsingComparbleFieldTem
 public class IdComparator<I extends Number & Comparable<I>> extends SerializableComparatorAndEquivalentUsingFieldTemplate<BaseModel<I>>//
 		implements Comparator<BaseModel<I>> {
 
-	@SuppressWarnings({ "rawtypes" })
+	@SuppressWarnings("rawtypes")
 	private static final IdComparator INSTANCE = new IdComparator();
 
 	@SuppressWarnings("unchecked")

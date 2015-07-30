@@ -11,11 +11,26 @@
 
     <artifactId>web</artifactId>
 
+    <properties>
+        <javax.servlet.jsp-api.version>2.2.1</javax.servlet.jsp-api.version>
+    </properties>
+
     <dependencies>
         <dependency>
             <groupId>me.magicall</groupId>
             <artifactId>util</artifactId>
             <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>me.magicall</groupId>
+            <artifactId>net</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>javax.servlet.jsp</groupId>
+            <artifactId>javax.servlet.jsp-api</artifactId>
+            <version>${javax.servlet.jsp-api.version}</version>
         </dependency>
     </dependencies>
 </project>

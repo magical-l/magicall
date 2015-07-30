@@ -9,7 +9,7 @@ public interface MethodSelector {
 
 	boolean accept(Method method);
 
-	public enum SomeMethodSelectors implements MethodSelector {
+	enum SomeMethodSelectors implements MethodSelector {
 		TO_STRING("toString"), //
 		HASH_CODE("hashCode"), //
 		EQUALS("equals", Object.class), //

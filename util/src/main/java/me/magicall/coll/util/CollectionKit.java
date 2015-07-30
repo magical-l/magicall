@@ -3,19 +3,17 @@
  */
 package me.magicall.coll.util;
 
+import me.magicall.coll.ElementTransformer;
+import me.magicall.coll.empty.EmptyColl;
+import me.magicall.coll.transformed.TransformedCollection;
+import me.magicall.coll.wrap.UnmodifiableWrapCollection;
+import me.magicall.util.kit.Kits;
+
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.Iterator;
 import java.util.List;
-
-import me.magicall.coll.ElementTransformer;
-import me.magicall.coll.empty.EmptyColl;
-import me.magicall.coll.transformed.TransformedCollection;
-import me.magicall.coll.wrap.UnmodifiableWrapCollection;
-import me.magicall.util.comparator.ComparatorAndEquivalentUtil;
-import me.magicall.util.comparator.ComparatorUtil;
-import me.magicall.util.kit.Kits;
 
 public final class CollectionKit extends AbsCollectionKit<Collection<?>> {
 
@@ -149,30 +147,6 @@ public final class CollectionKit extends AbsCollectionKit<Collection<?>> {
 	}
 
 	/**
-	 * 从集合中取出"最大"的元素,根据元素的“自然顺序”作比较，因此元素需实现Comparable接口
-	 * 
-	 * @param <E>
-	 * @param source
-	 * @return
-	 */
-	public <E extends Comparable<E>> E maxElement(final Collection<E> source) {
-		final Comparator<E> comparator = ComparatorAndEquivalentUtil.comparableComparator();
-		return maxElement(source, comparator);
-	}
-
-	/**
-	 * 从集合中取出"最小"的元素,根据元素的“自然顺序”作比较，因此元素需实现Comparable接口
-	 * 
-	 * @param <E>
-	 * @param source
-	 * @return
-	 */
-	public <E extends Comparable<E>> E minElement(final Collection<E> source) {
-		final Comparator<E> comparator = ComparatorAndEquivalentUtil.comparableComparator();
-		return minElement(source, comparator);
-	}
-
-	/**
 	 * 将源集合包装为一个不可修改的集合对象
 	 * 
 	 * @param <E>
@@ -187,6 +161,7 @@ public final class CollectionKit extends AbsCollectionKit<Collection<?>> {
 	}
 
 	//====================================================
+
 	private static final long serialVersionUID = -8028661636852704700L;
 
 	private Object readResolve() {

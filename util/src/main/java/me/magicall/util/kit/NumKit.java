@@ -47,7 +47,8 @@ public abstract class NumKit<N extends Number & Comparable<N>, A> extends Primit
 		 * @param smalls
 		 * @return
 		 */
-		public boolean maskTest(final N big, final N... smalls) {
+		@SafeVarargs
+		public final boolean maskTest(final N big, final N... smalls) {
 			if (smalls == null) {
 				return false;
 			}
@@ -81,7 +82,8 @@ public abstract class NumKit<N extends Number & Comparable<N>, A> extends Primit
 			return true;
 		}
 
-		public N and(final N source, final N... masks) {
+		@SafeVarargs
+		public final N and(final N source, final N... masks) {
 			if (masks == null) {
 				return source;
 			}
@@ -104,7 +106,8 @@ public abstract class NumKit<N extends Number & Comparable<N>, A> extends Primit
 			return rt;
 		}
 
-		public N or(final N source, final N... ns) {
+		@SafeVarargs
+		public final N or(final N source, final N... ns) {
 			if (ns == null) {
 				return source;
 			}
@@ -142,7 +145,7 @@ public abstract class NumKit<N extends Number & Comparable<N>, A> extends Primit
 		protected abstract N fromInt(int i);
 
 		//==========================================
-		private boolean maskTest0(final long bigLongValue, final long smallLongValue) {
+		private static boolean maskTest0(final long bigLongValue, final long smallLongValue) {
 			return (bigLongValue & smallLongValue) == smallLongValue;
 		}
 	}

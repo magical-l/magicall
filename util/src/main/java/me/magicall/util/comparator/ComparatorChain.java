@@ -91,6 +91,7 @@ public class ComparatorChain<T> implements Comparator<T>, Serializable {
 		}
 	}
 
+	@SafeVarargs
 	public ComparatorChain(final Comparator<? super T>... comparator) {
 		if (comparator.length != 0) {
 			//注意!!!这里之所以再包一个ArrayList,是因为Arrays.asList方法返回的list实例是不可变长的!add会出错
@@ -134,7 +135,8 @@ public class ComparatorChain<T> implements Comparator<T>, Serializable {
 	}
 
 	//-----------------------------------------------------------------------
-	public ComparatorChain<T> addComparators(final Comparator<? super T>... otherComparator) {
+	@SafeVarargs
+	public final ComparatorChain<T> addComparators(final Comparator<? super T>... otherComparator) {
 		for (final Comparator<? super T> comparator : otherComparator) {
 			addComparator(comparator, false);
 		}
@@ -255,7 +257,7 @@ public class ComparatorChain<T> implements Comparator<T>, Serializable {
 	}
 
 	private void checkChainIntegrity() {
-		if (chain.size() == 0) {
+		if (chain.isEmpty()) {
 			throw new UnsupportedOperationException("ComparatorChains must contain at least one Comparator");
 		}
 	}

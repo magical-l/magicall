@@ -1,22 +1,11 @@
 package me.magicall.util.comparator;
 
-import me.magicall.util.comparator.ComparatorAndEquivalentUsingComparbleFieldTemplate.SerializableComparatorAndEquivalentUsingFieldTemplate;
-
 import java.util.Comparator;
 
 public class ComparatorAndEquivalentUtil {
 
 	protected ComparatorAndEquivalentUtil() {
 	}
-
-	private static final ComparatorWithEquivalent<Comparable<?>> COMPARABLE_COMPARATOR = new SerializableComparatorAndEquivalentUsingFieldTemplate<Comparable<?>>() {
-		private static final long serialVersionUID = 7166587754869636337L;
-
-		@Override
-		protected Comparable<?> comparableField(final Comparable<?> o) {
-			return o;
-		}
-	};
 
 	/**
 	 * 随机比较器，请慎用
@@ -44,17 +33,6 @@ public class ComparatorAndEquivalentUtil {
 	@SuppressWarnings("unchecked")
 	public static <T> Comparator<T> suite(final Comparator<? super T> c) {
 		return (Comparator<T>) c;
-	}
-
-	/**
-	 * 为一种已经实现了Comparable接口的类提供的Comparator,按照其compareTo方法所定进行比较.有的时候会用到.
-	 * 
-	 * @param <T>
-	 * @return
-	 */
-	@SuppressWarnings("unchecked")
-	public static <T extends Comparable<T>> ComparatorWithEquivalent<T> comparableComparator() {
-		return (ComparatorWithEquivalent<T>) COMPARABLE_COMPARATOR;
 	}
 
 	/**

@@ -6,7 +6,7 @@ package me.magicall.coll.util;
 import java.io.Serializable;
 
 import me.magicall.coll.KeyAccessor;
-import me.magicall.tagInterfaces.HasIdGetter;
+import me.magicall.mark.HasIdGetter;
 
 /**
  * @author Administrator

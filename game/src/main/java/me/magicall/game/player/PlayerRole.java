@@ -3,8 +3,8 @@ package me.magicall.game.player;
 import me.magicall.game.GameElement;
 import me.magicall.game.io.OutputSource;
 import me.magicall.game.skill.SkillOwner;
-import me.magicall.tagInterfaces.HasNameGetter;
-import me.magicall.tagInterfaces.HasOrder;
+import me.magicall.mark.HasNameGetter;
+import me.magicall.mark.HasOrder;
 
 /**
  * 玩家角色。一个玩家角色对象属于一场游戏，是玩家和游戏之间的接口，玩家角色拥有输入（对程序而言），玩家使用玩家角色的输入口来输入指令玩游戏。

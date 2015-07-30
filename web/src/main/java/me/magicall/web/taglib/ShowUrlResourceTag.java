@@ -20,7 +20,7 @@ public class ShowUrlResourceTag extends SimpleTagSupport {
 			if (fileType != null) {
 				final DataType dataType = fileType.getDataType();
 				if (dataType == DataType.IMG) {//FIXME:now only supports imgs
-					super.getJspContext().getOut().write("<img src='" + url + "'/>");
+					getJspContext().getOut().write("<img src='" + url + "'/>");
 				}
 			}
 		}

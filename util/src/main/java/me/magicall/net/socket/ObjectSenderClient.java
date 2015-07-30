@@ -1,5 +1,7 @@
 package me.magicall.net.socket;
 
+import me.magicall.io.IOUtil;
+
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.ObjectInputStream;
@@ -7,8 +9,7 @@ import java.io.ObjectOutputStream;
 import java.io.OutputStream;
 import java.io.Serializable;
 import java.net.Socket;
-
-import me.magicall.io.IOUtil;
+import java.net.UnknownHostException;
 
 public class ObjectSenderClient {
 	private final String host;
@@ -19,7 +20,7 @@ public class ObjectSenderClient {
 		this.port = port;
 	}
 
-	public Object send(final Serializable obj) throws IOException {
+	public Object send(final Serializable obj) throws IOException, UnknownHostException {
 		final Client client = new Client(host, port);
 
 		class SendObjSocketHandler implements SocketHandler {

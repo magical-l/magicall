@@ -2,7 +2,7 @@ package me.magicall.game.map;
 
 import java.util.Collection;
 
-import me.magicall.tagInterfaces.HasNameGetter;
+import me.magicall.mark.HasNameGetter;
 
 /**
  * 地图

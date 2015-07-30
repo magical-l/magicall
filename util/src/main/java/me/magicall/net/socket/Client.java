@@ -2,6 +2,7 @@ package me.magicall.net.socket;
 
 import java.io.IOException;
 import java.net.Socket;
+import java.net.UnknownHostException;
 
 public class Client extends SocketHandlerContainer {
 
@@ -16,7 +17,7 @@ public class Client extends SocketHandlerContainer {
 		this.host = host;
 	}
 
-	public void connect() throws IOException {
+	public void connect() throws IOException, UnknownHostException {
 		handleSocket(new Socket(host, port));
 	}
 }

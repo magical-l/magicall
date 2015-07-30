@@ -35,6 +35,7 @@ import me.magicall.util.kit.Kits;
  */
 public class CollectionUtil {
 
+	@SafeVarargs
 	public static <T> int addAll(final Collection<T> coll, final T... objs) {
 		int i = 0;
 		for (final T e : objs) {
@@ -47,7 +48,7 @@ public class CollectionUtil {
 
 	@SuppressWarnings("unchecked")
 	public static <T> Collection<T> subCollection(final Collection<T> collection, final int offset, final int limit) {
-		if (collection == null || collection.size() == 0) {
+		if (collection == null || collection.isEmpty()) {
 			return collection;
 		}
 
@@ -449,6 +450,7 @@ public class CollectionUtil {
 	 * @param enums
 	 * @return
 	 */
+	@SafeVarargs
 	public static <E extends Enum<E>> Collection<E> enumView(final E first, final E... enums) {
 		return Collections.unmodifiableCollection(EnumSet.of(first, enums));
 	}

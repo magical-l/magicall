@@ -6,8 +6,8 @@ import java.util.Map;
 import java.util.Set;
 
 import me.magicall.coll.unmodifiable.UnmodifiableMapTemplate;
-import me.magicall.tagInterfaces.Unmodifiable;
-import me.magicall.tagInterfaces.Wrapper;
+import me.magicall.mark.Unmodifiable;
+import me.magicall.mark.Wrapper;
 
 
 public class UnmodifiableWrapMap<K, V> extends UnmodifiableMapTemplate<K, V>//

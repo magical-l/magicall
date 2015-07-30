@@ -1,12 +1,12 @@
 package me.magicall.web.taglib;
 
-import java.io.IOException;
-import java.net.URLEncoder;
+import me.magicall.consts.StrConst.EncodingConst;
 
 import javax.servlet.jsp.JspException;
 import javax.servlet.jsp.tagext.SimpleTagSupport;
-
-import me.magicall.consts.StrConst.EncodingConst;
+import java.io.IOException;
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 
 public class UrlEncoder extends SimpleTagSupport {
 
@@ -21,9 +21,9 @@ public class UrlEncoder extends SimpleTagSupport {
 	}
 
 	@Override
-	public void doTag() throws JspException, IOException {
+	public void doTag() throws JspException, IOException, UnsupportedEncodingException {
 		if (value != null) {
-			super.getJspContext().getOut().write(URLEncoder.encode(value, EncodingConst.UTF8));
+			getJspContext().getOut().write(URLEncoder.encode(value, EncodingConst.UTF8));
 		}
 	}
 }

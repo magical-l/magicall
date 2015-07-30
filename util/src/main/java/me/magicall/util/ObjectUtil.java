@@ -7,9 +7,8 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import me.magicall.coll.CollFactory;
 import me.magicall.coll.CollFactory.L;
-import me.magicall.tagInterfaces.Copyable;
+import me.magicall.mark.Copyable;
 import me.magicall.util.kit.Kits;
 import me.magicall.util.kit.NumKit;
 

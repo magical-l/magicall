@@ -1,18 +1,17 @@
 package me.magicall.net.util;
 
-import java.util.Enumeration;
-import java.util.regex.Pattern;
+import me.magicall.consts.StrConst.UrlConst;
 
 import javax.servlet.http.HttpServletRequest;
-
-import me.magicall.consts.StrConst.UrlConst;
+import java.util.Enumeration;
+import java.util.regex.Pattern;
 
 public class IpUtil {
 
 	private static final String QUOTED_IP_SEPERATOR = Pattern.quote(UrlConst.IP_SEPERATOR);
 
 	public static boolean isValidIpv4(final String ip) {
-		if (ip == null || ip.length() == 0 || "unknown".equalsIgnoreCase(ip)) {
+		if (ip == null || ip.isEmpty() || "unknown".equalsIgnoreCase(ip)) {
 			return false;
 		}
 		final String[] ss = ip.split(QUOTED_IP_SEPERATOR, -1);//当字符的最后就是分隔符时，负数控制不丢弃分割后最后的空字符串，默认的0则丢弃

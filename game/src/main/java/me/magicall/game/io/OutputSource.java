@@ -1,6 +1,6 @@
 package me.magicall.game.io;
 
-import me.magicall.tagInterfaces.HasNameGetter;
+import me.magicall.mark.HasNameGetter;
 
 /**
  * 触发输出的对象，用来给GameOutput对象做上下文。

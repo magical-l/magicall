@@ -2,7 +2,7 @@ package me.magicall.coll.unmodifiable;
 
 import me.magicall.coll.CollFactory.I;
 import me.magicall.coll.sorted.Sorted;
-import me.magicall.tagInterfaces.Unmodifiable;
+import me.magicall.mark.Unmodifiable;
 
 import java.io.Serializable;
 import java.util.AbstractList;

@@ -5,11 +5,10 @@ import java.lang.reflect.Array;
 import java.util.Collections;
 import java.util.List;
 
-import me.magicall.coll.CollFactory;
 import me.magicall.coll.CollFactory.L;
 import me.magicall.coll.unmodifiable.UnmodifiableListTemplate;
 import me.magicall.consts.CommonConst;
-import me.magicall.tagInterfaces.Unmodifiable;
+import me.magicall.mark.Unmodifiable;
 import me.magicall.util.kit.ObjKit;
 
 public class ThreeList<E> extends UnmodifiableListTemplate<E>//

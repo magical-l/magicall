@@ -2,7 +2,7 @@ package me.magicall.coll.fixed;
 
 import me.magicall.coll.unmodifiable.UnmodifiableListTemplate;
 import me.magicall.consts.CommonConst;
-import me.magicall.tagInterfaces.Unmodifiable;
+import me.magicall.mark.Unmodifiable;
 import me.magicall.util.ArrayUtil;
 import me.magicall.util.kit.Kits;
 
@@ -18,6 +18,7 @@ public class FixedArrayList<E> extends UnmodifiableListTemplate<E>//
 
 	private final E[] a;
 
+	@SafeVarargs
 	public FixedArrayList(final E... array) {
 		super();
 		this.a = array;

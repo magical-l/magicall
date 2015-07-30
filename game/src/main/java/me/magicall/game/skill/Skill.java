@@ -4,8 +4,8 @@ import me.magicall.game.Game;
 import me.magicall.game.io.OperatingException;
 import me.magicall.game.io.OutputSource;
 import me.magicall.game.player.Player;
-import me.magicall.tagInterfaces.HasDescription;
-import me.magicall.tagInterfaces.HasNameGetter;
+import me.magicall.mark.HasDescription;
+import me.magicall.mark.HasNameGetter;
 
 /**
  * 一个原始的技能类，与具体角色、玩家、游戏无关

@@ -28,7 +28,8 @@ public class InMemoryJavaFileObject extends SimpleJavaFileObject {
 		return contents;
 	}
 
-	public static void main(final String... args) throws Exception {
+	public static void main(final String... args)
+			throws ClassNotFoundException, InstantiationException, IllegalAccessException {
 		final String className = "TTT";
 		final String codeString = "public class TTT{public String toString(){return \"haha\";}}";
 		final String classOutputFolder = "d:\\";

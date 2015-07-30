@@ -20,7 +20,7 @@ public interface FieldValueAccessor<E> {
 
 	void setValue(E obj, String fieldName, Object value);
 
-	public static final FieldValueAccessor<Map<String, Object>> MAP_VALUE_ACCESSOR = new FieldValueAccessor<Map<String, Object>>() {
+	FieldValueAccessor<Map<String, Object>> MAP_VALUE_ACCESSOR = new FieldValueAccessor<Map<String, Object>>() {
 
 		@Override
 		public Object getValue(final Map<String, Object> obj, final String fieldName) {
@@ -33,7 +33,7 @@ public interface FieldValueAccessor<E> {
 		}
 	};
 
-	public static final FieldValueAccessor<Object> BEAN_VALUE_ACCESSOR = new FieldValueAccessor<Object>() {
+	FieldValueAccessor<Object> BEAN_VALUE_ACCESSOR = new FieldValueAccessor<Object>() {
 
 		private final WeakHashMap<TwoTuple<Class<?>, String>, Method> getters = new WeakHashMap<>();
 		private final WeakHashMap<TwoTuple<Class<?>, String>, Method> setters = new WeakHashMap<>();

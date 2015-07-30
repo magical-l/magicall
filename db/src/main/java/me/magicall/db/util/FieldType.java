@@ -2,8 +2,8 @@ package me.magicall.db.util;
 
 import java.sql.Types;
 
-import me.magicall.tagInterfaces.HasIdGetter.HasIntIdGetter;
-import me.magicall.tagInterfaces.HasNameGetter;
+import me.magicall.mark.HasIdGetter.HasIntIdGetter;
+import me.magicall.mark.HasNameGetter;
 import me.magicall.util.kit.Kit;
 import me.magicall.util.kit.Kits;
 

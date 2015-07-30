@@ -8,7 +8,6 @@ import java.util.Map;
 
 import me.magicall.db.Condition;
 import me.magicall.db.FieldComparator;
-import me.magicall.db.SqlValueHandler;
 import me.magicall.db.meta.DbColumn;
 import me.magicall.db.meta.ForeignKey;
 import me.magicall.db.meta.TableMeta;
@@ -118,7 +117,7 @@ public class A {
 		}
 	}
 
-	private String convertToLabel(final String fullName) {
+	private static String convertToLabel(final String fullName) {
 		return fullName.replace('.', DbUtil.TABLE_NAME_COLUMN_NAME_SEPERATOR_CHAR);
 	}
 
@@ -189,7 +188,7 @@ public class A {
 		}
 	}
 
-	private String getContainerName(final String modelFullName) {
+	private static String getContainerName(final String modelFullName) {
 		final int lastDotIndex = modelFullName.lastIndexOf('.');
 		if (lastDotIndex < 0) {
 			return null;
@@ -197,7 +196,7 @@ public class A {
 		return modelFullName.substring(0, lastDotIndex);
 	}
 
-	private TableMeta findRefedTableMeta(final TableMeta tableMeta, final String modelName) {
+	private static TableMeta findRefedTableMeta(final TableMeta tableMeta, final String modelName) {
 		final Collection<ForeignKey> foreignKeys = tableMeta.getForeignKeys();
 		if (!Kits.COLL.isEmpty(foreignKeys)) {
 			for (final ForeignKey foreignKey : foreignKeys) {
@@ -209,7 +208,7 @@ public class A {
 		return null;
 	}
 
-	private ForeignKey findForeignKey(final TableMeta refedTableMeta, final TableMeta refingtableMeta) {
+	private static ForeignKey findForeignKey(final TableMeta refedTableMeta, final TableMeta refingtableMeta) {
 		final Collection<ForeignKey> foreignKeys = refingtableMeta.getForeignKeys();
 		if (Kits.COLL.isEmpty(foreignKeys)) {
 			throw new RuntimeException("no foreign key in `" + refingtableMeta + '`');
@@ -255,7 +254,7 @@ public class A {
 		}
 	}
 
-	private boolean containsField(final TableMeta tableMeta, final String fieldName) {
+	private static boolean containsField(final TableMeta tableMeta, final String fieldName) {
 		for (final DbColumn column : tableMeta.getColumns()) {
 			if (isSame(fieldName, column.getName())) {
 				return true;
@@ -297,7 +296,7 @@ public class A {
 //		}
 //	}
 
-	private boolean isSame(final String fieldName, final String dbName) {
+	private static boolean isSame(final String fieldName, final String dbName) {
 		final String[] dbNameParts = splitDbName(dbName);
 		final String[] javaNameParts = splitJavaName(fieldName);
 		if (dbNameParts.length != javaNameParts.length) {
@@ -311,11 +310,11 @@ public class A {
 		return true;
 	}
 
-	private String[] splitDbName(final String name) {
+	private static String[] splitDbName(final String name) {
 		return LanguageLabelConverter.SQL.splitWords(name);
 	}
 
-	private String[] splitJavaName(final String name) {
+	private static String[] splitJavaName(final String name) {
 		return LanguageLabelConverter.CAMEL.splitWords(name);
 	}
 

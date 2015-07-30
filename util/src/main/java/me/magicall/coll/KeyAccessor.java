@@ -15,5 +15,5 @@ public interface KeyAccessor<K, V> {
 	 * @param value
 	 * @return
 	 */
-	public K extract(V value);
+	K extract(V value);
 }

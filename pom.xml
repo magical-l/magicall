@@ -52,6 +52,8 @@
         <javax.validation.version>1.1.0.Final</javax.validation.version>
 
         <guava.version>18.0</guava.version>
+
+        <junit.version>4.11</junit.version>
     </properties>
 
     <dependencies>
@@ -69,6 +71,13 @@
             <groupId>com.google.guava</groupId>
             <artifactId>guava</artifactId>
             <version>${guava.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>${junit.version}</version>
+            <scope>test</scope>
         </dependency>
     </dependencies>
 

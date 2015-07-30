@@ -1,15 +1,7 @@
 package me.magicall.db.springjdbc;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-
+import com.google.common.collect.Lists;
+import com.google.common.collect.Maps;
 import me.magicall.consts.StrConst.EncodingConst;
 import me.magicall.db.dbms.CommonDBMS;
 import me.magicall.db.dbms.DBMS;
@@ -21,18 +13,24 @@ import me.magicall.db.meta.TableMeta;
 import me.magicall.db.meta.TableMetaAccessor;
 import me.magicall.db.util.DbUtil;
 import me.magicall.db.util.FieldType;
-import me.magicall.tagInterfaces.Cached;
+import me.magicall.mark.Cached;
 import me.magicall.util.kit.Kit;
 import me.magicall.util.kit.Kits;
 import me.magicall.util.time.TimeFormatter;
-
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.jdbc.core.JdbcOperations;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 
-import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class SpringJdbcTableMetaAccessor implements TableMetaAccessor, Cached, InitializingBean {
 

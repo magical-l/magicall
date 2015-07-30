@@ -11,7 +11,7 @@ public interface DataAccessTrigger<R, C extends SqlConfig> {
 
 	void afterExe(R result, C sqlConfig);
 
-	public static class DataAccessTriggerAdaptor<R, C extends SqlConfig> implements DataAccessTrigger<R, C> {
+	class DataAccessTriggerAdaptor<R, C extends SqlConfig> implements DataAccessTrigger<R, C> {
 
 		@Override
 		public void before(final C sqlConfig) {

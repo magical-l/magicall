@@ -8,8 +8,8 @@ import me.magicall.coll.ElementNotNull;
 import me.magicall.coll.ElementTransformer;
 import me.magicall.coll.unmodifiable.UnmodifiableCollectionTemplate;
 import me.magicall.coll.unmodifiable.UnmodifiableIteratorTemplate;
-import me.magicall.tagInterfaces.Unmodifiable;
-import me.magicall.tagInterfaces.Wrapper;
+import me.magicall.mark.Unmodifiable;
+import me.magicall.mark.Wrapper;
 import me.magicall.util.kit.Kits;
 
 public class TransformedCollection<F, T> extends UnmodifiableCollectionTemplate<T>//

@@ -60,7 +60,7 @@ public class SubstringTag extends SimpleTagSupport {
 			new Item('\u0000', '\u024f', 13) // 英文
 	};
 
-	private int getScore(final char ch) {
+	private static int getScore(final char ch) {
 		for (final Item item : WORD_ITEMS) {
 			final int s = item.getScore(ch);
 			if (s > 0) {
@@ -126,7 +126,7 @@ public class SubstringTag extends SimpleTagSupport {
 		} else {
 			result = subString(value, end, Math.max(0, fromIndex), len);
 		}
-		super.getJspContext().getOut().write(result);
+		getJspContext().getOut().write(result);
 	}
 
 	public String getValue() {

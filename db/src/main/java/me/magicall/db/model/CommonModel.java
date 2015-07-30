@@ -8,7 +8,7 @@ import java.util.Date;
 import me.magicall.db.model.BaseModel.BaseModelInt;
 import me.magicall.db.model.modelInterfaces.HasAddTime;
 import me.magicall.db.model.modelInterfaces.HasUptime;
-import me.magicall.tagInterfaces.HasName;
+import me.magicall.mark.HasName;
 
 public abstract class CommonModel extends BaseModelInt implements HasName, HasAddTime, HasUptime {
 	private static final long serialVersionUID = -3587155551700267766L;

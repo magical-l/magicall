@@ -65,7 +65,7 @@ public class KeyTransformedMap<F, T, V> extends AbstractMap<T, V> implements Map
 		}
 	}
 
-	private void checkKey(final Object key) {
+	private static void checkKey(final Object key) {
 		if (key == null) {
 			throw new NullPointerException();
 		}

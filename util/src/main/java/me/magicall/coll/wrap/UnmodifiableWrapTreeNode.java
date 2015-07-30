@@ -7,8 +7,8 @@ import java.util.List;
 import me.magicall.coll.tree.Tree;
 import me.magicall.coll.tree.Tree.TreeNode;
 import me.magicall.coll.unmodifiable.UnmodifiableTreeNodeTemplate;
-import me.magicall.tagInterfaces.Unmodifiable;
-import me.magicall.tagInterfaces.Wrapper;
+import me.magicall.mark.Unmodifiable;
+import me.magicall.mark.Wrapper;
 
 public class UnmodifiableWrapTreeNode<E> extends UnmodifiableTreeNodeTemplate<E>//
 		implements Wrapper, Serializable, Unmodifiable {

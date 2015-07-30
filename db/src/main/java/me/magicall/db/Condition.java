@@ -6,7 +6,6 @@ import java.util.Collection;
 import java.util.Enumeration;
 import java.util.List;
 
-import me.magicall.coll.CollFactory;
 import me.magicall.coll.CollFactory.L;
 import me.magicall.util.ArrayUtil;
 
@@ -123,7 +122,7 @@ public class Condition {
 		return fieldName + ' ' + conditionOperator + ' ' + refedValues;
 	}
 
-	private List<Object> castToList(final Object o) {
+	private static List<Object> castToList(final Object o) {
 		if (o == null) {
 			return null;
 		}

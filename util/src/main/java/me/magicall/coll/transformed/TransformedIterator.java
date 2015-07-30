@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.util.Iterator;
 
 import me.magicall.coll.ElementTransformer;
-import me.magicall.tagInterfaces.Wrapper;
+import me.magicall.mark.Wrapper;
 
 
 public class TransformedIterator<F, T> implements Iterator<T>, Wrapper, Serializable {

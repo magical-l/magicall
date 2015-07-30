@@ -2,14 +2,14 @@ package me.magicall.coll;
 
 import java.io.Serializable;
 
-import me.magicall.tagInterfaces.HasIdGetter;
-import me.magicall.tagInterfaces.HasIdGetter.HasIntIdGetter;
-import me.magicall.tagInterfaces.HasIdGetter.HasLongIdGetter;
-import me.magicall.tagInterfaces.HasName;
+import me.magicall.mark.HasIdGetter;
+import me.magicall.mark.HasIdGetter.HasIntIdGetter;
+import me.magicall.mark.HasIdGetter.HasLongIdGetter;
+import me.magicall.mark.HasName;
 
 public class ElementTransformerUtil {
 
-	public static interface SerializableElementTransformer<F, T> extends ElementTransformer<F, T>, Serializable {
+	public interface SerializableElementTransformer<F, T> extends ElementTransformer<F, T>, Serializable {
 
 	}
 

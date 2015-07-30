@@ -80,7 +80,7 @@ public class StrKit extends CharSequenceKit<String> {
 
 	@Override
 	public boolean isEmpty(final String source) {
-		return source == null || source.trim().length() == 0;
+		return source == null || source.trim().isEmpty();
 	}
 
 	public boolean startsWithIgnoreCase(final String source, final String target, final boolean escapeStartingBlank) {

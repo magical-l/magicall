@@ -1,7 +1,7 @@
 package me.magicall.db.meta;
 
 import me.magicall.db.util.DbUtil;
-import me.magicall.tagInterfaces.HasNameGetter;
+import me.magicall.mark.HasNameGetter;
 
 public class FieldMeta implements HasNameGetter {
 

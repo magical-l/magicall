@@ -3,14 +3,13 @@ package me.magicall.game.data;
 import java.util.Collection;
 import java.util.Map;
 
-import me.magicall.coll.CollFactory;
 import me.magicall.coll.CollFactory.L;
 import me.magicall.coll.CollectionFactory;
 import me.magicall.game.map.Coordinate;
 import me.magicall.game.map.NoSuchUnitException;
 import me.magicall.game.unit.Unit;
 import me.magicall.game.unit.UnitsHolder;
-import me.magicall.tagInterfaces.Copyable;
+import me.magicall.mark.Copyable;
 import me.magicall.util.kit.Kits;
 
 /**

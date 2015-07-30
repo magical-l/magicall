@@ -22,7 +22,7 @@ public class Str2Unicode extends SimpleTagSupport {
 	@Override
 	public void doTag() throws JspException, IOException {
 		if (value != null) {
-			super.getJspContext().getOut().write(StrKit.toUnicode(value));
+			getJspContext().getOut().write(StrKit.toUnicode(value));
 		}
 	}
 }

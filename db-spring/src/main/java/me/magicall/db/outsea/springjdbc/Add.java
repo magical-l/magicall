@@ -1,10 +1,5 @@
 package me.magicall.db.outsea.springjdbc;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
 import me.magicall.db.FieldFilter;
 import me.magicall.db.meta.DbColumn;
 import me.magicall.db.meta.Key;
@@ -17,11 +12,15 @@ import me.magicall.db.util.DbUtil;
 import me.magicall.db.util.OptionOnExist;
 import me.magicall.lang.bean.FieldValueAccessor;
 import me.magicall.util.kit.Kits;
-
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcOperations;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class Add<T> extends AbsDataAccessor<T, Integer, AddSqlConfig<T>> {
 
@@ -78,7 +77,7 @@ public class Add<T> extends AbsDataAccessor<T, Integer, AddSqlConfig<T>> {
         if (onExist == OptionOnExist.REPLACE) {
             sb.append(" on duplicate key update ");
             final Key primaryKey = tableMeta.getPrimaryKey();
-            final List<DbColumn> primaryKeyColumns;
+            List<DbColumn> primaryKeyColumns;
             if (primaryKey == null) {
                 primaryKeyColumns = Kits.LIST.emptyValue();
             } else {

@@ -1,8 +1,8 @@
 package me.magicall.game.player;
 
 import me.magicall.game.GameElement;
-import me.magicall.tagInterfaces.HasName;
-import me.magicall.tagInterfaces.HasOrder;
+import me.magicall.mark.HasName;
+import me.magicall.mark.HasOrder;
 
 /**
  * 游戏中的团队。与具体的一场游戏无关。有的游戏每个团队只有一个游戏角色（PlayerRole），有些则更多。

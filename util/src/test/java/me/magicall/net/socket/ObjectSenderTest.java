@@ -9,7 +9,7 @@ import java.net.Socket;
 
 public class ObjectSenderTest {
 
-	public static void main(final String... args) throws Exception {
+	public static void main(final String... args) throws IOException {
 		final int port = 8848;
 		// 启动一个线程作为"服务器"
 		try {

@@ -1,7 +1,7 @@
 package me.magicall.game.unit;
 
 import me.magicall.game.skill.SkillOwner;
-import me.magicall.tagInterfaces.HasNameGetter;
+import me.magicall.mark.HasNameGetter;
 
 /**
  * 单位,与具体一场游戏无关。在某场游戏中可能会有某种单位的若干实例GameUnit，它们是与该场游戏有关的。

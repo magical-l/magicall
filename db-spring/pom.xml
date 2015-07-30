@@ -11,6 +11,10 @@
 
     <artifactId>db-spring</artifactId>
 
+    <properties>
+        <spring.version>4.0.9.RELEASE</spring.version>
+    </properties>
+
     <dependencies>
         <dependency>
             <groupId>me.magicall</groupId>
@@ -26,6 +30,12 @@
             <groupId>me.magicall</groupId>
             <artifactId>outsea</artifactId>
             <version>${project.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-jdbc</artifactId>
+            <version>${spring.version}</version>
         </dependency>
     </dependencies>
 </project>

@@ -2,10 +2,9 @@ package me.magicall.db;
 
 import java.util.List;
 
-import me.magicall.coll.CollFactory;
 import me.magicall.coll.CollFactory.L;
 import me.magicall.db.util.DbOrder;
-import me.magicall.tagInterfaces.HasIdGetter;
+import me.magicall.mark.HasIdGetter;
 import me.magicall.util.touple.Tuple;
 import me.magicall.util.touple.TwoTuple;
 

@@ -1,5 +1,6 @@
 package me.magicall.util;
 
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
 
@@ -32,7 +33,7 @@ public class Test {//这是神马飞机
 	 */
 	private static String readSource() throws FileNotFoundException {
 		final String path = "I:\\workspace\\eclipsws\\all\\util\\src\\test\\java\\me\\magicall\\util\\Test.java";
-		final java.io.File file = new java.io.File(path);
+		final File file = new File(path);
 		final Scanner scanner = new Scanner(file);
 		final StringBuilder sb = new StringBuilder();
 		while (scanner.hasNextLine()) {

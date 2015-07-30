@@ -14,5 +14,5 @@ public interface ElementHandler<E> {
 	 * @param index 此元素在集合中的下标
 	 * @param element 此元素本身
 	 */
-	public boolean execute(int index, E element);
+	boolean execute(int index, E element);
 }

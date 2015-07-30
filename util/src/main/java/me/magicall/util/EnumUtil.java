@@ -5,7 +5,7 @@ import java.util.concurrent.ConcurrentHashMap;
 
 import me.magicall.coll.KeyAccessor;
 import me.magicall.coll.util.IdAccessor;
-import me.magicall.tagInterfaces.HasIdGetter;
+import me.magicall.mark.HasIdGetter;
 
 import com.google.common.collect.Maps;
 

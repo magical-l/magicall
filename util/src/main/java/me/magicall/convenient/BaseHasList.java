@@ -2,9 +2,8 @@ package me.magicall.convenient;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
-
-import me.magicall.util.kit.Kits;
 
 public class BaseHasList<E> {
 
@@ -27,15 +26,6 @@ public class BaseHasList<E> {
 		return new ArrayList<>();
 	}
 
-	protected void forEach() {
-		checkList();
-		for (final E e : list) {
-			if (!handleElement(e)) {
-				break;
-			}
-		}
-	}
-
 	protected boolean handleElement(final E e) {
 		return true;
 	}
@@ -45,9 +35,10 @@ public class BaseHasList<E> {
 		list.add(element);
 	}
 
-	public void add(final E... elements) {
+	@SafeVarargs
+	public final void add(final E... elements) {
 		checkList();
-		Kits.COLL.append(list, elements);
+		Collections.addAll(list, elements);
 	}
 
 	public void add(final Collection<? extends E> elements) {

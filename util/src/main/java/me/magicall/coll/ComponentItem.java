@@ -9,9 +9,9 @@ import java.util.Iterator;
  */
 public interface ComponentItem<T extends ComponentItem<T>> extends Iterable<T> {
 
-	public boolean leaf();
+	boolean leaf();
 
 	@Override
-	public Iterator<T> iterator();
+	Iterator<T> iterator();
 
 }

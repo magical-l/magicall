@@ -35,7 +35,7 @@ public final class IntKit extends NotFloatOrDoubleKit<Integer, int[]> {
 	 * @return
 	 */
 	public Integer fromStringStrict(final String s, final int radix) {
-		if (s == null || s.length() == 0) {
+		if (s == null || s.isEmpty()) {
 			return null;
 		}
 

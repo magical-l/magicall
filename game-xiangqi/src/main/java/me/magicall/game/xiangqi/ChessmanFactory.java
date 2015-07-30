@@ -8,11 +8,11 @@ public class ChessmanFactory {
 	public static class XiangqiChessman extends BaseChessman {
 
 		private XiangqiChessman(final PlayerRole owner) {
-			super(owner);
+			super(owner.getName());
 		}
 
 		private XiangqiChessman(final String name, final PlayerRole owner) {
-			super(name, owner);
+			super(name, null);//TODO
 		}
 	}
 

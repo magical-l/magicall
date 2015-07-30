@@ -1,6 +1,7 @@
 package me.magicall.lang.reflect.proxy.bean;
 
 import java.lang.reflect.InvocationHandler;
+import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
@@ -56,7 +57,8 @@ public class MapBeanInvocationHandler extends BaseInvocationHandler implements T
 		setMethodInvokator(SomeMethodSelectors.ALL, new InvocationHandlerMethodInvokator() {
 			@Override
 			public Object invoke(final InvocationHandler invocationHandler, final Object proxy, final Method method,
-					final Object[] args) throws Throwable {
+					final Object[] args)
+					throws IllegalArgumentException, InvocationTargetException, SecurityException, NoSuchMethodException, IllegalAccessException {
 				final Method m = getClass().getMethod(method.getName(), method.getParameterTypes());
 				return m.invoke(this, args);
 			}

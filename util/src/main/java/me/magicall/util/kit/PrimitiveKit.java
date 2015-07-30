@@ -1,7 +1,10 @@
 package me.magicall.util.kit;
 
-import static me.magicall.consts.CommonConst.NOT_FOUND_INDEX;
-import static me.magicall.consts.StrConst.EMPTY_STR_ARR;
+import me.magicall.coll.ElementNotNull;
+import me.magicall.coll.sorted.Sorted;
+import me.magicall.coll.unmodifiable.UnmodifiableListTemplate;
+import me.magicall.util.ArrayUtil;
+import me.magicall.util.ClassUtil;
 
 import java.io.Serializable;
 import java.lang.reflect.Array;
@@ -11,11 +14,8 @@ import java.util.List;
 import java.util.RandomAccess;
 import java.util.Set;
 
-import me.magicall.coll.ElementNotNull;
-import me.magicall.coll.sorted.Sorted;
-import me.magicall.coll.unmodifiable.UnmodifiableListTemplate;
-import me.magicall.util.ArrayUtil;
-import me.magicall.util.ClassUtil;
+import static me.magicall.consts.CommonConst.NOT_FOUND_INDEX;
+import static me.magicall.consts.StrConst.EMPTY_STR_ARR;
 
 public abstract class PrimitiveKit<P, A> extends Kit<P> {
 
@@ -47,6 +47,7 @@ public abstract class PrimitiveKit<P, A> extends Kit<P> {
 	}
 
 	//------------------------------------------
+
 	public int elementCount(final P target, final A array) {
 		return Kits.COLL.elementCount(target, asList(array));
 	}
@@ -355,7 +356,8 @@ public abstract class PrimitiveKit<P, A> extends Kit<P> {
 	 * @param array
 	 * @return
 	 */
-	public A unwrap(final P... array) {
+	@SafeVarargs
+    public final A unwrap(final P... array) {
 		if (array == null) {
 			return emptyPrimitiveArray();
 		}
@@ -527,12 +529,10 @@ public abstract class PrimitiveKit<P, A> extends Kit<P> {
 		if (array == other) {
 			return true;
 		}
-		if (array == null) {
-			return false;
-		} else if (other == null) {
+		if (array == null || other == null) {
 			return false;
 		}
-		final Class<?> c = other.getClass();
+        final Class<?> c = other.getClass();
 		if (!c.isArray()) {
 			return false;
 		}
@@ -546,12 +546,10 @@ public abstract class PrimitiveKit<P, A> extends Kit<P> {
 		for (int i = 0; i < len; ++i) {
 			final P arrayElement = arrayElement(array, i);
 			final Object obj = Array.get(other, i);
-			if (arrayElement == null && obj != null) {
-				return false;
-			} else if (obj == null) {
+			if (arrayElement == null && obj != null || obj == null) {
 				return false;
 			}
-			if (!arrayElement.equals(obj)) {
+            if (!arrayElement.equals(obj)) {
 				return false;
 			}
 		}
