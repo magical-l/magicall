@@ -4,6 +4,7 @@ import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
+@FunctionalInterface
 public interface InvocationHandlerMethodInvokator {
 
 	Object invoke(final InvocationHandler invocationHandler, final Object proxy, final Method method,

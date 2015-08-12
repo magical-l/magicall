@@ -61,7 +61,7 @@ public class MapUtil {
 	 */
 //	@SuppressWarnings("unchecked")
 //	public static <V extends BaseVO> Map<Integer, V> collectionToMap(final Collection<V> coll) {
-//		return ((CollectionToMap<Integer, V>) COLLECTION_TO_MAP).transform(coll);
+//		return ((CollectionToMap<Integer, V>) COLLECTION_TO_MAP).apply(coll);
 //	}
 
 	public static <K, V> Entry<K, V> getIndex(final Map<K, V> map, final int index) {

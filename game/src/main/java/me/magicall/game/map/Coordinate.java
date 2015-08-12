@@ -6,6 +6,7 @@ package me.magicall.game.map;
  * 
  * @author MaGiCalL
  */
+@FunctionalInterface
 public interface Coordinate {
 
 	int[] getCoordinateNums();

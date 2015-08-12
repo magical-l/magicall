@@ -1,15 +1,15 @@
 package me.magicall.coll.wrap;
 
-import java.io.Serializable;
-import java.util.Collection;
-import java.util.Iterator;
-
 import me.magicall.coll.unmodifiable.UnmodifiableCollectionTemplate;
 import me.magicall.mark.Unmodifiable;
 import me.magicall.mark.Wrapper;
 
+import java.io.Serializable;
+import java.util.Collection;
+import java.util.Iterator;
+
 public class UnmodifiableWrapCollection<E> extends UnmodifiableCollectionTemplate<E>//
-		implements Collection<E>, Unmodifiable, Wrapper, Serializable {
+		implements Collection<E>, Unmodifiable, Wrapper<Collection<E>>, Serializable {
 	private static final long serialVersionUID = 5693290480930330250L;
 
 	private final Collection<E> coll;
@@ -67,5 +67,10 @@ public class UnmodifiableWrapCollection<E> extends UnmodifiableCollectionTemplat
 	@Override
 	public String toString() {
 		return coll.toString();
+	}
+
+	@Override
+	public Collection<E> unwrap() {
+		return this;
 	}
 }

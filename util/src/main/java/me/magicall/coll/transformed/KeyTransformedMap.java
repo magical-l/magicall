@@ -1,28 +1,28 @@
 package me.magicall.coll.transformed;
 
+import me.magicall.coll.ElementTransformer;
+import me.magicall.coll.map.CommonEntry;
+import me.magicall.util.kit.Kits;
+
 import java.util.AbstractMap;
 import java.util.Collection;
 import java.util.Map;
 import java.util.Set;
-
-import me.magicall.coll.ElementTransformer;
-import me.magicall.coll.map.CommonEntry;
-import me.magicall.util.kit.Kits;
-import me.magicall.util.transformer.Transformer;
+import java.util.function.Function;
 
 public class KeyTransformedMap<F, T, V> extends AbstractMap<T, V> implements Map<T, V> {
 
 	private final Map<F, V> map;
-	private final Transformer<F, T> tf;
-	private final Transformer<T, F> negativeTf;
+	private final Function<F, T> tf;
+	private final Function<T, F> negativeFunction;
 	private ElementTransformer<F, T> ef;
-	private ElementTransformer<Entry<F, V>, Entry<T, V>> eef;
+	private ElementTransformer<Entry<F, V>, Entry<T, V>> entryTransformer;
 
-	public KeyTransformedMap(final Map<F, V> map, final Transformer<F, T> tf, final Transformer<T, F> negativeTf) {
+	public KeyTransformedMap(final Map<F, V> map, final Function<F, T> tf, final Function<T, F> negativeFunction) {
 		super();
 		this.map = map;
 		this.tf = tf;
-		this.negativeTf = negativeTf;
+		this.negativeFunction = negativeFunction;
 	}
 
 	@Override
@@ -42,25 +42,26 @@ public class KeyTransformedMap<F, T, V> extends AbstractMap<T, V> implements Map
 
 	@Override
 	public Set<Entry<T, V>> entrySet() {
-		return Kits.SET.transform(map.entrySet(), eef());
+		return Kits.SET.transform(map.entrySet(), entryTransformer());
 	}
 
-	private ElementTransformer<Entry<F, V>, Entry<T, V>> eef() {
-		if (eef == null) {
-			eef = (index, element) -> new CommonEntry<>(tf.transform(element.getKey()), element.getValue());
+	private ElementTransformer<Entry<F, V>, Entry<T, V>> entryTransformer() {
+		if (entryTransformer == null) {
+			entryTransformer = (index, element) -> new CommonEntry<>(tf.apply(element.getKey()), element.getValue());
 		}
-		return eef;
+		return entryTransformer;
 	}
 
 	@Override
 	public V get(final Object key) {
 		try {
-			final F f = objToF(key);
+			final F f = keyTransform(key);
 			if (f == null) {
 				return null;
 			}
 			return map.get(f);
 		} catch (final ClassCastException e) {
+			e.printStackTrace();
 			return null;
 		}
 	}
@@ -72,11 +73,12 @@ public class KeyTransformedMap<F, T, V> extends AbstractMap<T, V> implements Map
 	}
 
 	@SuppressWarnings("unchecked")
-	private F objToF(final Object key) {
+	private F keyTransform(final Object key) {
 		checkKey(key);
 		try {
-			return negativeTf.transform((T) key);
+			return negativeFunction.apply((T) key);
 		} catch (final ClassCastException e) {
+            e.printStackTrace();
 			return null;
 		}
 	}
@@ -93,25 +95,26 @@ public class KeyTransformedMap<F, T, V> extends AbstractMap<T, V> implements Map
 
 	private ElementTransformer<F, T> ef() {
 		if (ef == null) {
-			ef = (index, element) -> tf.transform(element);
+			ef = (index, element) -> tf.apply(element);
 		}
 		return ef;
 	}
 
 	@Override
 	public V put(final T key, final V value) {
-		return map.put(negativeTf.transform(key), value);
+		return map.put(negativeFunction.apply(key), value);
 	}
 
 	@Override
 	public V remove(final Object key) {
 		try {
-			final F f = objToF(key);
+			final F f = keyTransform(key);
 			if (f == null) {
 				return null;
 			}
 			return map.remove(f);
 		} catch (final ClassCastException e) {
+            e.printStackTrace();
 			return null;
 		}
 	}

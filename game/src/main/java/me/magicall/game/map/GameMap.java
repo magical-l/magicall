@@ -2,20 +2,21 @@ package me.magicall.game.map;
 
 import java.util.Collection;
 
-import me.magicall.mark.HasNameGetter;
+import me.magicall.mark.Named;
 
 /**
  * 地图
  * 
  * @author MaGiCalL
  */
-public interface GameMap extends HasNameGetter {
+public interface GameMap extends Named {
 
 	/**
 	 * 地图遍历器，用于GameMap.traverse()方法
 	 * 
 	 * @author MaGiCalL
 	 */
+	@FunctionalInterface
 	public static interface MapTraverseHandler {
 		boolean handle(Coordinate coordinate);
 	}

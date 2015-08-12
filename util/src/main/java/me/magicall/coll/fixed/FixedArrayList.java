@@ -21,7 +21,7 @@ public class FixedArrayList<E> extends UnmodifiableListTemplate<E>//
 	@SafeVarargs
 	public FixedArrayList(final E... array) {
 		super();
-		this.a = array;
+		a = array;
 	}
 
 	@Override
@@ -42,9 +42,9 @@ public class FixedArrayList<E> extends UnmodifiableListTemplate<E>//
 		}
 		final int size = size();
 		if (arr.length < size) {
-			return Arrays.copyOf(this.a, size, (Class<? extends T[]>) arr.getClass());
+			return Arrays.copyOf(a, size, (Class<? extends T[]>) arr.getClass());
 		}
-		System.arraycopy(this.a, 0, arr, 0, size);
+		System.arraycopy(a, 0, arr, 0, size);
 		if (arr.length > size) {
 			arr[size] = null;
 		}

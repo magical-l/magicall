@@ -10,4 +10,6 @@ public interface Round {
     void play();
 
     Game getGame();
+
+    int getRoundIndex();
 }

@@ -2,7 +2,7 @@ package me.magicall.game.config;
 
 import me.magicall.game.io.GameOutput;
 import me.magicall.game.io.OutputSource;
-import me.magicall.mark.HasNameGetter;
+import me.magicall.mark.Named;
 
 /**
  * 游戏参数选项。
@@ -10,7 +10,7 @@ import me.magicall.mark.HasNameGetter;
  * @author MaGiCalL
  * @param <T>
  */
-public interface OptionItem extends HasNameGetter, OutputSource {
+public interface OptionItem extends Named, OutputSource {
 
 	/**
 	 * 输出本参数可能的值或者提示

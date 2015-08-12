@@ -149,7 +149,7 @@ public abstract class TreeTemplate<E> extends AbstractCollection<E> implements T
 		deepFirst0(getRootNode(), treeNodeHandlers);
 	}
 
-	private final void deepFirst0(final TreeNode<E> node, final Collection<? extends TreeNodeHandler<E>> treeNodeHandlers) {
+	private void deepFirst0(final TreeNode<E> node, final Collection<? extends TreeNodeHandler<E>> treeNodeHandlers) {
 		handleNode(node, treeNodeHandlers);
 		final Collection<TreeNode<E>> children = node.getDerectChildren();
 		for (final TreeNode<E> c : children) {
@@ -225,7 +225,7 @@ public abstract class TreeTemplate<E> extends AbstractCollection<E> implements T
 		}
 
 		public void setAppendable(final Appendable sb) {
-			this.appendable = sb;
+			appendable = sb;
 		}
 	}//ToStringNodeHandler
 }//AbsTree

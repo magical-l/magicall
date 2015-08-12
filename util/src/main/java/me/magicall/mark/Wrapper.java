@@ -6,6 +6,8 @@ package me.magicall.mark;
  * 
  * @author MaGicalL
  */
-public interface Wrapper {
+@FunctionalInterface
+public interface Wrapper<T> {
 
+    T unwrap();
 }

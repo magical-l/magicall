@@ -65,7 +65,7 @@ public final class EmptyMap //
 	}
 
 	@Override
-	public void putAll(final Map<? extends Object, ? extends Object> m) {
+	public void putAll(final Map<?, ?> m) {
 		throw new UnsupportedOperationException();
 	}
 

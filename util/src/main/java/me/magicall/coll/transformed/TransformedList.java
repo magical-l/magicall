@@ -1,14 +1,13 @@
 package me.magicall.coll.transformed;
 
-import java.io.Serializable;
-import java.util.List;
-import java.util.RandomAccess;
-
 import me.magicall.coll.CollFactory.L;
 import me.magicall.coll.ElementNotNull;
 import me.magicall.coll.ElementTransformer;
 import me.magicall.coll.unmodifiable.UnmodifiableListTemplate;
-import me.magicall.mark.Unmodifiable;
+
+import java.io.Serializable;
+import java.util.List;
+import java.util.RandomAccess;
 
 
 /**
@@ -19,7 +18,7 @@ import me.magicall.mark.Unmodifiable;
  * @param <T>
  */
 public class TransformedList<F, T> extends UnmodifiableListTemplate<T>//
-		implements List<T>, Unmodifiable, ElementNotNull, Serializable {
+		implements ElementNotNull, Serializable {
 
 	private static final long serialVersionUID = -314539026805799559L;
 

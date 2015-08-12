@@ -1,9 +1,9 @@
 package me.magicall.db.meta;
 
 import me.magicall.db.util.DbUtil;
-import me.magicall.mark.HasNameGetter;
+import me.magicall.mark.Named;
 
-public class FieldMeta implements HasNameGetter {
+public class FieldMeta implements Named {
 
 	private final DbColumn column;
 

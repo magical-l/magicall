@@ -3,7 +3,7 @@ package me.magicall.db.util;
 import java.sql.Types;
 
 import me.magicall.mark.HasIdGetter.HasIntIdGetter;
-import me.magicall.mark.HasNameGetter;
+import me.magicall.mark.Named;
 import me.magicall.util.kit.Kit;
 import me.magicall.util.kit.Kits;
 
@@ -12,7 +12,7 @@ import me.magicall.util.kit.Kits;
  * 
  * @author MaGiCalL
  */
-public enum FieldType implements HasNameGetter, HasIntIdGetter {
+public enum FieldType implements Named, HasIntIdGetter {
 	ARRAY, //
 	BIGINT(Kits.LONG), //
 	BINARY, //byte[]

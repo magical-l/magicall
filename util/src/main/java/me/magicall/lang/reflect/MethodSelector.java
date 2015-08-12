@@ -5,6 +5,7 @@ import java.util.Arrays;
 
 import me.magicall.consts.StrConst;
 
+@FunctionalInterface
 public interface MethodSelector {
 
 	boolean accept(Method method);

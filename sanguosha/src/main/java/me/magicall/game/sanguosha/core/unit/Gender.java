@@ -1,4 +1,4 @@
-package me.magicall.game.sanguosha.core.hero;
+package me.magicall.game.sanguosha.core.unit;
 
 /**
  * @author Liang Wenjian

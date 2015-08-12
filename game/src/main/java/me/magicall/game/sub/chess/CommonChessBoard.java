@@ -46,11 +46,11 @@ public class CommonChessBoard<G extends Game, M extends GameMap, U extends Chess
 	}
 
 	public CommonChessBoard(final CommonChessBoard<G, M, U> other) {
-		this.maxPlayersCount = other.maxPlayersCount;
-		this.rowsCount = other.rowsCount;
-		this.columnsCount = other.columnsCount;
-		this.baseGamingMap = new BaseGamingMap<>(other.baseGamingMap);
-		this.positions = other.positions.clone();
+		maxPlayersCount = other.maxPlayersCount;
+		rowsCount = other.rowsCount;
+		columnsCount = other.columnsCount;
+		baseGamingMap = new BaseGamingMap<>(other.baseGamingMap);
+		positions = other.positions.clone();
 	}
 
 	public void setUnit(final Coordinate position, final U unit) {

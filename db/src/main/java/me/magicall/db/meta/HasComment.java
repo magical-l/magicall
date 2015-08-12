@@ -5,6 +5,7 @@ package me.magicall.db.meta;
  * 
  * @author MaGiCalL
  */
+@FunctionalInterface
 public interface HasComment {
 
 	String getComment();

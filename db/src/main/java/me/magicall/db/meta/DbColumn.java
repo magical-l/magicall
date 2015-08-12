@@ -1,10 +1,10 @@
 package me.magicall.db.meta;
 
 import me.magicall.db.util.FieldType;
-import me.magicall.mark.HasName;
+import me.magicall.mark.Renamable;
 import me.magicall.util.kit.Kits;
 
-public class DbColumn implements HasName, HasComment {
+public class DbColumn implements Renamable, HasComment {
 
 	private String name;
 	private FieldType type;

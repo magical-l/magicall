@@ -1,17 +1,17 @@
 package me.magicall.coll.wrap;
 
+import me.magicall.coll.unmodifiable.UnmodifiableSetTemplate;
+import me.magicall.mark.Unmodifiable;
+import me.magicall.mark.Wrapper;
+
 import java.io.Serializable;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.Set;
 
-import me.magicall.coll.unmodifiable.UnmodifiableSetTemplate;
-import me.magicall.mark.Unmodifiable;
-import me.magicall.mark.Wrapper;
-
 
 public class UnmodifiableWrapSet<E> extends UnmodifiableSetTemplate<E>//
-		implements Set<E>, Serializable, Unmodifiable, Wrapper {
+		implements Set<E>, Serializable, Unmodifiable, Wrapper<Set<E>> {
 	private static final long serialVersionUID = -6517522329389834416L;
 
 	private final Set<E> set;
@@ -71,4 +71,8 @@ public class UnmodifiableWrapSet<E> extends UnmodifiableSetTemplate<E>//
 		return set.toString();
 	}
 
+	@Override
+	public Set<E> unwrap() {
+		return this;
+	}
 }

@@ -1,4 +1,4 @@
-package me.magicall.game.sanguosha.core.gaming.option;
+package me.magicall.game.sanguosha.core.gaming.stage;
 
 import java.util.List;
 

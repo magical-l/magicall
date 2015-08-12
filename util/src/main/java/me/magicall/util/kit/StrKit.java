@@ -1,14 +1,14 @@
 package me.magicall.util.kit;
 
-import static me.magicall.consts.CommonConst.NOT_FOUND_INDEX;
-
-import java.util.Iterator;
-
 import me.magicall.coll.ElementTransformer;
 import me.magicall.coll.ElementTransformerUtil;
 import me.magicall.consts.CommonConst;
 import me.magicall.consts.StrConst;
 import me.magicall.consts.StrConst.JsonConst;
+
+import java.util.Iterator;
+
+import static me.magicall.consts.CommonConst.NOT_FOUND_INDEX;
 
 abstract class CharSequenceKit<S extends CharSequence> extends Kit<S> {
 
@@ -75,7 +75,7 @@ public class StrKit extends CharSequenceKit<String> {
 
 	@Override
 	public String fromString(final String source) {
-		return this.checkToEmptyValue(source);
+		return checkToEmptyValue(source);
 	}
 
 	@Override
@@ -176,9 +176,9 @@ public class StrKit extends CharSequenceKit<String> {
 		if (tf == null) {
 			tf = ElementTransformerUtil.TO_STRING;
 		}
-		int index = 0;
 		final Iterator<E> iterator = iterable.iterator();
 		if (iterator.hasNext()) {
+			int index = 0;
 			sb.append(tf.transform(index, iterator.next()));
 			++index;
 			while (iterator.hasNext()) {
@@ -211,11 +211,11 @@ public class StrKit extends CharSequenceKit<String> {
 	}
 
 	public String subStringAfter(final String source, final String seq, final int endIndex) {
-		return source.substring(this.indexAfter(source, seq), endIndex);
+		return source.substring(indexAfter(source, seq), endIndex);
 	}
 
 	public String subStringAfter(final String source, final String seq, final int fromIndex, final int endIndex) {
-		return source.substring(this.indexAfter(source, seq, fromIndex), endIndex);
+		return source.substring(indexAfter(source, seq, fromIndex), endIndex);
 	}
 
 	public String subStringBefore(final String source, final String seq, final boolean lastSeq) {
@@ -227,7 +227,7 @@ public class StrKit extends CharSequenceKit<String> {
 	}
 
 	public String subStringAfter(final String source, final String seq) {
-		return source.substring(this.indexAfter(source, seq));
+		return source.substring(indexAfter(source, seq));
 	}
 
 	public String subStringAfterLastSeq(final String source, final String seq) {
@@ -236,7 +236,7 @@ public class StrKit extends CharSequenceKit<String> {
 	}
 
 	public int indexAfter(final String source, final String seq) {
-		return this.indexAfter(source, seq, 0);
+		return indexAfter(source, seq, 0);
 	}
 
 	public int indexAfter(final String source, final String seq, final int fromIndex) {

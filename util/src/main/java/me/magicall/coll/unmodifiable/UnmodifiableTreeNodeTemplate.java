@@ -1,42 +1,42 @@
 package me.magicall.coll.unmodifiable;
 
+import me.magicall.coll.CollFactory.C;
+import me.magicall.coll.CollFactory.T;
+import me.magicall.coll.ElementTransformer;
+import me.magicall.coll.tree.Tree;
+import me.magicall.coll.tree.Tree.TreeNode;
+import me.magicall.coll.tree.TreeNodeTemplate;
+import me.magicall.coll.tree.TreeUtil;
+import me.magicall.mark.Unmodifiable;
+import me.magicall.mark.Wrapper;
+import me.magicall.util.kit.Kits;
+
 import java.io.Serializable;
 import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 
-import me.magicall.coll.CollFactory.C;
-import me.magicall.coll.CollFactory.T;
-import me.magicall.coll.ElementTransformer;
-import me.magicall.coll.tree.TreeNodeTemplate;
-import me.magicall.coll.tree.Tree;
-import me.magicall.coll.tree.TreeUtil;
-import me.magicall.coll.tree.Tree.TreeNode;
-import me.magicall.mark.Unmodifiable;
-import me.magicall.mark.Wrapper;
-import me.magicall.util.kit.Kits;
-
 public abstract class UnmodifiableTreeNodeTemplate<E> extends TreeNodeTemplate<E>//
-		implements Unmodifiable, Serializable, Wrapper {
+		implements Unmodifiable, Serializable, Wrapper<TreeNode<E>> {
 	private static final long serialVersionUID = 8055421718613235786L;
 
-	private static final <T> Collection<T> unmodifiable(final Collection<T> source, final ElementTransformer<T, T> tf) {
+	private static <T> Collection<T> unmodifiable(final Collection<T> source, final ElementTransformer<T, T> tf) {
 		final Collection<T> rt = Kits.COLL.transform(source, tf);
 		//若原集合即为不可变,则直接返回即可.否则还需对集合进行不可变包装
 		return Kits.COLL.isUnmodifiable(source) ? rt : C.unmodifiable(rt);
 	}
 
-	private static final <T> List<T> unmodifiable(final List<T> source, final ElementTransformer<T, T> tf) {
+	private static <T> List<T> unmodifiable(final List<T> source, final ElementTransformer<T, T> tf) {
 		final List<T> rt = Kits.LIST.transform(source, tf);
 		//若原集合即为不可变,则直接返回即可.否则还需对集合进行不可变包装
 		return Kits.LIST.isUnmodifiable(source) ? rt : Kits.LIST.unmodifiable(rt);
 	}
 
-	private final ElementTransformer<TreeNode<E>, TreeNode<E>> nodeTf() {
+	private ElementTransformer<TreeNode<E>, TreeNode<E>> nodeTf() {
 		return TreeUtil.unmodifiableTreeNodeTransformer();
 	}
 
-	private final ElementTransformer<Tree<E>, Tree<E>> treeTf() {
+	private ElementTransformer<Tree<E>, Tree<E>> treeTf() {
 		return TreeUtil.unmodifiableTreeTransformer();
 	}
 
@@ -115,11 +115,6 @@ public abstract class UnmodifiableTreeNodeTemplate<E> extends TreeNodeTemplate<E
 
 	@Override
 	public final TreeNode<E> addChild(final E node) {
-		throw new UnsupportedOperationException();
-	}
-
-	@Override
-	public final boolean addSubTree(final Tree<E> tree) {
 		throw new UnsupportedOperationException();
 	}
 

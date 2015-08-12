@@ -1,5 +1,11 @@
 package me.magicall.coll;
 
+import me.magicall.coll.CollFactory.I;
+import me.magicall.coll.unmodifiable.UnmodifiableListTemplate;
+import me.magicall.mark.Unmodifiable;
+import me.magicall.mark.Wrapper;
+import me.magicall.util.kit.Kits;
+
 import java.io.Serializable;
 import java.lang.reflect.Array;
 import java.util.AbstractCollection;
@@ -9,12 +15,6 @@ import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 import java.util.ListIterator;
-
-import me.magicall.coll.CollFactory.I;
-import me.magicall.coll.unmodifiable.UnmodifiableListTemplate;
-import me.magicall.mark.Unmodifiable;
-import me.magicall.mark.Wrapper;
-import me.magicall.util.kit.Kits;
 
 public class MatrixUtil {
 
@@ -337,7 +337,7 @@ public class MatrixUtil {
 	private static final Matrix<Object> EMPTY_MATRIX = new EmptyMatrix<>(0, 0);
 
 	protected static class UnmodifiableFacadingMatrix<E> extends UnmodifiableMatrixTemplate<E>//
-			implements Matrix<E>, Wrapper, Serializable, Unmodifiable {
+			implements Matrix<E>, Wrapper<Matrix<E>>, Serializable, Unmodifiable {
 
 		private static final long serialVersionUID = 7132560815476119142L;
 
@@ -441,6 +441,11 @@ public class MatrixUtil {
 		@Override
 		protected Iterator<E> iterator0() {
 			return matrix.iterator();
+		}
+
+		@Override
+		public Matrix<E> unwrap() {
+			return this;
 		}
 	}//UnmodifiableFacadingMatrix
 

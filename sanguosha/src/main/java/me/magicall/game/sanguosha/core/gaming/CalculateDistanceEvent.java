@@ -1,7 +1,7 @@
 package me.magicall.game.sanguosha.core.gaming;
 
 import me.magicall.game.card.Event;
-import me.magicall.game.sanguosha.core.hero.Hero;
+import me.magicall.game.sanguosha.core.unit.Hero;
 
 /**
  * @author Liang Wenjian

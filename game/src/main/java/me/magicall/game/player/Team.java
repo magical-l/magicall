@@ -1,7 +1,7 @@
 package me.magicall.game.player;
 
 import me.magicall.game.GameElement;
-import me.magicall.mark.HasName;
+import me.magicall.mark.Renamable;
 import me.magicall.mark.HasOrder;
 
 /**
@@ -13,7 +13,7 @@ import me.magicall.mark.HasOrder;
  * 
  * @author MaGiCalL
  */
-public interface Team extends HasName, HasOrder, Comparable<Team>, GameElement {
+public interface Team extends Renamable, HasOrder, Comparable<Team>, GameElement {
 
 	PlayerRole[] getPlayerRoles();
 }

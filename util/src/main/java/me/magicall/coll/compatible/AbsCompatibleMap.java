@@ -81,7 +81,7 @@ public abstract class AbsCompatibleMap<K, K2, V> implements Map<K, V> {
 		if (this == o) {
 			return true;
 		}
-		if (o == null || !(o instanceof Map<?, ?>)) {
+		if (!(o instanceof Map<?, ?>)) {
 			return false;
 		}
 		final Map<?, ?> other = (Map<?, ?>) o;

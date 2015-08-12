@@ -8,8 +8,9 @@ import me.magicall.game.sanguosha.core.gaming.option.Selection;
  *
  * @author Liang Wenjian
  */
-@FunctionalInterface
 public interface Player {
 
     <T extends Selection> T requireInput(final Options<T> options);
+
+    void output(Object o);
 }

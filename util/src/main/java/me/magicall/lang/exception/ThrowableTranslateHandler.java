@@ -6,7 +6,7 @@ public class ThrowableTranslateHandler<T extends Throwable> implements Throwable
 
 	public ThrowableTranslateHandler(final String msg) {
 		super();
-		this.message = msg;
+		message = msg;
 	}
 
 	@Override

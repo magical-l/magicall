@@ -70,7 +70,7 @@ public final class EmptyColl //
 
     @Override
     public <T> T[] toArray(final T[] a) {
-        return Collections.emptyList().toArray(a);
+        return Collections.<T>emptyList().toArray(a);
     }
 
     @Override

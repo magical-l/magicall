@@ -28,9 +28,9 @@ U extends Unit> //
 	}
 
 	public void copyFrom(final BaseGamingMap<G, M, P, U> baseGamingMap) {
-		this.game = ObjectUtil.tryCopy(baseGamingMap.game);
-		this.map = ObjectUtil.tryCopy(baseGamingMap.map);
-		this.unitsHolder = ObjectUtil.tryCopy(baseGamingMap.unitsHolder);
+		game = ObjectUtil.tryCopy(baseGamingMap.game);
+		map = ObjectUtil.tryCopy(baseGamingMap.map);
+		unitsHolder = ObjectUtil.tryCopy(baseGamingMap.unitsHolder);
 	}
 
 	protected CollectionFactory getCollectionFactory() {
@@ -143,7 +143,7 @@ U extends Unit> //
 	}
 
 	public void setUnitsHolder(final UnitsHolder unitsMapManager) {
-		this.unitsHolder = unitsMapManager;
+		unitsHolder = unitsMapManager;
 	}
 
 	@Override

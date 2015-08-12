@@ -14,7 +14,7 @@ import java.util.Set;
  * 
  * @author MaGicalL
  */
-public class ElMap implements Map<Object, Object>, Wrapper {
+public class ElMap implements Map<Object, Object>, Wrapper<Map<Object,Object>> {
 
 	private final Map<Object, Object> map;
 
@@ -94,7 +94,7 @@ public class ElMap implements Map<Object, Object>, Wrapper {
 	}
 
 	@Override
-	public void putAll(final Map<? extends Object, ? extends Object> m) {
+	public void putAll(final Map<?, ?> m) {
 		map.putAll(m);
 	}
 
@@ -113,4 +113,8 @@ public class ElMap implements Map<Object, Object>, Wrapper {
 		return map.values();
 	}
 
+	@Override
+	public Map<Object, Object> unwrap() {
+		return map;
+	}
 }

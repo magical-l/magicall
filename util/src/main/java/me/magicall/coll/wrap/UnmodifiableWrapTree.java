@@ -1,14 +1,14 @@
 package me.magicall.coll.wrap;
 
-import java.util.Collection;
-import java.util.Iterator;
-
 import me.magicall.coll.tree.Tree;
 import me.magicall.coll.unmodifiable.UnmodifiableTreeTemplate;
 import me.magicall.mark.Wrapper;
 
+import java.util.Collection;
+import java.util.Iterator;
+
 public class UnmodifiableWrapTree<E> extends UnmodifiableTreeTemplate<E>//
-		implements Wrapper {
+		implements Wrapper<Tree<E>> {
 	private static final long serialVersionUID = -6233847775289865089L;
 
 	private final Tree<E> tree;
@@ -101,5 +101,10 @@ public class UnmodifiableWrapTree<E> extends UnmodifiableTreeTemplate<E>//
 	@Override
 	public int hashCode() {
 		return tree.hashCode();
+	}
+
+	@Override
+	public Tree<E> unwrap() {
+		return this;
 	}
 }

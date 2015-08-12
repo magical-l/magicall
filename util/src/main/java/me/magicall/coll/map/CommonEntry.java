@@ -12,8 +12,8 @@ public class CommonEntry<K, V> implements Entry<K, V>, Serializable {
 
 	public CommonEntry(final K key, final V value) {
 		super();
-		this.k = key;
-		this.v = value;
+		k = key;
+		v = value;
 	}
 
 	@Override

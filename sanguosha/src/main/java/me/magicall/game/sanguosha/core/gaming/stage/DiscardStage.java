@@ -1,13 +1,15 @@
 package me.magicall.game.sanguosha.core.gaming.stage;
 
-import me.magicall.game.card.Card;
-import me.magicall.game.sanguosha.core.area.Area;
+import me.magicall.game.sanguosha.core.area.HandArea;
 import me.magicall.game.sanguosha.core.gaming.Sanguosha;
-import me.magicall.game.sanguosha.core.hero.Hero;
+import me.magicall.game.sanguosha.core.unit.Hero;
 
-import java.util.List;
+import java.util.Collections;
 
 /**
+ * 弃牌阶段。
+ * 弃牌阶段：检查角色的手牌数是否超出角色的手牌上限，若超出须弃置一张手牌。如此反复，直到检查其手牌数等于其手牌上限为止。
+ *
  * @author Liang Wenjian
  */
 public class DiscardStage extends AbsStage {
@@ -19,12 +21,18 @@ public class DiscardStage extends AbsStage {
     @Override
     protected void playInternal() {
         final Hero owner = getOwner();
-        final Area hand = owner.getHand();
-        final List<Card> cards = hand.getCards();
-        final int hp = owner.getHp();
-        final int cardsCount = cards.size();
-        if (cardsCount > hp) {
-            owner.getPlayer().getPlayer().requireInput("请弃牌", null);//TODO
+        final int defaultRemainCount = owner.getHp();
+
+        final Sanguosha game = getGame();
+        final CalculateDiscardCountEvent event = new CalculateDiscardCountEvent(this, defaultRemainCount);
+        game.publishEvent(event);
+        final int remainCount = event.getAvailableRemainCount();
+
+        final HandArea hand = owner.getHand();
+        for (int count = hand.getCardsCount() - remainCount; count > 0; count = hand.getCardsCount() - remainCount) {
+            owner.getPlayer().getPlayer().requireInput(new DiscardOptions(owner, count))//
+                    .getCardIds().stream()//
+                    .forEach(e -> hand.discard(Collections.singleton(game.getCard(e))));
         }
     }
 }

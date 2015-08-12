@@ -4,9 +4,9 @@ import java.util.List;
 
 import me.magicall.convenient.BaseHasList;
 import me.magicall.db.util.DbUtil;
-import me.magicall.mark.HasName;
+import me.magicall.mark.Renamable;
 
-public abstract class BaseDbMeta extends BaseHasList<DbColumn> implements HasName, HasColumns {
+public abstract class BaseDbMeta extends BaseHasList<DbColumn> implements Renamable, HasColumns {
 
 	protected String name;
 

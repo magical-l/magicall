@@ -1,6 +1,6 @@
-package me.magicall.game.sanguosha.core.hero;
+package me.magicall.game.sanguosha.core.unit;
 
-import me.magicall.game.sanguosha.core.hero.base.UnitCfg;
+import me.magicall.game.card.UnitCfg;
 import me.magicall.game.sanguosha.core.skill.Skill;
 
 import java.util.Collection;
@@ -48,5 +48,16 @@ public class HeroCfg implements UnitCfg {
 
     public Collection<Skill> getSkills() {
         return skills;
+    }
+
+    @Override
+    public String toString() {
+        return getClass().getSimpleName() + hashCode() + ":{" +
+                "name:'" + name + '\'' +
+                ", hpUpperBound:" + hpUpperBound +
+                ", country:" + country +
+                ", gender:" + gender +
+                ", skills:" + skills +
+                '}';
     }
 }

@@ -6,6 +6,7 @@ package me.magicall.db;
  * 
  * @author MaGiCalL
  */
+@FunctionalInterface
 public interface SqlValueHandler {
 
 	/**

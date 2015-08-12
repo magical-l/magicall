@@ -6,6 +6,7 @@ package me.magicall.coll;
 /**
  * @author Administrator
  */
+@FunctionalInterface
 public interface KeyAccessor<K, V> {
 	/**
 	 * 从对象中抽取一个字段的值.

@@ -41,6 +41,7 @@
         <module>game-sha</module>
         <module>game-xiangqi</module>
         <module>outsea</module>
+        <module>sanguosha</module>
     </modules>
 
     <properties>

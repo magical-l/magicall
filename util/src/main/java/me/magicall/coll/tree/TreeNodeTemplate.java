@@ -1,14 +1,14 @@
 package me.magicall.coll.tree;
 
+import me.magicall.coll.tree.Tree.TreeNode;
+import me.magicall.util.kit.Kits;
+
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
-
-import me.magicall.coll.tree.Tree.TreeNode;
-import me.magicall.util.kit.Kits;
 
 /**
  * <pre>
@@ -46,7 +46,7 @@ public abstract class TreeNodeTemplate<E> implements TreeNode<E> {
 	 * 依赖:getDerectChildren(),isLeaf()
 	 * 不影响本身
 	 */
-	private final Collection<TreeNode<E>> addAllLeaves(final TreeNode<E> node, final Collection<TreeNode<E>> rt) {
+	private Collection<TreeNode<E>> addAllLeaves(final TreeNode<E> node, final Collection<TreeNode<E>> rt) {
 		final Collection<TreeNode<E>> derectChildren = node.getDerectChildren();
 		for (final TreeNode<E> n : derectChildren) {
 			if (n.isLeaf()) {

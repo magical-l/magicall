@@ -5,10 +5,11 @@ import java.io.Serializable;
 import me.magicall.mark.HasIdGetter;
 import me.magicall.mark.HasIdGetter.HasIntIdGetter;
 import me.magicall.mark.HasIdGetter.HasLongIdGetter;
-import me.magicall.mark.HasName;
+import me.magicall.mark.Renamable;
 
 public class ElementTransformerUtil {
 
+	@FunctionalInterface
 	public interface SerializableElementTransformer<F, T> extends ElementTransformer<F, T>, Serializable {
 
 	}
@@ -73,12 +74,12 @@ public class ElementTransformerUtil {
 		}
 	};
 
-	public static final ElementTransformer<HasName, String> TO_NAME = new SerializableElementTransformer<HasName, String>() {
+	public static final ElementTransformer<Renamable, String> TO_NAME = new SerializableElementTransformer<Renamable, String>() {
 
 		private static final long serialVersionUID = 3233228054147778539L;
 
 		@Override
-		public String transform(final int index, final HasName element) {
+		public String transform(final int index, final Renamable element) {
 			return element.getName();
 		}
 

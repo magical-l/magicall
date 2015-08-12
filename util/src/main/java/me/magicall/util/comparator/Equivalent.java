@@ -6,6 +6,7 @@ package me.magicall.util.comparator;
  * @author MaGiCalL
  * @param <T>
  */
+@FunctionalInterface
 public interface Equivalent<T> {
 
 	/**

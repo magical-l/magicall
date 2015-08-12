@@ -7,6 +7,7 @@ package me.magicall.coll;
  * 本接口定义了对集合元素的操作.
  * @author Administrator
  */
+@FunctionalInterface
 public interface ElementHandler<E> {
 
 	/**

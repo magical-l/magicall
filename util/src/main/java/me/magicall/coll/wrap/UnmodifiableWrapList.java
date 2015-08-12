@@ -1,19 +1,19 @@
 package me.magicall.coll.wrap;
 
+import me.magicall.coll.sorted.Sorted;
+import me.magicall.coll.unmodifiable.UnmodifiableListTemplate;
+import me.magicall.mark.Unmodifiable;
+import me.magicall.mark.Wrapper;
+
 import java.io.Serializable;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
 import java.util.ListIterator;
 
-import me.magicall.coll.sorted.Sorted;
-import me.magicall.coll.unmodifiable.UnmodifiableListTemplate;
-import me.magicall.mark.Unmodifiable;
-import me.magicall.mark.Wrapper;
-
 
 public class UnmodifiableWrapList<E> extends UnmodifiableListTemplate<E>//
-		implements List<E>, Wrapper, Serializable, Unmodifiable, Sorted {
+		implements List<E>, Wrapper<List<E>>, Serializable, Unmodifiable, Sorted {
 
 	private static final long serialVersionUID = -4222922423845326955L;
 
@@ -97,5 +97,10 @@ public class UnmodifiableWrapList<E> extends UnmodifiableListTemplate<E>//
 	@Override
 	public String toString() {
 		return list.toString();
+	}
+
+	@Override
+	public List<E> unwrap() {
+		return this;
 	}
 }

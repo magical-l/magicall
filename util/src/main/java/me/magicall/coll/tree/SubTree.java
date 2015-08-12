@@ -1,13 +1,13 @@
 package me.magicall.coll.tree;
 
-import java.util.Collection;
-import java.util.List;
-
 import me.magicall.coll.ElementTransformer;
 import me.magicall.coll.ElementTransformerUtil.SerializableElementTransformer;
 import me.magicall.coll.unmodifiable.UnmodifiableTreeTemplate;
 import me.magicall.coll.wrap.UnmodifiableWrapTreeNode;
 import me.magicall.util.kit.Kits;
+
+import java.util.Collection;
+import java.util.List;
 
 /**
  * 专用于subTree()这个方法返回的类
@@ -81,43 +81,43 @@ class SubTree<E> extends UnmodifiableTreeTemplate<E> {
 	}//SubTreeNode
 
 	public SubTree(final Tree<E> source, final TreeNode<E> r) {
-		this.layerIndex = r.getLayer();
-		this.root = new SubTreeNode(r) {
+		layerIndex = r.getLayer();
+		root = new SubTreeNode(r) {
 
 			private static final long serialVersionUID = 798547396362666928L;
 
 			@Override
-			protected final Collection<TreeNode<E>> brothers0() {
+			protected Collection<TreeNode<E>> brothers0() {
 				return Kits.COLL.emptyValue();
 			}
 
 			@Override
-			public final boolean isRoot() {
+			public boolean isRoot() {
 				return true;
 			}
 
 			@Override
-			protected final List<TreeNode<E>> pathFromRoot0() {
+			protected List<TreeNode<E>> pathFromRoot0() {
 				return Kits.LIST.emptyValue();
 			}
 
 			@Override
-			protected final List<TreeNode<E>> pathToRoot0() {
+			protected List<TreeNode<E>> pathToRoot0() {
 				return Kits.LIST.emptyValue();
 			}
 
 			@Override
-			protected final Tree<E> treeFromMe0() {
+			protected Tree<E> treeFromMe0() {
 				return SubTree.this;
 			}
 
 			@Override
-			protected final TreeNode<E> parent0() {
+			protected TreeNode<E> parent0() {
 				return null;//别忘了,在这棵"子树"里面,此节点是根,所以没有parent
 			}
 
 			@Override
-			public final int getLayer() {
+			public int getLayer() {
 				return 0;
 			}
 		};
@@ -129,16 +129,16 @@ class SubTree<E> extends UnmodifiableTreeTemplate<E> {
 	}
 
 	@SuppressWarnings("unchecked")
-	private final Collection<TreeNode<E>> tf(final Collection<TreeNode<E>> source) {
-		return Kits.COLL.transform(source, (ElementTransformer) TF);
+	private Collection<TreeNode<E>> tf(final Collection<TreeNode<E>> source) {
+		return Kits.COLL.transform(source, (ElementTransformer) tf);
 	}
 
 	@SuppressWarnings("unchecked")
-	private final List<TreeNode<E>> tf(final List<TreeNode<E>> source) {
-		return Kits.LIST.transform(source, (ElementTransformer) TF);
+	private List<TreeNode<E>> tf(final List<TreeNode<E>> source) {
+		return Kits.LIST.transform(source, (ElementTransformer) tf);
 	}
 
-	private final ElementTransformer<TreeNode<E>, SubTreeNode> TF = new SerializableElementTransformer<TreeNode<E>, SubTreeNode>() {
+	private final ElementTransformer<TreeNode<E>, SubTreeNode> tf = new SerializableElementTransformer<TreeNode<E>, SubTreeNode>() {
 		private static final long serialVersionUID = 210549037850213110L;
 
 		@Override

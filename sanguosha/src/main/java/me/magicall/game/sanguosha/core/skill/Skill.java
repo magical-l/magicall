@@ -1,7 +1,6 @@
 package me.magicall.game.sanguosha.core.skill;
 
 import me.magicall.game.Targetable;
-import me.magicall.game.card.Event;
 import me.magicall.mark.Named;
 
 /**
@@ -11,5 +10,5 @@ import me.magicall.mark.Named;
  */
 public interface Skill extends Named, Targetable {
 
-    Event action();
+    Effect action();
 }

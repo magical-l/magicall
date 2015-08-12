@@ -31,15 +31,18 @@ public class ReverseMap<K, V> implements Map<K, V>, Unmodifiable, Serializable {
 	}
 
 	//============================================
+
 	private final Map<V, K> map;
 	private volatile transient EntrySet<K, V> entrySet;
 
 	//============================================
+
 	private ReverseMap(final Map<V, K> map) {
 		this.map = Collections.unmodifiableMap(map);
 	}
 
 	//============================================
+
 	@Override
 	public void clear() {
 		map.clear();
@@ -123,6 +126,7 @@ public class ReverseMap<K, V> implements Map<K, V>, Unmodifiable, Serializable {
 	}
 
 	//=======================================================================
+
 	private static class EntrySet<K, V> extends AbstractSet<Entry<K, V>> implements Unmodifiable, Serializable {
 
 		private static final long serialVersionUID = -1567624779283525017L;

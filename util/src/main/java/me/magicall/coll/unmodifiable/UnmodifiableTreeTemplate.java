@@ -17,7 +17,7 @@ public abstract class UnmodifiableTreeTemplate<E> extends TreeTemplate<E> implem
 
 	private static final long serialVersionUID = -6018891976321902391L;
 
-	private final Collection<TreeNode<E>> unmodifiable(final Collection<TreeNode<E>> source, final ElementTransformer<TreeNode<E>, TreeNode<E>> tf) {
+	private Collection<TreeNode<E>> unmodifiable(final Collection<TreeNode<E>> source, final ElementTransformer<TreeNode<E>, TreeNode<E>> tf) {
 		final Collection<TreeNode<E>> rt = Kits.COLL.transform(source, tf);
 		//若原集合即为不可变,则直接返回即可.否则还需对集合进行不可变包装
 		return Kits.COLL.isUnmodifiable(source) ? rt : C.unmodifiable(rt);

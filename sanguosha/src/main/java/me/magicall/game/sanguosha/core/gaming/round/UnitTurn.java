@@ -1,6 +1,6 @@
-package me.magicall.game.sanguosha.core.gaming;
+package me.magicall.game.sanguosha.core.gaming.round;
 
-import me.magicall.game.sanguosha.core.hero.base.Unit;
+import me.magicall.game.card.Unit;
 
 /**
  * @author Liang Wenjian

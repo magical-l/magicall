@@ -10,7 +10,7 @@ import me.magicall.mark.HasIdGetter.HasIntIdGetter;
  * @email wenjian.liang@opi-corp.com
  * @version Jun 28, 2011 12:13:13 PM
  */
-public interface IdName extends HasIntIdGetter, HasNameGetter {
+public interface IdName extends HasIntIdGetter, Named {
 
 	class SimpleIdNameImpl implements IdName {
 

@@ -1,4 +1,4 @@
-package me.magicall.game.sanguosha.core.hero;
+package me.magicall.game.sanguosha.core.unit;
 
 import com.google.common.collect.Lists;
 import me.magicall.game.sanguosha.core.area.EquipArea;
@@ -6,7 +6,7 @@ import me.magicall.game.sanguosha.core.area.HandArea;
 import me.magicall.game.sanguosha.core.area.JudgementArea;
 import me.magicall.game.sanguosha.core.gaming.Position;
 import me.magicall.game.sanguosha.core.gaming.Sanguosha;
-import me.magicall.game.sanguosha.core.hero.base.Unit;
+import me.magicall.game.card.Unit;
 import me.magicall.game.sanguosha.core.player.GamingPlayer;
 import me.magicall.game.sanguosha.core.skill.Skill;
 
@@ -17,7 +17,7 @@ import java.util.Collection;
  *
  * @author Liang Wenjian
  */
-public class Hero implements Unit<HeroCfg> {
+public class Hero implements Unit {
 
     private final HeroCfg heroCfg;
 
@@ -126,5 +126,23 @@ public class Hero implements Unit<HeroCfg> {
 
     public JudgementArea getJudgement() {
         return judgement;
+    }
+
+    @Override
+    public String toString() {
+        return getClass().getSimpleName() + hashCode() + ":{" +
+                "skills:" + skills +
+                ", country:" + country +
+                ", hpUpperBound:" + hpUpperBound +
+                ", name:'" + name + '\'' +
+                ", judgement:" + judgement +
+                ", equip:" + equip +
+                ", hand:" + hand +
+                ", hp:" + hp +
+                ", coordinate:" + coordinate +
+                ", player:" + player +
+                ", game:" + game +
+                ", heroCfg:" + heroCfg +
+                '}';
     }
 }

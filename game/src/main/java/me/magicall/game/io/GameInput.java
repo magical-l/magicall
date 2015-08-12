@@ -6,6 +6,7 @@ package me.magicall.game.io;
  * 
  * @author MaGiCalL
  */
+@FunctionalInterface
 public interface GameInput {
 	/**
 	 * 向输入端请求一个输入,然后回调InputHandler参数的方法

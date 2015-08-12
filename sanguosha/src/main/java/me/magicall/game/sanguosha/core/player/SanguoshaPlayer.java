@@ -8,11 +8,11 @@ import java.util.Scanner;
 /**
  * @author Liang Wenjian
  */
-public class PlayerImpl implements Player {
+public class SanguoshaPlayer implements Player {
 
     private final Scanner scanner = new Scanner(System.in);
 
-    public PlayerImpl() {
+    public SanguoshaPlayer() {
         super();
     }
 
@@ -24,5 +24,10 @@ public class PlayerImpl implements Player {
         final String next = scanner.next();
         //TODO
         return null;
+    }
+
+    @Override
+    public void output(final Object o) {
+        //TODO
     }
 }

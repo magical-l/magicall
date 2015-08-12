@@ -1,22 +1,15 @@
 package me.magicall.web.util;
 
+import me.magicall.cache.ByteArrayBuffer;
+import me.magicall.io.IOUtil;
+import me.magicall.util.encode.EncodeUtil;
+import me.magicall.util.kit.Kits;
+
+import javax.servlet.http.HttpServletResponse;
 import java.io.BufferedInputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
-
-import javax.servlet.http.HttpServletResponse;
-
-import me.magicall.cache.ByteArrayBuffer;
-import me.magicall.io.CloseableCreater;
-import me.magicall.io.CloseableIOCallback;
-import me.magicall.io.IOUtil;
-import me.magicall.lang.exception.ExceptionHandler;
-import me.magicall.util.encode.EncodeUtil;
-import me.magicall.util.kit.Kits;
 
 public class UploadDownload {
 
@@ -28,7 +21,7 @@ public class UploadDownload {
 	 * @throws Exception
 	 */
 	public static void download(final HttpServletResponse response, final String absolutePath)//
-			throws FileNotFoundException, IOException, Exception {
+			throws Exception {
 		final File f = new File(absolutePath);
 		download(response, f);
 	}
@@ -63,7 +56,7 @@ public class UploadDownload {
         });
 
 		if (!buffer.isEmpty()) {
-			IOUtil.io(() -> response.getOutputStream(), out -> {
+			IOUtil.io(response::getOutputStream, out -> {
                 out.write(buffer.buffer());
                 out.flush();
             }, e -> {

@@ -6,24 +6,26 @@ import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 import me.magicall.game.card.Card;
 import me.magicall.game.card.CardCfg;
-import me.magicall.game.sanguosha.core.area.Battle;
-import me.magicall.game.sanguosha.core.area.CardStack;
-import me.magicall.game.sanguosha.core.area.UsedCardStack;
-import me.magicall.game.sanguosha.core.card.GamingCard;
 import me.magicall.game.card.Event;
 import me.magicall.game.card.Game;
 import me.magicall.game.card.Round;
-import me.magicall.game.sanguosha.core.gaming.option.HeroSelection;
+import me.magicall.game.sanguosha.core.area.Battle;
+import me.magicall.game.sanguosha.core.area.CardStack;
+import me.magicall.game.sanguosha.core.area.HandArea;
+import me.magicall.game.sanguosha.core.area.UsedCardStack;
+import me.magicall.game.sanguosha.core.card.GamingCard;
 import me.magicall.game.sanguosha.core.gaming.option.SelectHeroOptions;
-import me.magicall.game.sanguosha.core.hero.Hero;
-import me.magicall.game.sanguosha.core.hero.HeroCfg;
+import me.magicall.game.sanguosha.core.gaming.round.SanguoshaRound;
 import me.magicall.game.sanguosha.core.player.GamingPlayer;
 import me.magicall.game.sanguosha.core.player.Player;
 import me.magicall.game.sanguosha.core.player.Role;
+import me.magicall.game.sanguosha.core.unit.Hero;
+import me.magicall.game.sanguosha.core.unit.HeroCfg;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.ApplicationEventPublisher;
 
+import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 import java.util.Map;
@@ -34,14 +36,32 @@ import java.util.Map.Entry;
  */
 public class Sanguosha implements Game {
 
-    private final Logger logger = LoggerFactory.getLogger(getClass());
+    //------------------------ 工具
 
+    private final Logger logger = LoggerFactory.getLogger(getClass());
     private final ApplicationEventPublisher publisher;
 
+    //------------------------ 配置
+
     private final GamingCfg cfg;
+    
+    //------------------------ 初始化数据
+
+    /**
+     * 玩家列表。
+     */
+    private final List<GamingPlayer> players = Lists.newArrayList();
+
+    /**
+     * 武将备选记录。
+     */
+    private final ListMultimap<GamingPlayer, HeroCfg> heroOptions = ArrayListMultimap.create();
 
     private final List<HeroCfg> heroCfgs;
 
+    private final Map<Integer, GamingCard> idCardMap = Maps.newHashMap();
+
+    //------------------------ 游戏
     /**
      * 牌堆。
      */
@@ -56,24 +76,13 @@ public class Sanguosha implements Game {
     private final UsedCardStack usedCardStack = new UsedCardStack();
 
     /**
-     * 玩家列表。
-     */
-    private final List<GamingPlayer> gamingPlayers = Lists.newArrayList();
-    /**
-     * 玩家的位置。
-     */
-    private final Map<GamingPlayer, Position> positionMap = Maps.newLinkedHashMap();
-    /**
-     * 武将备选记录。
-     */
-    private final ListMultimap<GamingPlayer, HeroCfg> heroOptions = ArrayListMultimap.create();
-
-    /**
      * 轮次。
      */
     private final List<Round> rounds = Lists.newArrayList();
 
     private boolean gameOver;
+
+    //===============================================
 
     public Sanguosha(final ApplicationEventPublisher publisher, final GamingCfg cfg) {
         this.publisher = publisher;
@@ -81,24 +90,61 @@ public class Sanguosha implements Game {
         final List<HeroCfg> tmp = Lists.newArrayList(cfg.getHeroCfgs());
         Collections.shuffle(tmp);
         heroCfgs = tmp;
-
-        initCardStack();
-        initPosition();
-
-        positionMap.keySet().stream().forEach(e -> {
-            final List<HeroCfg> optionHeros = getOptionHeros(e);
-            final HeroSelection selection = e.getPlayer().requireInput(new SelectHeroOptions(optionHeros));
-            selectHero(e, selection);
-        });
     }
 
     @Override
     public void play() {
+        initCardStack();
+        initPosition();
+
+        selectHero();
+
+        initHand();
+
+        start();
+    }
+
+    private void start() {
+        publishEvent(new WarStartEvent(this));
+        int roundIndex = 0;
         while (!gameOver) {
-            final Round round = new SanguoshaRound(this);
+            final Round round = new SanguoshaRound(this, roundIndex);
             round.play();
             rounds.add(round);
+            roundIndex++;
         }
+        publishEvent(new WarEndEvent(this));
+    }
+
+    private void initHand() {
+        players.forEach(player -> {
+            final Collection<Card> cards = cardStack.pop(4);
+            final HandArea hand = player.getHero().getHand();
+            if (hand.canGain(cards)) {
+                hand.gain(cards);
+            } else {
+                cardStack.gain(cards);
+            }
+        });
+        publishEvent(new InitHandEvent(this));
+    }
+
+    private void selectHero() {
+        final Map<GamingPlayer, HeroCfg> map = Maps.newLinkedHashMap();
+        //选将
+        players.forEach(player -> {
+            final HeroCfg selected = player.getPlayer()//
+                    .requireInput(new SelectHeroOptions(getOptionHeros(player)))//
+                    .getHeroCfg();
+            player.setHero(new Hero(selected, this, player, player.getPosition()));
+            final List<HeroCfg> options = heroOptions.get(player);
+            options.remove(selected);
+            heroCfgs.addAll(options);//没有选的武将还回武将堆。
+            map.put(player, selected);
+        });
+        //亮武将
+        players.forEach(player -> player.getPlayer().output(map));
+        publishEvent(new HerosShownEvent(this, map));
     }
 
     public int getCardStackSize() {
@@ -114,7 +160,7 @@ public class Sanguosha implements Game {
     }
 
     public int calculateDistance(final Hero from, final Hero to) {
-        publisher.publishEvent(new CalculateDistanceEvent(this, from));
+        publishEvent(new CalculateDistanceEvent(this, from));
 
         final int distance = from.getCoordinate().distance(to.getCoordinate());
 
@@ -130,14 +176,6 @@ public class Sanguosha implements Game {
         }
         heroOptions.putAll(player, rt);
         return rt;
-    }
-
-    private void selectHero(final GamingPlayer player, final HeroSelection selection) {
-        final List<HeroCfg> options = heroOptions.get(player);
-        final HeroCfg selected = selection.getHeroCfg();
-        player.setHeros(Collections.singleton(new Hero(selected, this, player, positionMap.get(player))));
-        options.remove(selected);
-        heroCfgs.addAll(options);//没有选的武将还回武将堆。
     }
 
     private void initPosition() {
@@ -161,16 +199,17 @@ public class Sanguosha implements Game {
         if (!cfg.isPositionFixed()) {
             Collections.shuffle(players);
         }
-        int i = 0;
+        int i = 1;
         for (final Player player : players) {
+            final Position position = new Position(i);
             final GamingPlayer p = new GamingPlayer();
             p.setRole(tmpRoles.get(i));
             p.setPlayer(player);
-            gamingPlayers.add(p);
+            p.setPosition(position);
+            this.players.add(p);
             i++;
-            positionMap.put(p, new Position(i));
         }
-        logger.debug(positionMap.toString());
+        logger.debug(players.toString());
     }
 
     private void initCardStack() {
@@ -181,13 +220,16 @@ public class Sanguosha implements Game {
             final CardCfg cardCfg = entry.getKey();
             final Integer count = entry.getValue();
             for (int i = 0; i < count; ++i) {
-                cards.add(new GamingCard(id, cardCfg));
-                ++id;
+                final GamingCard card = new GamingCard(id, cardCfg);
+                cards.add(card);
+                idCardMap.put(id, card);
+                id++;
             }
         }
         Collections.shuffle(cards);
         cardStack.gain(cards);
-        logger.debug(cardStack.toString());
+
+        logger.debug("initCardStack end:" + cardStack);
     }
 
     public List<HeroCfg> getHeroCfgs() {
@@ -216,10 +258,21 @@ public class Sanguosha implements Game {
 
     @Override
     public List<GamingPlayer> getPlayers() {
-        return gamingPlayers;
+        return players;
     }
 
     public void cardWork(final Card card) {
         //TODO
+    }
+
+    public Card getCard(final Integer cardId) {
+        return idCardMap.get(cardId);
+    }
+
+    @Override
+    public String toString() {
+        return getClass().getSimpleName() + hashCode() + ":{" +
+                "cfg:" + cfg +
+                '}';
     }
 }

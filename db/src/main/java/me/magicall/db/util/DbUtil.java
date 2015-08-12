@@ -30,6 +30,7 @@ public class DbUtil {
 	 * 
 	 * @author MaGiCalL
 	 */
+	@FunctionalInterface
 	public interface DbTypeConvert {
 		Object convert(ResultSet rs, int columnIndex) throws SQLException;
 	}

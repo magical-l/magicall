@@ -182,8 +182,8 @@ public class AbsSqlConfig<T> implements SqlConfig {
 		if (ArrayUtil.isEmpty(refedModels)) {
 			return;
 		}
-		if (this.refedModel == null) {
-			this.refedModel = refedModels[0];
+		if (refedModel == null) {
+			refedModel = refedModels[0];
 			for (int i = 1; i < refedModels.length; ++i) {
 				checkOtherRefedModels().add(refedModels[i]);
 			}
@@ -198,8 +198,8 @@ public class AbsSqlConfig<T> implements SqlConfig {
 			return;
 		}
 		final Iterator<? extends T> iterator = refedModels.iterator();
-		if (this.refedModel == null) {
-			this.refedModel = iterator.next();
+		if (refedModel == null) {
+			refedModel = iterator.next();
 			while (iterator.hasNext()) {
 				checkOtherRefedModels().add(iterator.next());
 			}

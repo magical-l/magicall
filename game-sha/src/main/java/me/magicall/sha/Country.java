@@ -1,8 +1,8 @@
 package me.magicall.sha;
 
-import me.magicall.mark.HasName;
+import me.magicall.mark.Renamable;
 
-public class Country implements HasName {
+public class Country implements Renamable {
 
 	private String name;
 

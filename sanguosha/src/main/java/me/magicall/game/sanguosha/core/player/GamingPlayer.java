@@ -1,8 +1,7 @@
 package me.magicall.game.sanguosha.core.player;
 
-import me.magicall.game.sanguosha.core.hero.Hero;
-
-import java.util.Collection;
+import me.magicall.game.sanguosha.core.gaming.Position;
+import me.magicall.game.sanguosha.core.unit.Hero;
 
 /**
  * 游戏中的玩家。
@@ -11,11 +10,22 @@ import java.util.Collection;
  */
 public class GamingPlayer {
 
+    private Position position;
+    /**
+     * 身份
+     */
     private Role role;
-
-    private Collection<Hero> heros;
+    /**
+     * 武将
+     */
+    private Hero hero;
+    /**
+     * 玩家代理
+     */
     private Player player;//player在游戏中有可能会被替换成AI。
-
+    /**
+     * 是否已阵亡
+     */
     private boolean dead;
 
     public Role getRole() {
@@ -26,12 +36,12 @@ public class GamingPlayer {
         this.role = role;
     }
 
-    public Collection<Hero> getHeros() {
-        return heros;
+    public Hero getHero() {
+        return hero;
     }
 
-    public void setHeros(final Collection<Hero> heros) {
-        this.heros = heros;
+    public void setHero(final Hero hero) {
+        this.hero = hero;
     }
 
     public Player getPlayer() {
@@ -50,11 +60,19 @@ public class GamingPlayer {
         this.dead = dead;
     }
 
+    public Position getPosition() {
+        return position;
+    }
+
+    public void setPosition(final Position position) {
+        this.position = position;
+    }
+
     @Override
     public String toString() {
         return getClass().getSimpleName() + hashCode() + ":{" +
                 "role:" + role +
-                ", heros:" + heros +
+                ", hero:" + hero +
                 ", player:" + player +
                 ", dead:" + dead +
                 '}';

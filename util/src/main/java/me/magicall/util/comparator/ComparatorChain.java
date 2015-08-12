@@ -335,7 +335,7 @@ public class ComparatorChain<T> implements Comparator<T>, Serializable {
 			return true;
 		} else if (null == object) {
 			return false;
-		} else if (object.getClass().equals(this.getClass())) {
+		} else if (object.getClass().equals(getClass())) {
 			final ComparatorChain<T> other = (ComparatorChain<T>) object;
 			return ((null == orderingBits ? null == other.orderingBits : orderingBits.equals(other.orderingBits)) && (null == chain ? null == other.chain
 					: chain.equals(other.chain)));

@@ -1,15 +1,15 @@
 package me.magicall.coll.sorted;
 
-import java.util.List;
-
 import me.magicall.coll.CollFactory.L;
 import me.magicall.coll.unmodifiable.UnmodifiableListTemplate;
 import me.magicall.mark.Unmodifiable;
 import me.magicall.mark.Wrapper;
 
+import java.util.List;
+
 
 public class ReverseList<E> extends UnmodifiableListTemplate<E>//
-		implements List<E>, Unmodifiable, Wrapper, Sorted {
+		implements List<E>, Unmodifiable, Wrapper<List<E>>, Sorted {
 
 	private static final long serialVersionUID = 6241766787522166861L;
 
@@ -38,6 +38,11 @@ public class ReverseList<E> extends UnmodifiableListTemplate<E>//
 	}
 
 	public List<E> getSource() {
+		return source;
+	}
+
+	@Override
+	public List<E> unwrap() {
 		return source;
 	}
 }

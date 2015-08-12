@@ -1,37 +1,37 @@
 package me.magicall.coll.transformed;
 
-import java.io.Serializable;
-import java.util.Collection;
-import java.util.Map;
-import java.util.Set;
-
 import me.magicall.coll.CollFactory.M;
 import me.magicall.coll.ElementTransformer;
 import me.magicall.coll.map.CommonEntry;
 import me.magicall.coll.unmodifiable.UnmodifiableMapTemplate;
 import me.magicall.mark.Unmodifiable;
-import me.magicall.util.transformer.Transformer;
+
+import java.io.Serializable;
+import java.util.Collection;
+import java.util.Map;
+import java.util.Set;
+import java.util.function.Function;
 
 public class ValueTransformedMap<K, T, V> extends UnmodifiableMapTemplate<K, V>//
 		implements Map<K, V>, Serializable, Unmodifiable {
 	private static final long serialVersionUID = 5133391467749204907L;
 
 	private final Map<K, T> map;
-	private final Transformer<T, V> transformer;
+	private final Function<T, V> function;
 	private final ElementTransformer<T, V> et;
 	private final ElementTransformer<Entry<K, T>, Entry<K, V>> entryTransformer;
 
-	public ValueTransformedMap(final Map<K, T> map, final Transformer<T, V> transformer) {
+	public ValueTransformedMap(final Map<K, T> map, final Function<T, V> function) {
 		super();
 		this.map = map;
-		this.transformer = transformer;
+		this.function = function;
 		et = (index, element) -> tf(element);
 		entryTransformer = (index,
 							element) -> M.unmodifiable(new CommonEntry<>(element.getKey(), tf(element.getValue())));
 	}
 
 	private V tf(final T t) {
-		return transformer.transform(t);
+		return function.apply(t);
 	}
 
 	@Override
@@ -49,7 +49,7 @@ public class ValueTransformedMap<K, T, V> extends UnmodifiableMapTemplate<K, V>/
 			}
 		} else {
 			for (final T t : map.values()) {
-				if (value.equals(transformer.transform(t))) {
+				if (value.equals(function.apply(t))) {
 					return true;
 				}
 			}
@@ -64,7 +64,7 @@ public class ValueTransformedMap<K, T, V> extends UnmodifiableMapTemplate<K, V>/
 
 	@Override
 	public V get(final Object key) {
-		return transformer.transform(map.get(key));
+		return function.apply(map.get(key));
 	}
 
 	@Override

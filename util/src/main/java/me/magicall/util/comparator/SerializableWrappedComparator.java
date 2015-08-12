@@ -17,7 +17,7 @@ public class SerializableWrappedComparator<T> implements Comparator<T>, Serializ
 	public SerializableWrappedComparator(final Comparator<? super T> comparator) {
 		super();
 		this.comparator = (Comparator<T>) comparator;
-		this.clazz = (Class<Comparator<T>>) comparator.getClass();
+		clazz = (Class<Comparator<T>>) comparator.getClass();
 	}
 
 	public SerializableWrappedComparator(final Class<Comparator<T>> clazz) {

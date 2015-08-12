@@ -5,11 +5,11 @@ import com.google.common.collect.Maps;
 import me.magicall.game.card.CardCfg;
 import me.magicall.game.sanguosha.core.card.CardTypes;
 import me.magicall.game.sanguosha.core.card.Flower;
-import me.magicall.game.sanguosha.core.hero.Country;
-import me.magicall.game.sanguosha.core.hero.Gender;
-import me.magicall.game.sanguosha.core.hero.HeroCfg;
+import me.magicall.game.sanguosha.core.unit.Country;
+import me.magicall.game.sanguosha.core.unit.Gender;
+import me.magicall.game.sanguosha.core.unit.HeroCfg;
 import me.magicall.game.sanguosha.core.player.Player;
-import me.magicall.game.sanguosha.core.player.PlayerImpl;
+import me.magicall.game.sanguosha.core.player.SanguoshaPlayer;
 import me.magicall.game.sanguosha.core.player.Role;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.BeanDefinitionStoreException;
@@ -39,7 +39,7 @@ public class Launcher {
 
         final Collection<Player> players = Lists.newArrayList();
         for (int i = 0; i < playerCount; i++) {
-            players.add(new PlayerImpl());
+            players.add(new SanguoshaPlayer());
         }
 
         final Collection<HeroCfg> heroCfgs = Lists.newArrayList(//

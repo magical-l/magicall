@@ -1,9 +1,5 @@
 package me.magicall.coll.transformed;
 
-import java.io.Serializable;
-import java.util.Collection;
-import java.util.Iterator;
-
 import me.magicall.coll.ElementNotNull;
 import me.magicall.coll.ElementTransformer;
 import me.magicall.coll.unmodifiable.UnmodifiableCollectionTemplate;
@@ -12,8 +8,12 @@ import me.magicall.mark.Unmodifiable;
 import me.magicall.mark.Wrapper;
 import me.magicall.util.kit.Kits;
 
+import java.io.Serializable;
+import java.util.Collection;
+import java.util.Iterator;
+
 public class TransformedCollection<F, T> extends UnmodifiableCollectionTemplate<T>//
-		implements Collection<T>, Unmodifiable, ElementNotNull, Wrapper, Serializable {
+		implements Collection<T>, Unmodifiable, ElementNotNull, Wrapper<Collection<T>>, Serializable {
 	private static final long serialVersionUID = 2825834495087793417L;
 
 	protected final Collection<? extends F> collection;
@@ -52,5 +52,10 @@ public class TransformedCollection<F, T> extends UnmodifiableCollectionTemplate<
 	@Override
 	public int size() {
 		return collection.size();
+	}
+
+	@Override
+	public Collection<T> unwrap() {
+		return this;
 	}
 }

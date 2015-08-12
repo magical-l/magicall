@@ -2,7 +2,7 @@ package me.magicall.game.sanguosha.core.skill;
 
 import me.magicall.game.card.Card;
 import me.magicall.game.card.Event;
-import me.magicall.game.sanguosha.core.hero.Hero;
+import me.magicall.game.sanguosha.core.unit.Hero;
 
 import java.util.Collection;
 

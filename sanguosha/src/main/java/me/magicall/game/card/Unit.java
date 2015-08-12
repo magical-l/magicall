@@ -1,4 +1,4 @@
-package me.magicall.game.sanguosha.core.hero.base;
+package me.magicall.game.card;
 
 import me.magicall.game.Targetable;
 import me.magicall.mark.Named;

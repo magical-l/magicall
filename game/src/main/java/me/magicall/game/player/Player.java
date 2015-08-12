@@ -2,7 +2,7 @@ package me.magicall.game.player;
 
 import me.magicall.game.io.GameInput;
 import me.magicall.game.io.GameOutput;
-import me.magicall.mark.HasNameGetter;
+import me.magicall.mark.Named;
 
 /**
  * 玩家类，是现实中的“玩家”（可能是人，也可能是AI）在程序中的代理接口。
@@ -11,7 +11,7 @@ import me.magicall.mark.HasNameGetter;
  * 
  * @author MaGiCalL
  */
-public interface Player extends HasNameGetter {
+public interface Player extends Named {
 
 	/**
 	 * 玩家的输入端。可能是鼠标、键盘、麦克风、遥控器等等。

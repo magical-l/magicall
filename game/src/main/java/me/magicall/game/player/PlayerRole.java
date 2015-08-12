@@ -3,7 +3,7 @@ package me.magicall.game.player;
 import me.magicall.game.GameElement;
 import me.magicall.game.io.OutputSource;
 import me.magicall.game.skill.SkillOwner;
-import me.magicall.mark.HasNameGetter;
+import me.magicall.mark.Named;
 import me.magicall.mark.HasOrder;
 
 /**
@@ -18,7 +18,7 @@ import me.magicall.mark.HasOrder;
  * 
  * @author MaGiCalL
  */
-public interface PlayerRole extends HasNameGetter, SkillOwner, HasOrder, OutputSource, GameElement {
+public interface PlayerRole extends Named, SkillOwner, HasOrder, OutputSource, GameElement {
 
 	Player getPlayer();
 

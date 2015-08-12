@@ -1,6 +1,6 @@
 package me.magicall.game.sanguosha.core.gaming.option;
 
-import me.magicall.game.sanguosha.core.hero.HeroCfg;
+import me.magicall.game.sanguosha.core.unit.HeroCfg;
 
 /**
  * @author Liang Wenjian

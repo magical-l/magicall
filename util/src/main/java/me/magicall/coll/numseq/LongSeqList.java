@@ -94,7 +94,7 @@ public class LongSeqList extends UnmodifiableListTemplate<Long>//
 
 	@Override
 	public int indexOf(final Object o) {
-		if (o != null && o instanceof Number) {
+		if (o instanceof Number) {
 			final long i = ((Number) o).longValue();
 			final long sub = i - from;
 			if (step == 1) {

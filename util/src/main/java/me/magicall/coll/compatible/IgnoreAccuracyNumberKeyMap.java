@@ -11,7 +11,7 @@ public class IgnoreAccuracyNumberKeyMap<V> extends AbsCompatibleMap<Number, Stri
 //		private static final long serialVersionUID = 6629990247876976225L;
 //
 //		@Override
-//		public Number transform(final int index, final Number element) {
+//		public Number apply(final int index, final Number element) {
 //			return element.doubleValue();
 //		}
 //	};
@@ -34,9 +34,9 @@ public class IgnoreAccuracyNumberKeyMap<V> extends AbsCompatibleMap<Number, Stri
 //		final float f = .1f;
 //		final double d = .1d;
 //		final long l = (long) 0.1;
-//		System.out.println("@@@@@@IgnoreAccuracyNumberKeyMap.main():" + i + " " + TF.transform(0, i));
-//		System.out.println("@@@@@@IgnoreAccuracyNumberKeyMap.main():" + f + " " + TF.transform(0, f));
-//		System.out.println("@@@@@@IgnoreAccuracyNumberKeyMap.main():" + d + " " + TF.transform(0, d));
-//		System.out.println("@@@@@@IgnoreAccuracyNumberKeyMap.main():" + l + " " + TF.transform(0, l));
+//		System.out.println("@@@@@@IgnoreAccuracyNumberKeyMap.main():" + i + " " + TF.apply(0, i));
+//		System.out.println("@@@@@@IgnoreAccuracyNumberKeyMap.main():" + f + " " + TF.apply(0, f));
+//		System.out.println("@@@@@@IgnoreAccuracyNumberKeyMap.main():" + d + " " + TF.apply(0, d));
+//		System.out.println("@@@@@@IgnoreAccuracyNumberKeyMap.main():" + l + " " + TF.apply(0, l));
 //	}
 }

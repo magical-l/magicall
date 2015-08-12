@@ -4,6 +4,7 @@ import java.util.Map;
 
 import me.magicall.db.outsea.SqlConfig;
 
+@FunctionalInterface
 public interface SqlBuilder<C extends SqlConfig> {
 
 	class ParamedSqlAndParams {

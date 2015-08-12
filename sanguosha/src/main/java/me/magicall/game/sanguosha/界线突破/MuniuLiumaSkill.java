@@ -1,6 +1,6 @@
 package me.magicall.game.sanguosha.界线突破;
 
-import me.magicall.game.card.Event;
+import me.magicall.game.sanguosha.core.skill.Effect;
 import me.magicall.game.sanguosha.core.skill.Skill;
 
 /**
@@ -18,7 +18,7 @@ public class MuniuLiumaSkill implements Skill {
     }
 
     @Override
-    public Event action() {
+    public Effect action() {
         return null;//TODO
     }
 }

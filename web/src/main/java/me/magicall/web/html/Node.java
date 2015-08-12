@@ -1,12 +1,25 @@
 package me.magicall.web.html;
 
-public interface Node {
+import me.magicall.mark.Named;
 
-	String toHtml();
+import java.util.List;
 
-	StringBuilder toHtml(StringBuilder sb);
+/**
+ * 一个DOM节点。
+ *
+ * @author Liang Wenjian
+ */
+public interface Node extends Named {
 
-	Node appendTo(Node node);
+    String toHtml();
 
-	Node append(Node node);
+    default StringBuilder toHtml(final StringBuilder sb) {
+        return sb.append(toHtml());
+    }
+
+    Node appendTo(Node node);
+
+    Node append(Node node);
+
+    List<Node> getChildren();
 }

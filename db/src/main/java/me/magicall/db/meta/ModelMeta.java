@@ -3,9 +3,9 @@ package me.magicall.db.meta;
 import java.util.List;
 
 import me.magicall.convenient.BaseHasList;
-import me.magicall.mark.HasNameGetter;
+import me.magicall.mark.Named;
 
-public class ModelMeta extends BaseHasList<FieldMeta> implements HasNameGetter {
+public class ModelMeta extends BaseHasList<FieldMeta> implements Named {
 
 	private String name;
 

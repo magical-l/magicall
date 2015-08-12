@@ -39,7 +39,7 @@ public abstract class PrimitiveKit<P, A> extends Kit<P> {
 		this.primitiveClass = primitiveClass;
 		this.primitiveArrFlag = primitiveArrFlag;
 		this.emptyPrimitiveArray = emptyPrimitiveArray;
-		this.primitiveArrayClass = (Class<A>) primitiveArrayClass(1);
+        primitiveArrayClass = (Class<A>) primitiveArrayClass(1);
 	}
 
 	PrimitiveKit(final Class<P> mainClass, final P emptyValue, final Class<?> primitiveClass, final String primitiveArrFlag) {
@@ -93,7 +93,7 @@ public abstract class PrimitiveKit<P, A> extends Kit<P> {
 	public A nPrimitiveCopy(final int size, final P value) {
 		final A rt = newPrimitiveArray(size);
 		for (int i = size - 1; i > -1; --i) {
-			this.setArrayElement(rt, i, value);
+            setArrayElement(rt, i, value);
 		}
 		return rt;
 	}

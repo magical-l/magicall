@@ -1,6 +1,7 @@
 package me.magicall.mark;
 
-public interface HasNameGetter {
+@FunctionalInterface
+public interface Named {
 
 	String getName();
 }

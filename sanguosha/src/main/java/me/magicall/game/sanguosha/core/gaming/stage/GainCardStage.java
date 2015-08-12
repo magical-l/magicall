@@ -2,16 +2,20 @@ package me.magicall.game.sanguosha.core.gaming.stage;
 
 import me.magicall.game.card.Card;
 import me.magicall.game.sanguosha.core.area.Area;
-import me.magicall.game.sanguosha.core.area.CardStack;
 import me.magicall.game.sanguosha.core.gaming.Sanguosha;
-import me.magicall.game.sanguosha.core.hero.Hero;
+import me.magicall.game.sanguosha.core.unit.Hero;
 
 import java.util.Collection;
 
 /**
+ * 摸牌阶段。
+ * 摸牌阶段：角色摸两张牌。
+ *
  * @author Liang Wenjian
  */
 public class GainCardStage extends AbsStage {
+
+    private static final int GAIN_COUNT = 2;
 
     public GainCardStage(final Sanguosha game, final Hero hero) {
         super(game, hero);
@@ -19,11 +23,10 @@ public class GainCardStage extends AbsStage {
 
     @Override
     protected void playInternal() {
-        final Sanguosha game = getGame();
-        final CardStack cardStack = game.getCardStack();
-        final Collection<Card> cards = cardStack.pop(2);
-        final Hero owner = getOwner();
-        final Area hand = owner.getHand();
-        hand.gain(cards);
+        final Collection<Card> cards = getGame().getCardStack().pop(GAIN_COUNT);
+        final Area hand = getOwner().getHand();
+        if (hand.canGain(cards)) {
+            hand.gain(cards);
+        }
     }
 }

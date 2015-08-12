@@ -97,8 +97,8 @@ public abstract class Kit<T> implements Comparator<T>, Serializable {
 		final T[] emptyArray = ArrayUtil.emptyArray(mainClass);
 
 		this.mainClass = mainClass;
-		this.suitClasses = classes;
-		this.emptyValue = notNullEmptyValue;
+		suitClasses = classes;
+		emptyValue = notNullEmptyValue;
 		this.emptyArray = emptyArray;
 		this.names = rt;
 	}
@@ -303,7 +303,7 @@ public abstract class Kit<T> implements Comparator<T>, Serializable {
 	 */
 	@SuppressWarnings("unchecked")
 	public <T1 extends T> T1 checkToEmptyValue(final T1 source) {
-		return this.checkToDefaultValue(source, (T1) emptyValue());
+		return checkToDefaultValue(source, (T1) emptyValue());
 	}
 
 	/**
@@ -328,7 +328,7 @@ public abstract class Kit<T> implements Comparator<T>, Serializable {
 	 * @return
 	 */
 	public boolean isEmpty(final T source) {
-		return emptyValue().equals(this.checkToEmptyValue(source));
+		return emptyValue().equals(checkToEmptyValue(source));
 	}
 
 	/**

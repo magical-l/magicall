@@ -1,9 +1,9 @@
 package me.magicall.game.sanguosha.core.gaming.option;
 
-import com.google.common.collect.Lists;
-import me.magicall.game.sanguosha.core.hero.HeroCfg;
+import me.magicall.game.sanguosha.core.unit.HeroCfg;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * @author Liang Wenjian
@@ -14,8 +14,7 @@ public class SelectHeroOptions implements Options<HeroSelection> {
 
     public SelectHeroOptions(final List<HeroCfg> heroCfgs) {
         super();
-        options = Lists.newArrayListWithExpectedSize(heroCfgs.size());
-        heroCfgs.stream().forEach(e -> options.add(new SelectingHeroOption(e)));
+        options = heroCfgs.stream().map(SelectingHeroOption::new).collect(Collectors.toList());
     }
 
     @Override

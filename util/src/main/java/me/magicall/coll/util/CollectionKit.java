@@ -21,15 +21,18 @@ public final class CollectionKit extends AbsCollectionKit<Collection<?>> {
 	private static final String[] SHORT_NAMES = { "coll" };
 
 	//-----------------------------------------------------
+
 	public static final CollectionKit INSTANCE = new CollectionKit();
 
 	//-----------------------------------------------------
+
 	@SuppressWarnings("unchecked")
 	private CollectionKit() {
 		super((Class<Collection<?>>) MAIN_CLASS, EmptyColl.INSTANCE, SHORT_NAMES);
 	}
 
 	//-----------------------------------------------------
+
 	//这些方法覆盖父类方法,是为了返回值能带上泛型
 	@SuppressWarnings("unchecked")
 	@Override

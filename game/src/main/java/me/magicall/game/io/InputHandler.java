@@ -5,6 +5,7 @@ package me.magicall.game.io;
  * 
  * @author MaGiCalL
  */
+@FunctionalInterface
 public interface InputHandler {
 
 	void handle(Object nextInput) throws OperatingException;

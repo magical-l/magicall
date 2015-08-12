@@ -1,7 +1,7 @@
 package me.magicall.game.sanguosha.core.gaming.stage;
 
 import me.magicall.game.sanguosha.core.gaming.Sanguosha;
-import me.magicall.game.sanguosha.core.hero.Hero;
+import me.magicall.game.sanguosha.core.unit.Hero;
 
 /**
  * 阶段。

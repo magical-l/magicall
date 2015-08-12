@@ -1,13 +1,13 @@
 package me.magicall.coll.transformed;
 
-import java.io.Serializable;
-import java.util.Iterator;
-
 import me.magicall.coll.ElementTransformer;
 import me.magicall.mark.Wrapper;
 
+import java.io.Serializable;
+import java.util.Iterator;
 
-public class TransformedIterator<F, T> implements Iterator<T>, Wrapper, Serializable {
+
+public class TransformedIterator<F, T> implements Iterator<T>, Wrapper<Iterator<F>>, Serializable {
 
 	private static final long serialVersionUID = -8417815490370366682L;
 
@@ -41,4 +41,8 @@ public class TransformedIterator<F, T> implements Iterator<T>, Wrapper, Serializ
 		source.remove();
 	}
 
+	@Override
+	public Iterator<F> unwrap() {
+		return source;
+	}
 }

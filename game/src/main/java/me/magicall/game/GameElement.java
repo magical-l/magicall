@@ -5,6 +5,7 @@ package me.magicall.game;
  * 
  * @author MaGiCalL
  */
+@FunctionalInterface
 public interface GameElement {
 
 	/**

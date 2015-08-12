@@ -49,7 +49,7 @@ public class Md5Util {
 		try {
 			fin = new FileInputStream(file);
 			final byte[] b = new byte[8192];
-			int length = -1;
+			int length;
 			final MessageDigest md = MessageDigest.getInstance("MD5");
 			while ((length = fin.read(b)) != -1) {
 				md.update(b, 0, length);

@@ -236,7 +236,7 @@ public class CollectionUtil {
 //							c = new ArrayList<T>(size);
 //						}
 //					}
-//					c.add(transformer.transform(index, e));
+//					c.add(transformer.apply(index, e));
 //				} else if (escaped < offset) {
 //					escaped++;
 //				}

@@ -1,6 +1,7 @@
 package me.magicall.mark;
 
-public interface Cached extends Wrapper {
+@FunctionalInterface
+public interface Cached {
 
 	void dropCache();
 }

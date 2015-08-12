@@ -8,7 +8,7 @@ import java.util.Map;
 import java.util.RandomAccess;
 
 /**
- * 这个玩意可以快速制造一个稀疏列表(大部分元素为null)
+ * 这个玩意可以快速制造一个稀疏列表(大部分元素为null或指定值)
  * 可修改
  * 
  * @author MaGiCalL
@@ -31,6 +31,7 @@ public class MapList<E> extends AbstractList<E> implements List<E>, RandomAccess
 	private E defVal;
 
 	//------------------------------------------------
+
 	public MapList(final Map<Integer, Object> map, final int size, final E defVal) {
 		super();
 		this.map = map;
@@ -59,6 +60,7 @@ public class MapList<E> extends AbstractList<E> implements List<E>, RandomAccess
 	}
 
 	//------------------------------------------------
+
 	public void fillTo(final int toSize) {
 		if (size < toSize) {
 			size = toSize;
@@ -192,7 +194,7 @@ public class MapList<E> extends AbstractList<E> implements List<E>, RandomAccess
 		return checkValue(map.put(index, USE_AS_NULL_WHEN_DEF_VAL_IS_NOT_NULL));
 	}
 
-	private final void rangeCheck(final int index) {
+	private void rangeCheck(final int index) {
 		rangeCheck(index, 0, size());
 	}
 
@@ -211,15 +213,14 @@ public class MapList<E> extends AbstractList<E> implements List<E>, RandomAccess
 	}
 
 	public static void main(final String... args) {
-		final int maxSize = 20;
-
-		final MapList<String> list = new MapList<>("");
+        final MapList<String> list = new MapList<>("");
 		for (int i = 0; i < 10; ++i) {
 			list.add(String.valueOf(i));
 		}
 		System.out.println("@@@@@@" + list + list.map);
 
-		list.fillTo(maxSize);
+        final int maxSize = 20;
+        list.fillTo(maxSize);
 		System.out.println("@@@@@@" + list + list.map);
 
 		for (int i = 10; i < maxSize; ++i) {
