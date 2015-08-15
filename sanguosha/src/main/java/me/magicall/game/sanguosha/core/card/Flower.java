@@ -9,17 +9,27 @@ public enum Flower {
     /**
      * 黑桃♠
      */
-    SPADE,
+    SPADE(Color.BLACK),
     /**
-     * 红桃♡
+     * 红桃♥
      */
-    HEART,
+    HEART(Color.RED),
     /**
-     * 梅花♧
+     * 梅花♣
      */
-    CLUB,
+    CLUB(Color.BLACK),
     /**
-     * 方块♢
+     * 方块♦
      */
-    DIAMOND
+    DIAMOND(Color.RED);
+
+    public final Color color;
+
+    Flower(final Color color) {
+        this.color = color;
+    }
+
+    public Color getColor() {
+        return color;
+    }
 }

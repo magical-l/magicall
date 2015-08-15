@@ -2,10 +2,10 @@ package me.magicall.game.sanguosha.core.gaming.stage;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.common.collect.Lists;
+import me.magicall.game.sanguosha.core.gaming.GameException;
 import me.magicall.game.sanguosha.core.gaming.GetUsableCardsEvent;
 import me.magicall.game.sanguosha.core.gaming.GetUsableSkillsEvent;
 import me.magicall.game.sanguosha.core.gaming.Sanguosha;
-import me.magicall.game.sanguosha.core.gaming.option.Option;
 import me.magicall.game.sanguosha.core.gaming.option.Options;
 import me.magicall.game.sanguosha.core.gaming.option.SkillSelection;
 import me.magicall.game.sanguosha.core.unit.Hero;
@@ -34,21 +34,21 @@ public class PlayerPlayOptions implements Options<SkillSelection> {
     }
 
     @Override
-    public List<? extends Option> getOptions() {
+    public List<?> getOptions() {
         final Sanguosha game = hero.getGame();
-        final List<Option> rt = Lists.newArrayList();
+        final List<Object> rt = Lists.newArrayList();
         //获取可以用的手牌
         final GetUsableCardsEvent getUsableCardsEvent = new GetUsableCardsEvent(this,
                 Lists.newArrayList(hero.getHand().getCards()));
         game.publishEvent(getUsableCardsEvent);
-        getUsableCardsEvent.getCards().forEach(card -> rt.add(new OptionImpl(card)));
+        getUsableCardsEvent.getCards().forEach(rt::add);
         //获取可以用的技能
         final GetUsableSkillsEvent getUsableSkillsEvent = new GetUsableSkillsEvent(this,
                 Lists.newArrayList(hero.getSkills()));
         game.publishEvent(getUsableSkillsEvent);
-        getUsableSkillsEvent.getSkills().forEach(e -> rt.add(new OptionImpl(e)));
+        getUsableSkillsEvent.getSkills().forEach(rt::add);
         //结束按钮
-        rt.add(new OptionImpl("结束"));
+        rt.add("结束");
         return rt;
     }
 
@@ -59,15 +59,7 @@ public class PlayerPlayOptions implements Options<SkillSelection> {
             return selection;
         } catch (final IOException e) {
             e.printStackTrace();
-            throw new RuntimeException(e);
-        }
-    }
-
-    public static class OptionImpl implements Option {
-        private final Object o;
-
-        public OptionImpl(final Object o) {
-            this.o = o;
+            throw new GameException(e);
         }
     }
 }

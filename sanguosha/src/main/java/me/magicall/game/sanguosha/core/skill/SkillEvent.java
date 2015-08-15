@@ -19,7 +19,6 @@ public class SkillEvent extends Event {
     private Hero source;
     private Skill skill;
     private Collection<Hero> targets;
-    private Collection<Effect> effects;
 
     /**
      * Create a new ApplicationEvent.
@@ -38,6 +37,7 @@ public class SkillEvent extends Event {
         this.resource = resource;
     }
 
+    @Override
     public Hero getSource() {
         return source;
     }
@@ -54,11 +54,4 @@ public class SkillEvent extends Event {
         this.targets = targets;
     }
 
-    public Collection<Effect> getEffects() {
-        return effects;
-    }
-
-    public void setEffects(final Collection<Effect> effects) {
-        this.effects = effects;
-    }
 }

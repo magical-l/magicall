@@ -11,5 +11,7 @@ public interface Game {
 
     void play();
 
-    List<? extends GamingPlayer> getPlayers();
+    List<? extends GamingPlayer> getSurvivors();
+
+    List<GamingPlayer> getPlayers();
 }

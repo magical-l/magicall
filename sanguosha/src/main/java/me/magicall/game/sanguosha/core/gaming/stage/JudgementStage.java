@@ -26,7 +26,7 @@ public class JudgementStage extends AbsStage {
         final List<Card> cards = owner.getJudgement().getCards();
         for (final ListIterator<Card> iterator = cards.listIterator(); iterator.hasPrevious(); ) {
             final Card card = iterator.previous();
-            game.cardWork(card);
+            game.cardWork(card, owner);
         }
     }
 }

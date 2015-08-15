@@ -23,7 +23,7 @@ public class GainCardStage extends AbsStage {
 
     @Override
     protected void playInternal() {
-        final Collection<Card> cards = getGame().getCardStack().pop(GAIN_COUNT);
+        final Collection<Card> cards = getGame().cardsStackPop(GAIN_COUNT);
         final Area hand = getOwner().getHand();
         if (hand.canGain(cards)) {
             hand.gain(cards);

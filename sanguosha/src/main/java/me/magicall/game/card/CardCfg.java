@@ -5,6 +5,7 @@ import me.magicall.game.sanguosha.core.card.Flower;
 import me.magicall.game.sanguosha.core.skill.Skill;
 
 import java.util.Collection;
+import java.util.Collections;
 
 /**
  * 牌的配置，在游戏之外就已存在。
@@ -21,6 +22,18 @@ public class CardCfg implements Card {
     private final Flower flower;
 
     private final Collection<Skill> skills;
+
+    public CardCfg(final CardType type, final int point, final Flower flower, final Skill skill) {
+        this(type, point, flower, Collections.singleton(skill));
+    }
+
+    public CardCfg(final CardType type, final int point, final Flower flower, final Collection<Skill> skills) {
+        name = getClass().getSimpleName();
+        this.type = type;
+        this.point = point;
+        this.flower = flower;
+        this.skills = Lists.newArrayList(skills);
+    }
 
     public CardCfg(final String name, final CardType type, final int point, final Flower flower,
                    final Collection<Skill> skills) {

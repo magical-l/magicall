@@ -1,4 +1,4 @@
-package me.magicall.game.sanguosha.core.gaming;
+package me.magicall.game.sanguosha.core.gaming.position;
 
 import me.magicall.game.card.Coordinate;
 
@@ -9,7 +9,7 @@ import java.util.Objects;
  *
  * @author Liang Wenjian
  */
-public class Position implements Coordinate<Position, Integer> {
+public class Position implements Coordinate<Position, Integer>, Comparable<Position> {
 
     private final int position;
 
@@ -45,4 +45,8 @@ public class Position implements Coordinate<Position, Integer> {
         return "Position:" + position;
     }
 
+    @Override
+    public int compareTo(final Position o) {
+        return Integer.compare(position, o.position);
+    }
 }

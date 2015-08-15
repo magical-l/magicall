@@ -30,7 +30,7 @@ public class DiscardStage extends AbsStage {
 
         final HandArea hand = owner.getHand();
         for (int count = hand.getCardsCount() - remainCount; count > 0; count = hand.getCardsCount() - remainCount) {
-            owner.getPlayer().getPlayer().requireInput(new DiscardOptions(owner, count))//
+            owner.getPlayer().requireInput(new DiscardOptions(owner, count))//
                     .getCardIds().stream()//
                     .forEach(e -> hand.discard(Collections.singleton(game.getCard(e))));
         }

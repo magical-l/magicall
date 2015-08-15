@@ -1,5 +1,6 @@
 package me.magicall.game.sanguosha.core.unit;
 
+import com.google.common.collect.Lists;
 import me.magicall.game.card.UnitCfg;
 import me.magicall.game.sanguosha.core.skill.Skill;
 
@@ -17,6 +18,11 @@ public class HeroCfg implements UnitCfg {
     private final Country country;
     private final Gender gender;
     private final Collection<Skill> skills;
+
+    public HeroCfg(final String name, final int hpUpperBound, final Country country, final Gender gender,
+                   final Skill... skills) {
+        this(name, hpUpperBound, country, gender, Lists.newArrayList(skills));
+    }
 
     public HeroCfg(final String name, final int hpUpperBound, final Country country, final Gender gender,
                    final Collection<Skill> skills) {

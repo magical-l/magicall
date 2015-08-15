@@ -1,12 +1,12 @@
 package me.magicall.game.sanguosha.core.unit;
 
 import com.google.common.collect.Lists;
+import me.magicall.game.card.Unit;
 import me.magicall.game.sanguosha.core.area.EquipArea;
 import me.magicall.game.sanguosha.core.area.HandArea;
 import me.magicall.game.sanguosha.core.area.JudgementArea;
-import me.magicall.game.sanguosha.core.gaming.Position;
+import me.magicall.game.sanguosha.core.gaming.position.Position;
 import me.magicall.game.sanguosha.core.gaming.Sanguosha;
-import me.magicall.game.card.Unit;
 import me.magicall.game.sanguosha.core.player.GamingPlayer;
 import me.magicall.game.sanguosha.core.skill.Skill;
 
@@ -14,6 +14,7 @@ import java.util.Collection;
 
 /**
  * 武将。
+ * 参考：http://gw.sanguosha.com/data/newsDetail.asp?id=230&CategoryID=5016
  *
  * @author Liang Wenjian
  */
@@ -25,6 +26,7 @@ public class Hero implements Unit {
     private final Sanguosha game;
     private GamingPlayer player;
     private Position coordinate;
+    //◆角色的体力有可能小于0。
     private int hp;
 
     private final HandArea hand = new HandArea();
@@ -47,6 +49,16 @@ public class Hero implements Unit {
         country = heroCfg.getCountry();
         skills = Lists.newArrayList(heroCfg.getSkills());
         hp = heroCfg.getHpUpperBound();
+    }
+
+    public boolean isInjured() {
+        //如果角色的当前体力值小于其体力上限，称为该角色已受伤；如果角色的当前体力值等于其体力上限，称为该角色未受伤。
+        return hp < hpUpperBound;
+    }
+
+    public int getLostHp() {
+        //◆当角色的体力降到0或更低时，其已损失的体力值等于其体力上限。
+        return hp <= 0 ? hpUpperBound : hpUpperBound - hp;
     }
 
     @Override

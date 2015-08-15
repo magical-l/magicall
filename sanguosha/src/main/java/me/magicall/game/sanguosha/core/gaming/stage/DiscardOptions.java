@@ -1,7 +1,6 @@
 package me.magicall.game.sanguosha.core.gaming.stage;
 
-import me.magicall.game.card.Card;
-import me.magicall.game.sanguosha.core.gaming.option.Option;
+import me.magicall.game.sanguosha.core.gaming.CardsSelection;
 import me.magicall.game.sanguosha.core.gaming.option.Options;
 import me.magicall.game.sanguosha.core.unit.Hero;
 
@@ -10,7 +9,7 @@ import java.util.List;
 /**
  * @author Liang Wenjian
  */
-public class DiscardOptions implements Options<DiscardSelection> {
+public class DiscardOptions implements Options<CardsSelection> {
 
     private final Hero owner;
     private final int needDiscardCount;
@@ -27,13 +26,12 @@ public class DiscardOptions implements Options<DiscardSelection> {
     }
 
     @Override
-    public List<? extends Option> getOptions() {
-        final List<Card> cards = owner.getHand().getCards();
-        return null;//TODO
+    public List<?> getOptions() {
+        return owner.getHand().getCards();
     }
 
     @Override
-    public DiscardSelection toSelection(final String input) {
+    public CardsSelection toSelection(final String input) {
         return null;//TODO
     }
 }

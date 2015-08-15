@@ -24,13 +24,13 @@ public class SanguoshaRound implements Round {
         super();
         this.game = game;
         this.roundIndex = roundIndex;
-        unitTurns = Lists.newArrayListWithExpectedSize(game.getPlayers().size());
+        unitTurns = Lists.newArrayListWithExpectedSize(game.getSurvivors().size());
     }
 
     @Override
     public void play() {
         game.publishEvent(new RoundStartEvent(this));
-        game.getPlayers().stream().forEach(player -> {
+        game.getSurvivors().stream().forEach(player -> {
             final UnitTurn unitTurn = new HeroTurn(this, player.getHero());
             unitTurn.play();
             unitTurns.add(unitTurn);

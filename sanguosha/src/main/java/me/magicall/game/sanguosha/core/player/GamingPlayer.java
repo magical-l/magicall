@@ -1,6 +1,8 @@
 package me.magicall.game.sanguosha.core.player;
 
-import me.magicall.game.sanguosha.core.gaming.Position;
+import me.magicall.game.sanguosha.core.gaming.position.Position;
+import me.magicall.game.sanguosha.core.gaming.option.Options;
+import me.magicall.game.sanguosha.core.gaming.option.Selection;
 import me.magicall.game.sanguosha.core.unit.Hero;
 
 /**
@@ -8,7 +10,7 @@ import me.magicall.game.sanguosha.core.unit.Hero;
  *
  * @author Liang Wenjian
  */
-public class GamingPlayer {
+public class GamingPlayer implements Player {
 
     private Position position;
     /**
@@ -22,11 +24,21 @@ public class GamingPlayer {
     /**
      * 玩家代理
      */
-    private Player player;//player在游戏中有可能会被替换成AI。
+    private IO io;//player在游戏中有可能会被替换成AI。
     /**
      * 是否已阵亡
      */
     private boolean dead;
+
+    @Override
+    public <T extends Selection> T requireInput(final Options<T> options) {
+        return io.requireInput(options);
+    }
+
+    @Override
+    public void output(final Object o) {
+        io.output(o);
+    }
 
     public Role getRole() {
         return role;
@@ -44,12 +56,12 @@ public class GamingPlayer {
         this.hero = hero;
     }
 
-    public Player getPlayer() {
-        return player;
+    public IO getIO() {
+        return io;
     }
 
-    public void setPlayer(final Player player) {
-        this.player = player;
+    public void setIO(final IO io) {
+        this.io = io;
     }
 
     public boolean isDead() {
@@ -73,7 +85,7 @@ public class GamingPlayer {
         return getClass().getSimpleName() + hashCode() + ":{" +
                 "role:" + role +
                 ", hero:" + hero +
-                ", player:" + player +
+                ", io:" + io +
                 ", dead:" + dead +
                 '}';
     }

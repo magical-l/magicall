@@ -8,11 +8,11 @@ import java.util.Scanner;
 /**
  * @author Liang Wenjian
  */
-public class SanguoshaPlayer implements Player {
+public class ConsoleIO implements IO {
 
     private final Scanner scanner = new Scanner(System.in);
 
-    public SanguoshaPlayer() {
+    public ConsoleIO() {
         super();
     }
 
@@ -21,13 +21,12 @@ public class SanguoshaPlayer implements Player {
         System.out.println(options.getMsg());
         while (!scanner.hasNext()) {
         }
-        final String next = scanner.next();
-        //TODO
-        return null;
+        final String input = scanner.next();
+        return options.toSelection(input);
     }
 
     @Override
     public void output(final Object o) {
-        //TODO
+        System.out.println(o);
     }
 }

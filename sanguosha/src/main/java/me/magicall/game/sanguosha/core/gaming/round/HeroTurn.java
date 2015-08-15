@@ -55,6 +55,8 @@ public class HeroTurn implements UnitTurn {
         }
 
         round.setCurUnit(null);
+
+        game.publishEvent(new TurnEndEvent(this));
     }
 
     @Override

@@ -3,18 +3,17 @@ package me.magicall.game.sanguosha.core.gaming.option;
 import me.magicall.game.sanguosha.core.unit.HeroCfg;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 /**
  * @author Liang Wenjian
  */
 public class SelectHeroOptions implements Options<HeroSelection> {
 
-    private final List<SelectingHeroOption> options;
+    private final List<HeroCfg> options;
 
     public SelectHeroOptions(final List<HeroCfg> heroCfgs) {
         super();
-        options = heroCfgs.stream().map(SelectingHeroOption::new).collect(Collectors.toList());
+        options = heroCfgs;
     }
 
     @Override
@@ -23,18 +22,18 @@ public class SelectHeroOptions implements Options<HeroSelection> {
     }
 
     @Override
-    public List<SelectingHeroOption> getOptions() {
+    public List<HeroCfg> getOptions() {
         return options;
     }
 
     @Override
     public HeroSelection toSelection(final String input) {
         final int selectedIndex = Integer.parseInt(input);
-        final SelectingHeroOption option = getOptions().get(selectedIndex);
-        return new HeroSelection(option.getHeroCfg());
+        final HeroCfg heroCfg = getOptions().get(selectedIndex);
+        return new HeroSelection(heroCfg);
     }
 
-    public static class SelectingHeroOption implements Option {
+    public static class SelectingHeroOption {
 
         private final HeroCfg heroCfg;
 

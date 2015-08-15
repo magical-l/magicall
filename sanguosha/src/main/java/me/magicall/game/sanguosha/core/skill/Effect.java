@@ -1,20 +1,25 @@
 package me.magicall.game.sanguosha.core.skill;
 
-import me.magicall.game.sanguosha.core.unit.Hero;
+import me.magicall.game.Targetable;
+import me.magicall.game.card.Card;
+import me.magicall.game.sanguosha.core.gaming.Sanguosha;
+import me.magicall.game.sanguosha.core.player.GamingPlayer;
 
 import java.util.Collection;
+import java.util.List;
 
 /**
- * 技能的效果。
- *
  * @author Liang Wenjian
  */
-@FunctionalInterface
 public interface Effect {
-    /**
-     * 起效。要对目标进行处理。
-     *
-     * @param targets
-     */
-    void work(final Collection<Hero> targets);
+
+    Sanguosha getGame();
+
+    Skill getSkill();
+
+    GamingPlayer getUser();
+
+    Collection<Card> getResource();
+
+    List<Targetable> getTargets();
 }

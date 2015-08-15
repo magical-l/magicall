@@ -18,7 +18,7 @@ public interface Options<T extends Selection> {
      *
      * @return
      */
-    List<? extends Option> getOptions();
+    List<?> getOptions();
 
     /**
      * 玩家输入的信息，转化为操作。

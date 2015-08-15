@@ -26,7 +26,7 @@ public class PlayerPlayStage extends AbsStage {
     @Override
     protected void playInternal() {
         final Hero owner = getOwner();
-        final SkillSelection skillSelection = owner.getPlayer().getPlayer().requireInput(new PlayerPlayOptions(owner));
+        final SkillSelection skillSelection = owner.getPlayer().requireInput(new PlayerPlayOptions(owner));
         final int skillId = skillSelection.getSkillId();
         final List<Integer> resourceIds = skillSelection.getResourceIds();
         final List<Integer> targetIds = skillSelection.getTargetIds();
