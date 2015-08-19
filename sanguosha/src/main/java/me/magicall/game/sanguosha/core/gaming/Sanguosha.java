@@ -18,20 +18,22 @@ import me.magicall.game.sanguosha.core.gaming.option.SelectHeroOptions;
 import me.magicall.game.sanguosha.core.gaming.position.Position;
 import me.magicall.game.sanguosha.core.gaming.round.SanguoshaRound;
 import me.magicall.game.sanguosha.core.gaming.target.BecomingTargetsEvent;
+import me.magicall.game.sanguosha.core.gaming.target.Selector;
 import me.magicall.game.sanguosha.core.player.GamingPlayer;
 import me.magicall.game.sanguosha.core.player.IO;
 import me.magicall.game.sanguosha.core.player.Role;
+import me.magicall.game.sanguosha.core.skill.Effect;
 import me.magicall.game.sanguosha.core.skill.Skill;
 import me.magicall.game.sanguosha.core.skill.SkillEvent;
 import me.magicall.game.sanguosha.core.unit.Hero;
 import me.magicall.game.sanguosha.core.unit.HeroCfg;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.context.ApplicationEventPublisher;
 
 import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
+import java.util.ListIterator;
 import java.util.Map;
 import java.util.Map.Entry;
 
@@ -45,7 +47,6 @@ public class Sanguosha implements Game {
     //------------------------ 工具
 
     private final Logger logger = LoggerFactory.getLogger(getClass());
-    private final ApplicationEventPublisher publisher;
 
     //------------------------ 配置
 
@@ -97,8 +98,7 @@ public class Sanguosha implements Game {
 
     //===============================================
 
-    public Sanguosha(final ApplicationEventPublisher publisher, final GamingCfg cfg) {
-        this.publisher = publisher;
+    public Sanguosha(final GamingCfg cfg) {
         this.cfg = cfg;
         final List<HeroCfg> tmp = Lists.newArrayList(cfg.getHeroCfgs());
         Collections.shuffle(tmp);
@@ -168,7 +168,6 @@ public class Sanguosha implements Game {
     }
 
     public void publishEvent(final Event event) {
-        publisher.publishEvent(event);
     }
 
     public int calculateDistance(final Hero from, final Hero to) {
@@ -282,12 +281,15 @@ public class Sanguosha implements Game {
 
     public void cardWork(final Card card, final Hero user) {
         final Collection<Skill> skills = card.getSkills();
+        final Collection<Card> resources = Collections.singleton(card);
         for (final Skill skill : skills) {
-            final BecomingTargetsEvent becomingTargetsEvent = new BecomingTargetsEvent(skill.selectTargets(this, user),
-                    skill);
+            final Selector targetSelector = skill.getTargetSelector();
+            final BecomingTargetsEvent becomingTargetsEvent = new BecomingTargetsEvent(
+                    targetSelector.getTarget(this, user.getPlayer(), skill), skill);
             publishEvent(becomingTargetsEvent);
             final List<Hero> targets = becomingTargetsEvent.getSource();
-            skill.action(this, user, targets);
+            final Effect<?> effect = skill.action(this, user, targets, resources);
+            effect.doEffect();
         }
 
         //TODO
@@ -316,10 +318,6 @@ public class Sanguosha implements Game {
         //TODO
     }
 
-    public void addEventHook() {
-        //TODO
-    }
-
     @Override
     public String toString() {
         return getClass().getSimpleName() + hashCode() + ":{" +
@@ -335,15 +333,51 @@ public class Sanguosha implements Game {
         //TODO
     }
 
-    public GamingPlayer getPlayer(int position) {
+    public GamingPlayer getPlayer(final int position) {
         return null;//TODO
     }
 
-    public Map<GamingPlayer, Integer> calculateAttackables(GamingPlayer user) {
+    public Map<GamingPlayer, Integer> calculateAttackables(final GamingPlayer user) {
         return null;//TODO
     }
 
-    public Map<GamingPlayer, Integer> getDistanceScope(GamingPlayer user) {
+    public Map<GamingPlayer, Integer> getDistanceScope(final GamingPlayer user) {
         return null;//TODO
+    }
+
+    private ListMultimap<Class<?>, Hook<?>> hooks;
+
+    public void hook(final Hook<?> hook) {
+        hooks.put(hook.getEventClass(), hook);
+    }
+
+    public void doHook(final Event event) {
+        final List<Hook<?>> hooks = this.hooks.get(event.getClass());
+        if (hooks != null) {
+            final ListIterator<Hook<?>> iterator = hooks.listIterator();
+            while (iterator.hasNext()) {
+                @SuppressWarnings("unchecked")
+                final Hook<Event> next = (Hook<Event>) iterator.next();
+                next.before(event);
+                if (event.isEnd()) {
+                    break;
+                }
+            }
+
+            while (iterator.hasPrevious()) {
+                @SuppressWarnings("unchecked")
+                final Hook<Event> previous = (Hook<Event>) iterator.previous();
+                previous.after(event);
+            }
+        }
+    }
+
+    public Skill getSkill(final int skillId) {
+        return null;//TODO
+    }
+
+    public void skillAction(final Skill skill, final Hero user, final Collection<Card> resources,
+                            final List<Hero> targets) {
+        skill.action(this, user, targets, resources);
     }
 }

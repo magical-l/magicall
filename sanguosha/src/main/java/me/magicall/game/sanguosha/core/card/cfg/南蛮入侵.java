@@ -11,6 +11,6 @@ import me.magicall.game.sanguosha.core.skill.Skill;
 public class 南蛮入侵 extends CardCfg {
 
     public 南蛮入侵(final int point, final Flower flower) {
-        super(CardTypes.IMMEDIATE_JINNANG, point, flower, (Skill) null);//TODO
+        super(CardTypes.非延时锦囊, point, flower, (Skill) null);//TODO
     }
 }

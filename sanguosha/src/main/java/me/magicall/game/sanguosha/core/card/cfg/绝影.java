@@ -11,6 +11,6 @@ import me.magicall.game.sanguosha.core.skill.Skill;
 public class 绝影 extends CardCfg {
 
     public 绝影(final int point, final Flower flower) {
-        super(CardTypes.DEFENSE_HORSE, point, flower, (Skill) null);//TODO
+        super(CardTypes.防御马, point, flower, (Skill) null);//TODO
     }
 }

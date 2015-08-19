@@ -31,7 +31,7 @@ public class EquipArea extends AbsArea {
     @Override
     public boolean canGain(final Collection<Card> cards) {
         for (final Card card : cards) {
-            if (!card.getType().is(CardTypes.EQUIP)) {
+            if (!card.getType().is(CardTypes.装备)) {
                 return false;
             }
         }
@@ -39,7 +39,7 @@ public class EquipArea extends AbsArea {
     }
 
     public void setWeapon(final Card weapon) {
-        if (!weapon.getType().is(CardTypes.WEAPON)) {
+        if (!weapon.getType().is(CardTypes.武器)) {
             throw new GameException();
         }
         getCards().set(WEAPON_INDEX, weapon);
@@ -50,7 +50,7 @@ public class EquipArea extends AbsArea {
     }
 
     public void setShield(final Card shield) {
-        if (!shield.getType().is(CardTypes.SHIELD)) {
+        if (!shield.getType().is(CardTypes.防具)) {
             throw new GameException();
         }
         getCards().set(SHIELD_INDEX, shield);
@@ -61,7 +61,7 @@ public class EquipArea extends AbsArea {
     }
 
     public void setAttackHorse(final Card attackHorse) {
-        if (!attackHorse.getType().is(CardTypes.ATTACK_HORSE)) {
+        if (!attackHorse.getType().is(CardTypes.进攻马)) {
             throw new GameException();
         }
         getCards().set(ATTACK_HORSE_INDEX, attackHorse);
@@ -72,7 +72,7 @@ public class EquipArea extends AbsArea {
     }
 
     public void setDefenceHorse(final Card defenceHorse) {
-        if (!defenceHorse.getType().is(CardTypes.ATTACK_HORSE)) {
+        if (!defenceHorse.getType().is(CardTypes.进攻马)) {
             throw new GameException();
         }
         getCards().set(DEFENCE_HORSE_INDEX, defenceHorse);

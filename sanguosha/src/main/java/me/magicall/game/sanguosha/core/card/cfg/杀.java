@@ -11,6 +11,6 @@ import me.magicall.game.sanguosha.core.skill.Skill;
 public class 杀 extends CardCfg {
 
     public 杀(final int point, final Flower flower) {
-        super(CardTypes.BASE, point, flower, (Skill) null);//TODO
+        super(CardTypes.基本牌, point, flower, (Skill) null);//TODO
     }
 }

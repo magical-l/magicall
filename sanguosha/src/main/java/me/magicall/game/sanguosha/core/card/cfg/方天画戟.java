@@ -11,6 +11,6 @@ import me.magicall.game.sanguosha.core.skill.Skill;
 public class 方天画戟 extends CardCfg {
 
     public 方天画戟(final int point, final Flower flower) {
-        super(CardTypes.WEAPON, point, flower, (Skill) null);//TODO
+        super(CardTypes.武器, point, flower, (Skill) null);//TODO
     }
 }

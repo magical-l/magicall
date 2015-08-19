@@ -1,14 +1,13 @@
 package me.magicall.game.sanguosha.core.unit;
 
 import me.magicall.game.card.Event;
-import me.magicall.game.sanguosha.core.unit.Hero;
 
 /**
+ * 濒死事件
+ *
  * @author Liang Wenjian
  */
 public class DyingEvent extends Event {
-
-    private static final long serialVersionUID = 4031030490082681721L;
 
     /**
      * Create a new ApplicationEvent.

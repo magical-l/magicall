@@ -1,10 +1,14 @@
 package me.magicall.game.sanguosha.core.gaming.stage;
 
+import me.magicall.game.card.Card;
 import me.magicall.game.sanguosha.core.gaming.Sanguosha;
 import me.magicall.game.sanguosha.core.gaming.option.SkillSelection;
+import me.magicall.game.sanguosha.core.skill.Skill;
 import me.magicall.game.sanguosha.core.unit.Hero;
 
+import java.util.Collection;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * 出牌阶段。
@@ -26,10 +30,22 @@ public class PlayerPlayStage extends AbsStage {
     @Override
     protected void playInternal() {
         final Hero owner = getOwner();
-        final SkillSelection skillSelection = owner.getPlayer().requireInput(new PlayerPlayOptions(owner));
-        final int skillId = skillSelection.getSkillId();
-        final List<Integer> resourceIds = skillSelection.getResourceIds();
-        final List<Integer> targetIds = skillSelection.getTargetIds();
-        //TODO
+        final Sanguosha game = getGame();
+        while (true) {
+            final SkillSelection skillSelection = owner.getPlayer().requireInput(new PlayerPlayOptions(owner));
+            final Integer skillId = skillSelection.getSkillId();
+            if (skillId == null) {
+                //点击了“结束”
+                return;
+            }
+
+            final List<Integer> resourceIds = skillSelection.getResourceIds();
+            final List<Integer> targetIds = skillSelection.getTargetIds();
+            final Collection<Card> resources = resourceIds.stream().map(game::getCard).collect(Collectors.toList());
+            final Skill skill = game.getSkill(skillId);
+            final List<Hero> targets = targetIds.stream().map(e -> game.getPlayer(e).getHero())
+                                                .collect(Collectors.toList());
+            game.skillAction(skill, owner, resources, targets);
+        }
     }
 }

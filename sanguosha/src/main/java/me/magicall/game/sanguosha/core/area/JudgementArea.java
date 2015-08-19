@@ -19,7 +19,7 @@ public class JudgementArea extends AbsArea {
         //判定区里，只能放延时锦囊，并且同名的只能贴一张。
         final Collection<Card> owning = getCards();
         for (final Card c : cards) {
-            if (c.getType() != CardTypes.DELAYED_JINNANG) {
+            if (c.getType() != CardTypes.延时锦囊) {
                 return false;
             }
             for (final Card card : owning) {

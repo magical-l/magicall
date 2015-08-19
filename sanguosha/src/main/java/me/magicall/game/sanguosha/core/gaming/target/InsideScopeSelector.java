@@ -47,9 +47,7 @@ public class InsideScopeSelector implements Selector {
 
     @Override
     public List<Hero> getTarget(final Sanguosha game, final GamingPlayer user, final Skill skill) {
-        final Map<GamingPlayer, Integer> playerDistances//
-                = distanceType == DistanceType.ATTACK_DISTANCE//
-                  ? game.calculateAttackables(user) : game.getDistanceScope(user);
+        final Map<GamingPlayer, Integer> playerDistances = distanceType.getPlayers(game, user, skill);
         final List<Position> positions = playerDistances.keySet().stream()//
                 .filter(e -> includingSelf || !Objects.equals(e, user))//
                 .map(GamingPlayer::getPosition)//

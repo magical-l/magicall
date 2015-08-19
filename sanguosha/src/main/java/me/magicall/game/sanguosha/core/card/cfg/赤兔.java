@@ -11,6 +11,6 @@ import me.magicall.game.sanguosha.core.skill.Skill;
 public class 赤兔 extends CardCfg {
 
     public 赤兔(final int point, final Flower flower) {
-        super(CardTypes.ATTACK_HORSE, point, flower, (Skill) null);//TODO
+        super(CardTypes.进攻马, point, flower, (Skill) null);//TODO
     }
 }

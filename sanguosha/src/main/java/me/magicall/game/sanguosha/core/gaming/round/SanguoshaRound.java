@@ -35,6 +35,7 @@ public class SanguoshaRound implements Round {
             unitTurn.play();
             unitTurns.add(unitTurn);
         });
+        game.publishEvent(new RoundEndEvent(this));
     }
 
     @Override

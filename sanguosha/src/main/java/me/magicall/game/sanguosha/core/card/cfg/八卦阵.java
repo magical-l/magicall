@@ -11,6 +11,6 @@ import me.magicall.game.sanguosha.core.skill.Skill;
 public class 八卦阵 extends CardCfg {
 
     public 八卦阵(final int point, final Flower flower) {
-        super(CardTypes.SHIELD, point, flower, (Skill) null);//TODO
+        super(CardTypes.防具, point, flower, (Skill) null);//TODO
     }
 }

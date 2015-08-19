@@ -11,7 +11,7 @@ import java.util.List;
 /**
  * @author Liang Wenjian
  */
-public interface Effect {
+public interface Effect<TARGET_TYPE extends Targetable> {
 
     Sanguosha getGame();
 
@@ -19,7 +19,9 @@ public interface Effect {
 
     GamingPlayer getUser();
 
-    Collection<Card> getResource();
+    Collection<Card> getResources();
 
-    List<Targetable> getTargets();
+    List<TARGET_TYPE> getTargets();
+
+    void doEffect();
 }

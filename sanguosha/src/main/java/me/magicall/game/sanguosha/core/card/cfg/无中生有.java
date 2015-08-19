@@ -11,6 +11,6 @@ import me.magicall.game.sanguosha.core.skill.Skill;
 public class 无中生有 extends CardCfg {
 
     public 无中生有(final int point, final Flower flower) {
-        super(CardTypes.IMMEDIATE_JINNANG, point, flower, (Skill) null);//TODO
+        super(CardTypes.非延时锦囊, point, flower, (Skill) null);//TODO
     }
 }

@@ -1,20 +1,21 @@
 package me.magicall.game.card;
 
-import org.springframework.context.ApplicationEvent;
-
 /**
  * @author Liang Wenjian
  */
-public class Event extends ApplicationEvent{
-    private static final long serialVersionUID = -2683867746284370387L;
+public class Event {
 
-    /**
-     * Create a new ApplicationEvent.
-     *
-     * @param source the component that published the event (never {@code null})
-     */
+    private final Object source;
+
     public Event(final Object source) {
-        super(source);
+        this.source = source;
     }
 
+    public Object getSource() {
+        return source;
+    }
+
+    public boolean isEnd() {
+        return false;//TODO
+    }
 }

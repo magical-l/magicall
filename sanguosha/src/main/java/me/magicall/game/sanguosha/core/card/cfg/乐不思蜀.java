@@ -11,6 +11,6 @@ import me.magicall.game.sanguosha.core.skill.Skill;
 public class 乐不思蜀 extends CardCfg {
 
     public 乐不思蜀(final int point, final Flower flower) {
-        super(CardTypes.DELAYED_JINNANG, point, flower, (Skill) null);//TODO
+        super(CardTypes.延时锦囊, point, flower, (Skill) null);//TODO
     }
 }

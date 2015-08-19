@@ -11,11 +11,6 @@ import me.magicall.game.sanguosha.core.player.Role;
 import me.magicall.game.sanguosha.core.unit.Country;
 import me.magicall.game.sanguosha.core.unit.Gender;
 import me.magicall.game.sanguosha.core.unit.HeroCfg;
-import org.springframework.beans.BeansException;
-import org.springframework.beans.factory.BeanDefinitionStoreException;
-import org.springframework.beans.factory.xml.XmlBeanDefinitionReader;
-import org.springframework.context.support.GenericApplicationContext;
-import org.springframework.core.io.ClassPathResource;
 
 import java.util.Collection;
 import java.util.Map;
@@ -29,11 +24,7 @@ public class Launcher {
         super();
     }
 
-    public static void main(final String... args)
-            throws IllegalStateException, BeansException, BeanDefinitionStoreException {
-        final GenericApplicationContext ctx = new GenericApplicationContext();
-        new XmlBeanDefinitionReader(ctx).loadBeanDefinitions(new ClassPathResource("applicationContext.xml"));
-        ctx.refresh();
+    public static void main(final String... args) {
 
         final int playerCount = 8;
 
@@ -60,50 +51,50 @@ public class Launcher {
 
         //参考http://gw.sanguosha.com/data/newsDetail.asp?id=2&CategoryID=5007
         final Map<CardCfg, Integer> countOfCardCfg = Maps.newHashMap();
-        countOfCardCfg.put(new CardCfg("杀", CardTypes.BASE, 7, Flower.SPADE, Lists.newArrayList()), 1);
-        countOfCardCfg.put(new CardCfg("杀", CardTypes.BASE, 8, Flower.SPADE, Lists.newArrayList()), 2);
-        countOfCardCfg.put(new CardCfg("杀", CardTypes.BASE, 9, Flower.SPADE, Lists.newArrayList()), 2);
-        countOfCardCfg.put(new CardCfg("杀", CardTypes.BASE, 10, Flower.SPADE, Lists.newArrayList()), 2);
-        countOfCardCfg.put(new CardCfg("杀", CardTypes.BASE, 10, Flower.HEART, Lists.newArrayList()), 2);
-        countOfCardCfg.put(new CardCfg("杀", CardTypes.BASE, 11, Flower.HEART, Lists.newArrayList()), 1);
-        countOfCardCfg.put(new CardCfg("杀", CardTypes.BASE, 2, Flower.CLUB, Lists.newArrayList()), 1);
-        countOfCardCfg.put(new CardCfg("杀", CardTypes.BASE, 3, Flower.CLUB, Lists.newArrayList()), 1);
-        countOfCardCfg.put(new CardCfg("杀", CardTypes.BASE, 4, Flower.CLUB, Lists.newArrayList()), 1);
-        countOfCardCfg.put(new CardCfg("杀", CardTypes.BASE, 5, Flower.CLUB, Lists.newArrayList()), 1);
-        countOfCardCfg.put(new CardCfg("杀", CardTypes.BASE, 6, Flower.CLUB, Lists.newArrayList()), 1);
-        countOfCardCfg.put(new CardCfg("杀", CardTypes.BASE, 7, Flower.CLUB, Lists.newArrayList()), 1);
-        countOfCardCfg.put(new CardCfg("杀", CardTypes.BASE, 8, Flower.CLUB, Lists.newArrayList()), 2);
-        countOfCardCfg.put(new CardCfg("杀", CardTypes.BASE, 9, Flower.CLUB, Lists.newArrayList()), 2);
-        countOfCardCfg.put(new CardCfg("杀", CardTypes.BASE, 10, Flower.CLUB, Lists.newArrayList()), 2);
-        countOfCardCfg.put(new CardCfg("杀", CardTypes.BASE, 11, Flower.CLUB, Lists.newArrayList()), 2);
-        countOfCardCfg.put(new CardCfg("杀", CardTypes.BASE, 6, Flower.DIAMOND, Lists.newArrayList()), 1);
-        countOfCardCfg.put(new CardCfg("杀", CardTypes.BASE, 7, Flower.DIAMOND, Lists.newArrayList()), 1);
-        countOfCardCfg.put(new CardCfg("杀", CardTypes.BASE, 8, Flower.DIAMOND, Lists.newArrayList()), 1);
-        countOfCardCfg.put(new CardCfg("杀", CardTypes.BASE, 9, Flower.DIAMOND, Lists.newArrayList()), 1);
-        countOfCardCfg.put(new CardCfg("杀", CardTypes.BASE, 10, Flower.DIAMOND, Lists.newArrayList()), 1);
-        countOfCardCfg.put(new CardCfg("杀", CardTypes.BASE, 13, Flower.DIAMOND, Lists.newArrayList()), 1);
-        countOfCardCfg.put(new CardCfg("闪", CardTypes.BASE, 2, Flower.HEART, Lists.newArrayList()), 2);
-        countOfCardCfg.put(new CardCfg("闪", CardTypes.BASE, 13, Flower.HEART, Lists.newArrayList()), 1);
-        countOfCardCfg.put(new CardCfg("闪", CardTypes.BASE, 2, Flower.DIAMOND, Lists.newArrayList()), 2);
-        countOfCardCfg.put(new CardCfg("闪", CardTypes.BASE, 3, Flower.DIAMOND, Lists.newArrayList()), 1);
-        countOfCardCfg.put(new CardCfg("闪", CardTypes.BASE, 4, Flower.DIAMOND, Lists.newArrayList()), 1);
-        countOfCardCfg.put(new CardCfg("闪", CardTypes.BASE, 5, Flower.DIAMOND, Lists.newArrayList()), 1);
-        countOfCardCfg.put(new CardCfg("闪", CardTypes.BASE, 6, Flower.DIAMOND, Lists.newArrayList()), 1);
-        countOfCardCfg.put(new CardCfg("闪", CardTypes.BASE, 7, Flower.DIAMOND, Lists.newArrayList()), 1);
-        countOfCardCfg.put(new CardCfg("闪", CardTypes.BASE, 8, Flower.DIAMOND, Lists.newArrayList()), 1);
-        countOfCardCfg.put(new CardCfg("闪", CardTypes.BASE, 9, Flower.DIAMOND, Lists.newArrayList()), 1);
-        countOfCardCfg.put(new CardCfg("闪", CardTypes.BASE, 10, Flower.DIAMOND, Lists.newArrayList()), 1);
-        countOfCardCfg.put(new CardCfg("闪", CardTypes.BASE, 11, Flower.DIAMOND, Lists.newArrayList()), 2);
-        countOfCardCfg.put(new CardCfg("桃", CardTypes.BASE, 3, Flower.HEART, Lists.newArrayList()), 1);
-        countOfCardCfg.put(new CardCfg("桃", CardTypes.BASE, 4, Flower.HEART, Lists.newArrayList()), 1);
-        countOfCardCfg.put(new CardCfg("桃", CardTypes.BASE, 6, Flower.HEART, Lists.newArrayList()), 1);
-        countOfCardCfg.put(new CardCfg("桃", CardTypes.BASE, 7, Flower.HEART, Lists.newArrayList()), 1);
-        countOfCardCfg.put(new CardCfg("桃", CardTypes.BASE, 8, Flower.HEART, Lists.newArrayList()), 1);
-        countOfCardCfg.put(new CardCfg("桃", CardTypes.BASE, 9, Flower.HEART, Lists.newArrayList()), 1);
-        countOfCardCfg.put(new CardCfg("桃", CardTypes.BASE, 12, Flower.HEART, Lists.newArrayList()), 1);
-        countOfCardCfg.put(new CardCfg("桃", CardTypes.BASE, 12, Flower.DIAMOND, Lists.newArrayList()), 1);
-        countOfCardCfg.put(new CardCfg("诸葛连弩", CardTypes.WEAPON, 1, Flower.CLUB, Lists.newArrayList()), 1);
-        countOfCardCfg.put(new CardCfg("诸葛连弩", CardTypes.WEAPON, 1, Flower.DIAMOND, Lists.newArrayList()), 1);
+        countOfCardCfg.put(new CardCfg("杀", CardTypes.基本牌, 7, Flower.SPADE, Lists.newArrayList()), 1);
+        countOfCardCfg.put(new CardCfg("杀", CardTypes.基本牌, 8, Flower.SPADE, Lists.newArrayList()), 2);
+        countOfCardCfg.put(new CardCfg("杀", CardTypes.基本牌, 9, Flower.SPADE, Lists.newArrayList()), 2);
+        countOfCardCfg.put(new CardCfg("杀", CardTypes.基本牌, 10, Flower.SPADE, Lists.newArrayList()), 2);
+        countOfCardCfg.put(new CardCfg("杀", CardTypes.基本牌, 10, Flower.HEART, Lists.newArrayList()), 2);
+        countOfCardCfg.put(new CardCfg("杀", CardTypes.基本牌, 11, Flower.HEART, Lists.newArrayList()), 1);
+        countOfCardCfg.put(new CardCfg("杀", CardTypes.基本牌, 2, Flower.CLUB, Lists.newArrayList()), 1);
+        countOfCardCfg.put(new CardCfg("杀", CardTypes.基本牌, 3, Flower.CLUB, Lists.newArrayList()), 1);
+        countOfCardCfg.put(new CardCfg("杀", CardTypes.基本牌, 4, Flower.CLUB, Lists.newArrayList()), 1);
+        countOfCardCfg.put(new CardCfg("杀", CardTypes.基本牌, 5, Flower.CLUB, Lists.newArrayList()), 1);
+        countOfCardCfg.put(new CardCfg("杀", CardTypes.基本牌, 6, Flower.CLUB, Lists.newArrayList()), 1);
+        countOfCardCfg.put(new CardCfg("杀", CardTypes.基本牌, 7, Flower.CLUB, Lists.newArrayList()), 1);
+        countOfCardCfg.put(new CardCfg("杀", CardTypes.基本牌, 8, Flower.CLUB, Lists.newArrayList()), 2);
+        countOfCardCfg.put(new CardCfg("杀", CardTypes.基本牌, 9, Flower.CLUB, Lists.newArrayList()), 2);
+        countOfCardCfg.put(new CardCfg("杀", CardTypes.基本牌, 10, Flower.CLUB, Lists.newArrayList()), 2);
+        countOfCardCfg.put(new CardCfg("杀", CardTypes.基本牌, 11, Flower.CLUB, Lists.newArrayList()), 2);
+        countOfCardCfg.put(new CardCfg("杀", CardTypes.基本牌, 6, Flower.DIAMOND, Lists.newArrayList()), 1);
+        countOfCardCfg.put(new CardCfg("杀", CardTypes.基本牌, 7, Flower.DIAMOND, Lists.newArrayList()), 1);
+        countOfCardCfg.put(new CardCfg("杀", CardTypes.基本牌, 8, Flower.DIAMOND, Lists.newArrayList()), 1);
+        countOfCardCfg.put(new CardCfg("杀", CardTypes.基本牌, 9, Flower.DIAMOND, Lists.newArrayList()), 1);
+        countOfCardCfg.put(new CardCfg("杀", CardTypes.基本牌, 10, Flower.DIAMOND, Lists.newArrayList()), 1);
+        countOfCardCfg.put(new CardCfg("杀", CardTypes.基本牌, 13, Flower.DIAMOND, Lists.newArrayList()), 1);
+        countOfCardCfg.put(new CardCfg("闪", CardTypes.基本牌, 2, Flower.HEART, Lists.newArrayList()), 2);
+        countOfCardCfg.put(new CardCfg("闪", CardTypes.基本牌, 13, Flower.HEART, Lists.newArrayList()), 1);
+        countOfCardCfg.put(new CardCfg("闪", CardTypes.基本牌, 2, Flower.DIAMOND, Lists.newArrayList()), 2);
+        countOfCardCfg.put(new CardCfg("闪", CardTypes.基本牌, 3, Flower.DIAMOND, Lists.newArrayList()), 1);
+        countOfCardCfg.put(new CardCfg("闪", CardTypes.基本牌, 4, Flower.DIAMOND, Lists.newArrayList()), 1);
+        countOfCardCfg.put(new CardCfg("闪", CardTypes.基本牌, 5, Flower.DIAMOND, Lists.newArrayList()), 1);
+        countOfCardCfg.put(new CardCfg("闪", CardTypes.基本牌, 6, Flower.DIAMOND, Lists.newArrayList()), 1);
+        countOfCardCfg.put(new CardCfg("闪", CardTypes.基本牌, 7, Flower.DIAMOND, Lists.newArrayList()), 1);
+        countOfCardCfg.put(new CardCfg("闪", CardTypes.基本牌, 8, Flower.DIAMOND, Lists.newArrayList()), 1);
+        countOfCardCfg.put(new CardCfg("闪", CardTypes.基本牌, 9, Flower.DIAMOND, Lists.newArrayList()), 1);
+        countOfCardCfg.put(new CardCfg("闪", CardTypes.基本牌, 10, Flower.DIAMOND, Lists.newArrayList()), 1);
+        countOfCardCfg.put(new CardCfg("闪", CardTypes.基本牌, 11, Flower.DIAMOND, Lists.newArrayList()), 2);
+        countOfCardCfg.put(new CardCfg("桃", CardTypes.基本牌, 3, Flower.HEART, Lists.newArrayList()), 1);
+        countOfCardCfg.put(new CardCfg("桃", CardTypes.基本牌, 4, Flower.HEART, Lists.newArrayList()), 1);
+        countOfCardCfg.put(new CardCfg("桃", CardTypes.基本牌, 6, Flower.HEART, Lists.newArrayList()), 1);
+        countOfCardCfg.put(new CardCfg("桃", CardTypes.基本牌, 7, Flower.HEART, Lists.newArrayList()), 1);
+        countOfCardCfg.put(new CardCfg("桃", CardTypes.基本牌, 8, Flower.HEART, Lists.newArrayList()), 1);
+        countOfCardCfg.put(new CardCfg("桃", CardTypes.基本牌, 9, Flower.HEART, Lists.newArrayList()), 1);
+        countOfCardCfg.put(new CardCfg("桃", CardTypes.基本牌, 12, Flower.HEART, Lists.newArrayList()), 1);
+        countOfCardCfg.put(new CardCfg("桃", CardTypes.基本牌, 12, Flower.DIAMOND, Lists.newArrayList()), 1);
+        countOfCardCfg.put(new CardCfg("诸葛连弩", CardTypes.武器, 1, Flower.CLUB, Lists.newArrayList()), 1);
+        countOfCardCfg.put(new CardCfg("诸葛连弩", CardTypes.武器, 1, Flower.DIAMOND, Lists.newArrayList()), 1);
         //TODO
 
         final Map<Role, Integer> countOfRole = Maps.newHashMap();
@@ -113,7 +104,7 @@ public class Launcher {
         countOfRole.put(Role.内奸, 1);
 
         final GamingCfg cfg = new SanguoshaCfg(ios, heroCfgs, countOfCardCfg, false, countOfRole);
-        final Sanguosha game = new Sanguosha(ctx, cfg);
+        final Sanguosha game = new Sanguosha(cfg);
         game.play();
     }
 }

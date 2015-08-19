@@ -11,6 +11,6 @@ import me.magicall.game.sanguosha.core.skill.Skill;
 public class 的卢 extends CardCfg {
 
     public 的卢(final int point, final Flower flower) {
-        super(CardTypes.DEFENSE_HORSE, point, flower, (Skill) null);//TODO
+        super(CardTypes.防御马, point, flower, (Skill) null);//TODO
     }
 }

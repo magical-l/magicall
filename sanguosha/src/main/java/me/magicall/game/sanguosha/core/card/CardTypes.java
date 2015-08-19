@@ -6,16 +6,16 @@ import me.magicall.game.card.CardType;
  * @author Liang Wenjian
  */
 public enum CardTypes implements CardType {
-    BASE,
-    JINNANG,
-    IMMEDIATE_JINNANG(JINNANG),
-    DELAYED_JINNANG(JINNANG),
-    EQUIP,
-    WEAPON(EQUIP),
-    SHIELD(EQUIP),
-    HORSE(EQUIP),
-    ATTACK_HORSE(HORSE),
-    DEFENSE_HORSE(HORSE);
+    基本牌,
+    锦囊,
+    非延时锦囊(锦囊),
+    延时锦囊(锦囊),
+    装备,
+    武器(装备),
+    防具(装备),
+    马(装备),
+    进攻马(马),
+    防御马(马);
 
     private final CardTypes parent;
 
