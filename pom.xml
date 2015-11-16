@@ -42,6 +42,7 @@
         <module>game-xiangqi</module>
         <module>outsea</module>
         <module>sanguosha</module>
+        <module>fang</module>
     </modules>
 
     <properties>
